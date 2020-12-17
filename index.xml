@@ -2,92 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>林三木的博客</title>
-    <link>linjiasen63.github.io/</link>
+    <link>https://linjiasen63.github.io/</link>
     <description>Recent content on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaSE：01.语法基础</title>
-      <link>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
+      <link>https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
-      <description>1. 计算机通识 1.1 进制转换  辗转相除法（十进制转换为其它进制） 位权累加法（其它进制转换为十进制）  1.2 存储单位  1bit = 位（表示0或1） 1Byte = 8bit （数据存储的最小单元） 1KB = 1024Byte 1MB = 1024KB 1GB = 1024MB 1TB = 1024GB &amp;hellip;  1.3 Java简介 95年发布，已有20来年的历史。目前大部分公司使用的主要版本还是java8。
+      <guid>https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
+      <description>1. 计算机通识 1.1 进制转换  辗转相除法（十进制转换为其它进制） 位权累加法（其它进制转换为十进制）  1.2 存储单位  1bit = 位（表示0或1） 1Byte = 8bit （数据存储的最小单元） 1KB = 1024Byte 1MB = 1024KB 1GB = 1024MB 1TB = 1024GB 1PB = 1024TB &amp;hellip;  1.3 Java简介 95年发布，已有20来年的历史。目前大部分公司使用的主要版本还是java8。
 java编写的程序是跨平台的，但是JVM是非跨平台的（每种平台都有各自版本的JVM）
  JDK = 编译器等开发工具 + JRE； JRE = 运行类库 + JVM；  1.3.1 dos  盘符切换，如：D: (${磁盘标识}:) 切换目录 cd 清除 cls （全写：clear screen） 退出 exit  1.3.2  配置JAVA_HOME 配置PATH  mac下无需如此，开发配置简单。
-2. 语法 2.1 HelloWorld // public的类名必须与文件名大小写一致 public class HelloWorld { // 程序的执行入口  public static void main(String[] args) { System.out.println(&amp;#34;Hello world!&amp;#34;); } } 2.1.1 注释 // 单行注释  /* 多行注释 */ 2.1.2 关键字与标识符  关键字：预先定义，用于特定用途的，如public、class等； 标识符：  由大小写字母（a-zA-Z）、数字（0-9）、美元符号（$）、下划线（_）组成； 不能以数字开头；    2.</description>
-    </item>
-    
-    <item>
-      <title>JavaSE：02.语法进阶</title>
-      <link>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaSE：03.输入输出</title>
-      <link>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaSE：04.进程线程</title>
-      <link>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaSE：05.函数式编程</title>
-      <link>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>linjiasen63.github.io/posts/programming/java/learn/01.javase/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</guid>
-      <description></description>
+2. 基本语法 2.1 HelloWorld // public的类名必须与文件名大小写一致 public class HelloWorld { // 程序的执行入口  public static void main(String[] args) { System.out.println(&amp;#34;Hello world!&amp;#34;); } } 执行过程：
+ 编写源码文件（.java），如：HelloWorld.java 编译器编译生成字节码文件（.class），如：javac HelloWorld.java jvm执行字节码文件，如：java HelloWorld.</description>
     </item>
     
     <item>
       <title>Flag：28岁现状</title>
-      <link>linjiasen63.github.io/flag/28%E5%B2%81%E7%8E%B0%E7%8A%B6/</link>
+      <link>https://linjiasen63.github.io/flag/28%E5%B2%81%E7%8E%B0%E7%8A%B6/</link>
       <pubDate>Mon, 14 Dec 2020 11:23:20 +0000</pubDate>
       
-      <guid>linjiasen63.github.io/flag/28%E5%B2%81%E7%8E%B0%E7%8A%B6/</guid>
+      <guid>https://linjiasen63.github.io/flag/28%E5%B2%81%E7%8E%B0%E7%8A%B6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>我是谁？</title>
-      <link>linjiasen63.github.io/about/</link>
+      <link>https://linjiasen63.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>linjiasen63.github.io/about/</guid>
+      <guid>https://linjiasen63.github.io/about/</guid>
       <description>我是谁？</description>
     </item>
     
     <item>
       <title>文章归档</title>
-      <link>linjiasen63.github.io/archives/</link>
+      <link>https://linjiasen63.github.io/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>linjiasen63.github.io/archives/</guid>
+      <guid>https://linjiasen63.github.io/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>文章搜索</title>
-      <link>linjiasen63.github.io/search/</link>
+      <link>https://linjiasen63.github.io/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>linjiasen63.github.io/search/</guid>
+      <guid>https://linjiasen63.github.io/search/</guid>
       <description></description>
     </item>
     
