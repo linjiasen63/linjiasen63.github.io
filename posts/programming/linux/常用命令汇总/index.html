@@ -14,7 +14,7 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>Posts</title>
+  <title>linux常用命令汇总</title>
 
   <link rel="canonical" href="/" />
 <link href="/scss/index.min.d808b8f2d1f445e765a87afa7a31025f7988635623f7844fafc5456c8843df43.css" rel="stylesheet">
@@ -79,84 +79,71 @@ function toggleNavbarmenu(ele) {
       
       <main class="site-main">
       
-<content>
+<div class="single-post">
   <div>
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/">
-    <div class="article-title">
+    <article id="content" class="md-render">
       
-        mysql快速开始
+      <h1 id="title" class="title">linux常用命令汇总</h1>
       
-    </div>
-    <div class="article-info">
-      <span>2020年12月01日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
+      
+        
+        <h2 class="">目录</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#文件传输">文件传输</a>
+      <ul>
+        <li><a href="#scp">scp</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        
+      
+      <h2 id="文件传输">文件传输</h2>
+<p><a href="https://wangdoc.com/ssh/scp.html">参考链接</a></p>
+<h3 id="scp">scp</h3>
+<ul>
+<li>本地复制到远程</li>
+<li>远程复制到本地</li>
+<li>两个远程之间复制</li>
+</ul>
+<p><code>scp source&lt;当前文件位置&gt; destination&lt;文件要复制到的位置&gt;</code></p>
+<p>远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 将远程服务器的文件 拷贝到本地</span>
+scp root@linjiasen.com:/root/tmp/helloworld.txt .
+<span style="color:#75715e"># 如果没有配置免密，需要输入密码</span>
+</code></pre></div><h4 id="拷贝文件夹">拷贝文件夹</h4>
+<p>添加参数 <code>-r</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp -r root@linjiasen.com:/root/tmp/ .
+</code></pre></div>
+    </article>
+  </div>
 
+  
+  <div class="pagination-single">
+    <div class="btn">
     
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">
-    <div class="article-title">
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/"> 
       
         javase01.语法基础
       
-    </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
+      </a>
     
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">
-    <div class="article-title">
-      
-        linux常用命令汇总
-      
     </div>
-    <div class="article-info">
-      <span>2020年12月18日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
+      <div class="btn">
     
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/business/wx/auth/">
-    <div class="article-title">
+      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/business/wx/auth/">
       
         微信授权流程介绍
       
+      </a>
+    
     </div>
-    <div class="article-info">
-      <span>2020年12月30日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
 
     
   </div>
   
-
-  
-
-
-</content>
+</div>
 
       </main>
 

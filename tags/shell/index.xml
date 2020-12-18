@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shell on 林三木的博客</title>
+    <link>https://linjiasen63.github.io/tags/shell/</link>
+    <description>Recent content in shell on 林三木的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Dec 2020 16:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux常用命令汇总</title>
+      <link>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Fri, 18 Dec 2020 16:00:00 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid>
+      <description>文件传输 参考链接
+scp  本地复制到远程 远程复制到本地 两个远程之间复制  scp source&amp;lt;当前文件位置&amp;gt; destination&amp;lt;文件要复制到的位置&amp;gt;
+远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt
+# 将远程服务器的文件 拷贝到本地 scp root@linjiasen.com:/root/tmp/helloworld.txt . # 如果没有配置免密，需要输入密码 拷贝文件夹 添加参数 -r
+scp -r root@linjiasen.com:/root/tmp/ . </description>
+    </item>
+    
+  </channel>
+</rss>

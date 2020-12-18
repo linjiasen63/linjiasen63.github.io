@@ -6,18 +6,40 @@
     <description>Recent content on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JavaSE：01.语法基础</title>
+      <title>微信授权流程介绍</title>
+      <link>https://linjiasen63.github.io/posts/business/wx/auth/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/business/wx/auth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux常用命令汇总</title>
+      <link>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Fri, 18 Dec 2020 16:00:00 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid>
+      <description>文件传输 参考链接
+scp  本地复制到远程 远程复制到本地 两个远程之间复制  scp source&amp;lt;当前文件位置&amp;gt; destination&amp;lt;文件要复制到的位置&amp;gt;
+远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt
+# 将远程服务器的文件 拷贝到本地 scp root@linjiasen.com:/root/tmp/helloworld.txt . # 如果没有配置免密，需要输入密码 拷贝文件夹 添加参数 -r
+scp -r root@linjiasen.com:/root/tmp/ . </description>
+    </item>
+    
+    <item>
+      <title>javase01.语法基础</title>
       <link>https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
       <description>1. 计算机通识 1.1 进制转换  辗转相除法（十进制转换为其它进制） 位权累加法（其它进制转换为十进制）  1.2 存储单位  1bit = 位（表示0或1） 1Byte = 8bit （数据存储的最小单元） 1KB = 1024Byte 1MB = 1024KB 1GB = 1024MB 1TB = 1024GB 1PB = 1024TB &amp;hellip;  1.3 Java简介 95年发布，已有20来年的历史。目前大部分公司使用的主要版本还是java8。
 java编写的程序是跨平台的，但是JVM是非跨平台的（每种平台都有各自版本的JVM）
- JDK = 编译器等开发工具 + JRE； JRE = 运行类库 + JVM；  1.3.1 dos  盘符切换，如：D: (${磁盘标识}:) 切换目录 cd 清除 cls （全写：clear screen） 退出 exit  1.3.2  配置JAVA_HOME 配置PATH  mac下无需如此，开发配置简单。
-2. 基本语法 2.1 HelloWorld // public的类名必须与文件名大小写一致 public class HelloWorld { // 程序的执行入口  public static void main(String[] args) { System.out.println(&amp;#34;Hello world!&amp;#34;); } } 执行过程：
- 编写源码文件（.java），如：HelloWorld.java 编译器编译生成字节码文件（.class），如：javac HelloWorld.java jvm执行字节码文件，如：java HelloWorld.</description>
+ JDK = 编译器等开发工具 + JRE； JRE = 运行类库 + JVM；  1.3.1 DOS  盘符切换，如：D: (${磁盘标识}:) 切换目录 cd 清除 cls （全写：clear screen） 退出 exit  1.3.2 安装  配置JAVA_HOME 配置PATH  mac下无需如此，开发配置简单。
+1.3.3 jshell 从java9开始支持
+# 进入 jshell # 退出 /exit 2. 基本语法 2.1 HelloWorld // public的类名必须与文件名大小写一致 public class HelloWorld { // 程序的执行入口  public static void main(String[] args) { System.</description>
     </item>
     
     <item>
@@ -27,6 +49,15 @@ java编写的程序是跨平台的，但是JVM是非跨平台的（每种平台�
       
       <guid>https://linjiasen63.github.io/flag/28%E5%B2%81%E7%8E%B0%E7%8A%B6/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>mysql快速开始</title>
+      <link>https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</guid>
+      <description>1. 基础知识 1.1 连接 # 连接mysql简写 # mysql -u${帐号名称} -p[${帐号密码}] mysql -uroot -p # 连接mysql全写 # mysql --user=${帐号名称} --password[=${帐号密码}] mysql --user=root --password # 指定mysql的ip 或 port # mysql [-h${服务器ip地址}] [-P${服务器端口}] -u${帐号名称} -p[${帐号密码}] mysql -h49.233.143.65 -P3306 -uroot -p 1.2 注释 -- 单行注释  # 单行注释 /* 块注释 */ 1.3 分类  DDL：数据定义语言。如定义数据库以及表结构等 DML：数据操作语言。如添加、创建、删除数据库以及表的记录等 DQL：数据查询语言。如查询数据库以及表的记录等 DCL：数据控制语言。如授权GRANK等 数据库使用相关语言。如USE ${数据库名称}; 或 show DATABASES;等语句  1.4 备份 1.4.1 命令行 -- 一、备份 -- mysqldump -u${帐号} -p${密码} ${数据库名} &amp;gt; ${备份文件的位置}  -- 二、恢复 -- 1. 登录数据库管理系统 -- 2. 创建指定名称数据库 -- 3. 使用数据库 -- 4. 恢复数据 -- source ${备份文件的位置} 1.5 其它 -- 输出所有系统变量 show variables; 2. DDL 2.1 库的操作 2.</description>
     </item>
     
     <item>
