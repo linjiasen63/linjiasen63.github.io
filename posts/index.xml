@@ -6,23 +6,23 @@
     <description>Recent content in Posts on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>微信授权流程介绍</title>
-      <link>https://linjiasen63.github.io/posts/business/wx/auth/</link>
-      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      <title>linux基础命令快速开始</title>
+      <link>https://linjiasen63.github.io/posts/programming/linux/%E5%91%BD%E4%BB%A4%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/business/wx/auth/</guid>
-      <description></description>
+      <guid>https://linjiasen63.github.io/posts/programming/linux/%E5%91%BD%E4%BB%A4%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</guid>
+      <description>1. 命令组成原则 # 命令名称 [-命令选项...] 命令参数 # 如 ls -l 2. 文件处理命令 2.1 目录命令 ls # -l --long的简写，展示具体信息 # -a --all的简写，展示所有内容 # -d 展示指定文件夹的信息 # -i 输出文件在系统中唯一的id信息 # -h 人性化输出（如将文件大小自动转换为KB、MB等） mkdir # 全称：make directories # -p 创建指定路径中不存在的目录 # 其中tmp目录不存在 mkdir -p ./tmp/200606 cd # 全称：change directories # cd 指定路径 cd .. cd /root cd ./tmp/200606 pwd # 全称：print working directories # 输出当前目录 pwd rmdir # 全称：remove empty directories # 删除空目录 rm # 全称：remove empty # 删除文件 # -r 删除目录 # -f 强制删除，不会二次询问 cp # -r 拷贝目录 cp -r ./tmp/200606 ./ mv # 移动与重命名 mv ./tmp/200606 ./2006 2.2 文件命令 # 退出：q touch、echo # touch 文件名 touch 1.</description>
     </item>
     
     <item>
       <title>linux常用命令汇总</title>
       <link>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link>
-      <pubDate>Fri, 18 Dec 2020 16:00:00 +0000</pubDate>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid>
-      <description>文件传输 参考链接
+      <description>1. 文件传输 参考链接
 scp  本地复制到远程 远程复制到本地 两个远程之间复制  scp source&amp;lt;当前文件位置&amp;gt; destination&amp;lt;文件要复制到的位置&amp;gt;
 远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt
 # 将远程服务器的文件 拷贝到本地 scp root@linjiasen.com:/root/tmp/helloworld.txt . # 如果没有配置免密，需要输入密码 拷贝文件夹 添加参数 -r
