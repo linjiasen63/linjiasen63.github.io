@@ -30,6 +30,15 @@ scp -r root@linjiasen.com:/root/tmp/ . </description>
     </item>
     
     <item>
+      <title>idea常用快捷键</title>
+      <link>https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>   mac快捷键 win快捷键 具休功能描述     option + / alt + / 代码提示（自定义配置）   option + enter alt + enter 自动导包、或声明变量（光标需停留在相应的类名上）   command + X ctrl + Y 删除光标所在行   command + D ctrl + D 复制光标所在行，插入到光标位置下方   command + option + L ctrl + alt + L 格式化代码   command + / ctrl + / 单行注释，再按取消注释   command + shift + / ctrl + shift + / 注释选中代码，再按取消注释   command + N alt + ins 自动生成代码，如get、set等方法   option + shift + ↑或↓ alt + shift + ↑或↓ 向上或向下移动光标所在行   shift + F6 shift + F6 重命名    </description>
+    </item>
+    
+    <item>
       <title>javase01.语法基础</title>
       <link>https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
