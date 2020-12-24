@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>林三木的博客</title>
-    <link>https://linjiasen63.github.io/</link>
-    <description>Recent content on 林三木的博客</description>
+    <title>编码人生 on 林三木的博客</title>
+    <link>https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/</link>
+    <description>Recent content in 编码人生 on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>服务端学习之java基础系列：语法进阶</title>
       <link>https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/</link>
@@ -80,33 +80,6 @@ scp  本地复制到远程 远程复制到本地 两个远程之间复制  scp s
 远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt
 # 将远程服务器的文件 拷贝到本地 scp root@linjiasen.com:/root/tmp/helloworld.txt . # 如果没有配置免密，需要输入密码 拷贝文件夹 添加参数 -r
 scp -r root@linjiasen.com:/root/tmp/ . </description>
-    </item>
-    
-    <item>
-      <title>我是谁？</title>
-      <link>https://linjiasen63.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://linjiasen63.github.io/about/</guid>
-      <description>我是谁？</description>
-    </item>
-    
-    <item>
-      <title>文章归档</title>
-      <link>https://linjiasen63.github.io/archives/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://linjiasen63.github.io/archives/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>文章搜索</title>
-      <link>https://linjiasen63.github.io/search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://linjiasen63.github.io/search/</guid>
-      <description></description>
     </item>
     
   </channel>

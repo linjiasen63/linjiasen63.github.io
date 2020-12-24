@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="theme-light">
+  
+  <head lang="zh-cn" >
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="生活足迹" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta name="keyword" content="" />
+
+  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
+  <title>服务端学习之java基础系列：语法进阶</title>
+
+  <link rel="canonical" href="/" />
+<link href="/scss/index.min.166253a248a114e8fe3e4ebe0979cd18c8375a6c1d9a8a3dc2247bbae362b0f1.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/gitalk/gitalk.css">
+  <script src="/gitalk/gitalk.min.js"></script>
+
+</head>
+
+
+  <body>
+    
+    <header class="site-header">
+      <div class="site-wrapper">
+      <nav class="site-navbar ">
+  <a class="site-navbar-brand" href="/">林三木</a>
+ 
+  <div class="site-navbar-menu" onclick="toggleNavbarmenu(this)">
+    <div class="icon"></div>
+  </div>
+  <div class="site-navbar-collapse" id="site-navbarText" onclick="toggleNavbarmenu(this)">
+    <span class="site-navbar-text none"></span>
+    <ul class="site-navbar-nav">
+      
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="/about/">关于</a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="/archives/">归档</a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="/">首页</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+<script>
+function toggleNavbarmenu(ele) {
+  var $parent = $(ele).parent();
+  var className = 'site-navbar-open';
+  if ($parent.hasClass(className)) {
+    $parent.removeClass(className);
+  } else{
+    $parent.addClass(className);
+  }
+}
+</script>
+
+
+      </div>
+    </header>
+ 
+
+    
+    <div class="site-body">
+     <div class="site-wrapper clearfix">
+      
+      <main class="site-main">
+      
+<div class="single-post">
+  <div>
+    <article id="content" class="md-render">
+      
+      <h1 id="title" class="title">服务端学习之java基础系列：语法进阶</h1>
+      
+      
+        
+        <h2 class="">目录</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1--常用接口">1.  常用接口</a>
+      <ul>
+        <li><a href="#11-系统内置">1.1 系统内置</a></li>
+        <li><a href="#12-时间转换">1.2 时间转换</a></li>
+        <li><a href="#13-字符串相关">1.3 字符串相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-集合">2. 集合</a>
+      <ul>
+        <li><a href="#21-list">2.1 List</a></li>
+        <li><a href="#22-set">2.2 Set</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-map">3. Map</a></li>
+    <li><a href="#4-异常">4. 异常</a></li>
+  </ul>
+</nav>
+        
+      
+      <h2 id="1--常用接口">1.  常用接口</h2>
+<h3 id="11-系统内置">1.1 系统内置</h3>
+<h4 id="111-object">1.1.1 Object</h4>
+<pre><code class="language-code" data-lang="code">// 子类可重写以定制输出内容
+Object.toString();
+
+// 子类可重写以定制对象比较
+Object.equals();
+</code></pre><h4 id="112-objects">1.1.2 Objects</h4>
+<pre><code class="language-code" data-lang="code">// 对两个对象进行比较，防止空指针异常
+Objects.equals(变量a, 变量b);
+</code></pre><h4 id="113-system">1.1.3 System</h4>
+<pre><code class="language-code" data-lang="code">public static long currentTimeMillis()：返回此毫秒为单位的当前时间
+
+public static void arraycopy(object src, int srcPos, object dest, int destPos, int length)：将数组中的指定数据拷贝到另一个数组中
+</code></pre><h3 id="12-时间转换">1.2 时间转换</h3>
+<h4 id="121-date">1.2.1 Date</h4>
+<p>java.util.Date表示时间和日期的类，特定的瞬间，精确到毫秒（千分之一秒）</p>
+<p>时间戳是指从标准基准时间（历元），即1970年1月1日00:00:00(GMT：英国格林威治)以来的毫秒数</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 获取从历元到当前系统时间的毫秒数
+</span><span style="color:#008000"></span><span style="color:#2b91af">long</span> timestamp = System.currentTimeMillis();
+<span style="color:#008000">// 注意：中国（CST）属于东八区，会把时间增加8个小时，即历元为：1970年1月1日08:00:00
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// 获取当前时间（当前时区）
+</span><span style="color:#008000"></span>Date d1 = <span style="color:#00f">new</span> Date();
+<span style="color:#008000">// 获取从历元经过指定毫秒的时间
+</span><span style="color:#008000"></span>Date d2 = <span style="color:#00f">new</span> Date(0L);
+
+<span style="color:#008000">// 将日期转换为毫秒
+</span><span style="color:#008000"></span><span style="color:#2b91af">long</span> timestamp1 = d1.getTime();
+<span style="color:#008000">// 转换本地时间（已过期）
+</span><span style="color:#008000"></span>System.out.println(d1.toLocalString());
+</code></pre></div><h4 id="122-dateformat">1.2.2 DateFormat</h4>
+<p>java.text.DateFormat，是抽象类。按照指定模式，进行日期与文本之间的转换。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SimpleDateFormat dateFormat = <span style="color:#00f">new</span> SimpleDateFormat(<span style="color:#a31515">&#34;yyyy-MM-dd HH:mm:ss&#34;</span>);
+<span style="color:#008000">// 格式化
+</span><span style="color:#008000"></span>String dateStr = dateFormat.format(date);
+System.out.println(dateStr); <span style="color:#008000">// 2020-12-24 00:09:59
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// 解析：可能throw exception
+</span><span style="color:#008000"></span>date = dateFormat.parse(dateStr);
+System.out.println(date.getTime());
+</code></pre></div><h4 id="123-calendar">1.2.3 Calendar</h4>
+<p>java.util.Calendar，是抽象类，提供操作日历字段的方法。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Calendar instance = Calendar.getInstance();
+
+<span style="color:#008000">// public int get(int field)：返回给定日历字段的值
+</span><span style="color:#008000">// pubic void set(int field, int value)：将指定日历字段的值设置为给定值
+</span><span style="color:#008000">// public abstract void add(int field, int amount)：根据日历规则，为给定的日历字段添加或减去指定时间量
+</span><span style="color:#008000">// public Date getTime()：返回一个Date对象（从历元到现在的时间戳）
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// Calendar的日历字段
+</span><span style="color:#008000">// 年：YEAR；月：MONTH；日：DAY_OF_MONTH
+</span><span style="color:#008000">// 时：HOUR；分：MINUTE；秒：SECOND
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// 输出当前年份
+</span><span style="color:#008000"></span>System.out.println(instance.get(Calendar.YEAR));
+</code></pre></div><h3 id="13-字符串相关">1.3 字符串相关</h3>
+<h4 id="131-stringbuilder">1.3.1 StringBuilder</h4>
+<p>字符串缓冲区，提高字符串操作的效率（可看成一个长度可变的字符串）。底层是一个byte[]，没有被final修饰，初始长度为16。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// StringBuilder builder = new StringBuilder();
+</span><span style="color:#008000">// StringBuilder builder = new StringBuilder(&#34;HelloWorld==&#34;);
+</span><span style="color:#008000">// 指定缓冲区大小
+</span><span style="color:#008000"></span>StringBuilder builder = <span style="color:#00f">new</span> StringBuilder(64);
+
+builder.append(1).append(<span style="color:#a31515">&#39;_&#39;</span>);
+builder.append(<span style="color:#00f">false</span>).append(<span style="color:#a31515">&#39;_&#39;</span>);
+builder.append(1.0).append(<span style="color:#a31515">&#39;_&#39;</span>);
+builder.append(<span style="color:#a31515">&#34;abc&#34;</span>).append(<span style="color:#a31515">&#39;_&#39;</span>);
+
+<span style="color:#008000">// 获取内容
+</span><span style="color:#008000"></span>System.out.println(builder.toString());
+<span style="color:#008000">// 1_false_1.0_abc_
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// 反转内容
+</span><span style="color:#008000"></span>System.out.println(builder.reverse());
+<span style="color:#008000">// _cba_0.1_eslaf_1
+</span></code></pre></div><h4 id="132-基本数据类型转换">1.3.2 基本数据类型转换</h4>
+<ul>
+<li>基本类型 -&gt; 字符串
+<ol>
+<li>基本数据类型 + &ldquo;&quot;;</li>
+<li>使用包装类中的toString</li>
+<li>String类中的valueOf</li>
+</ol>
+</li>
+<li>字符串 -&gt; 基本类型
+<ul>
+<li>除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型，例子如下：</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-code" data-lang="code">public static byte parseByte(String s);
+</code></pre><h2 id="2-集合">2. 集合</h2>
+<p>继承关系：</p>
+<ul>
+<li>Collection：所有单列集合共性方法（没有带索引方法）
+<ul>
+<li>List：有序、允许重复、有索引
+<ul>
+<li>Vector</li>
+<li>ArrayList</li>
+<li>LinkedList</li>
+</ul>
+</li>
+<li>Set：不可重复、没有索引
+<ul>
+<li>TreeSet：无序</li>
+<li>HashSet：无序
+<ul>
+<li>LinkedHashSet：无序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="21-list">2.1 List</h3>
+<h3 id="22-set">2.2 Set</h3>
+<h2 id="3-map">3. Map</h2>
+<p>继承关系：</p>
+<ul>
+<li>Map
+<ul>
+<li>HashMap</li>
+<li>HashTable</li>
+<li>TreeMap</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-异常">4. 异常</h2>
+
+    </article>
+  </div>
+
+  
+  <div class="pagination-single">
+    <div class="btn">
+    
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"> 
+      
+        idea常用快捷键
+      
+      </a>
+    
+    </div>
+      <div class="btn">
+    
+    </div>
+
+    
+  </div>
+  
+</div>
+
+      </main>
+
+      
+      <aside class="site-aside">
+        <section class="widget">
+  <form
+  id="search"
+  action='
+    
+      https://linjiasen63.github.io/search/
+    '
+  method="get"
+  accept-charset="utf-8"
+  target="_blank"
+  _lpchecked="1"
+>
+  
+  <input type="text" name="wd" maxlength="20" placeholder="Search" />
+  <input type="hidden" name="sitesearch" value="https://linjiasen63.github.io" />
+  <button type="submit" class="submit icon-search">搜索</button>
+</form>
+
+</section>
+
+<section class="widget">
+  
+
+<h3 class="widget-title">最新内容</h3>
+<ul class="widget-list">
+    
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="idea常用快捷键">idea常用快捷键</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="mysql快速开始">mysql快速开始</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="基于js的正则表达式入门教程">基于js的正则表达式入门教程</a>
+        
+    </li>
+    
+</ul>
+</section>
+
+
+<section class="widget">
+  <h3 class="widget-title">
+  <a href='/categories/'>内容分类</a>
+</h3>
+<ul class="widget-list">
+  
+  <li>
+    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/">
+    编码人生 
+    </a>
+  </li>
+  
+</ul>
+
+</section>
+
+
+
+
+      </aside>
+     </div>
+    </div>
+
+    
+    
+    <footer class="site-footer">
+      <div>
+  &copy; 2020
+  <a href="https://linjiasen63.github.io">
+    林三木的博客 By linjiasen63
+  </a>
+  
+</div>
+
+
+ 
+  
+ 
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/mermaid.min.js"></script>
+<script>
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(function (el) {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+  });
+  mermaid.initialize({ startOnLoad: true });
+
+  // 更新流程图中条件框的样式
+  setTimeout(function() {
+    Array.from(document.getElementsByTagName("polygon")).forEach(function (el) {
+      
+      var nodeValue = el.attributes.transform.nodeValue;
+      nodeValue = nodeValue.replace(/\d\d*\.?\d*/ig, function(num) {
+        console.log(num);
+        return num + 'px';
+      });
+      console.log(nodeValue, $(el));
+      $(el).css('transform', 'scaleY(0.68) ' + nodeValue);
+    });
+  }, 100)
+  
+</script>
+
+
+
+
+    </footer>
+    
+  </body>
+</html>

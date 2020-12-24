@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html class="theme-light">
   
   <head lang="zh-cn" >
   <meta charset="utf-8" />
@@ -14,10 +14,10 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>linux基础命令快速开始</title>
+  <title>快速掌握Linux基本命令</title>
 
   <link rel="canonical" href="/" />
-<link href="/scss/index.min.68ba6659360fe2828776716b2116a6b5358d9d8052646e6dab7cde495c354a4a.css" rel="stylesheet">
+<link href="/scss/index.min.166253a248a114e8fe3e4ebe0979cd18c8375a6c1d9a8a3dc2247bbae362b0f1.css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.min.js"></script>
   <link rel="stylesheet" href="/gitalk/gitalk.css">
   <script src="/gitalk/gitalk.min.js"></script>
@@ -83,7 +83,7 @@ function toggleNavbarmenu(ele) {
   <div>
     <article id="content" class="md-render">
       
-      <h1 id="title" class="title">linux基础命令快速开始</h1>
+      <h1 id="title" class="title">快速掌握Linux基本命令</h1>
       
       
         
@@ -160,90 +160,90 @@ function toggleNavbarmenu(ele) {
         
       
       <h2 id="1-命令组成原则">1. 命令组成原则</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 命令名称 [-命令选项...] 命令参数</span>
-<span style="color:#75715e"># 如 ls -l</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 命令名称 [-命令选项...] 命令参数</span>
+<span style="color:#008000"># 如 ls -l</span>
 </code></pre></div><h2 id="2-文件处理命令">2. 文件处理命令</h2>
 <h3 id="21-目录命令">2.1 目录命令</h3>
 <h4 id="ls">ls</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -l --long的简写，展示具体信息</span>
-<span style="color:#75715e"># -a --all的简写，展示所有内容</span>
-<span style="color:#75715e"># -d 展示指定文件夹的信息</span>
-<span style="color:#75715e"># -i 输出文件在系统中唯一的id信息</span>
-<span style="color:#75715e"># -h 人性化输出（如将文件大小自动转换为KB、MB等）</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># -l --long的简写，展示具体信息</span>
+<span style="color:#008000"># -a --all的简写，展示所有内容</span>
+<span style="color:#008000"># -d 展示指定文件夹的信息</span>
+<span style="color:#008000"># -i 输出文件在系统中唯一的id信息</span>
+<span style="color:#008000"># -h 人性化输出（如将文件大小自动转换为KB、MB等）</span>
 </code></pre></div><h4 id="mkdir">mkdir</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称：make directories</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称：make directories</span>
 
-<span style="color:#75715e"># -p 创建指定路径中不存在的目录</span>
-<span style="color:#75715e"># 其中tmp目录不存在</span>
+<span style="color:#008000"># -p 创建指定路径中不存在的目录</span>
+<span style="color:#008000"># 其中tmp目录不存在</span>
 mkdir -p ./tmp/200606
 </code></pre></div><h4 id="cd">cd</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称：change directories</span>
-<span style="color:#75715e"># cd 指定路径</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称：change directories</span>
+<span style="color:#008000"># cd 指定路径</span>
 cd ..
 cd /root
 cd ./tmp/200606
 </code></pre></div><h4 id="pwd">pwd</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称：print working directories</span>
-<span style="color:#75715e"># 输出当前目录</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称：print working directories</span>
+<span style="color:#008000"># 输出当前目录</span>
 pwd
 </code></pre></div><h4 id="rmdir">rmdir</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称：remove empty directories</span>
-<span style="color:#75715e"># 删除空目录</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称：remove empty directories</span>
+<span style="color:#008000"># 删除空目录</span>
 </code></pre></div><h4 id="rm">rm</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称：remove empty</span>
-<span style="color:#75715e"># 删除文件</span>
-<span style="color:#75715e"># -r 删除目录</span>
-<span style="color:#75715e"># -f 强制删除，不会二次询问</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称：remove empty</span>
+<span style="color:#008000"># 删除文件</span>
+<span style="color:#008000"># -r 删除目录</span>
+<span style="color:#008000"># -f 强制删除，不会二次询问</span>
 </code></pre></div><h4 id="cp">cp</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -r 拷贝目录</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># -r 拷贝目录</span>
 cp -r ./tmp/200606 ./
 </code></pre></div><h4 id="mv">mv</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 移动与重命名</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 移动与重命名</span>
 mv ./tmp/200606 ./2006
 </code></pre></div><h3 id="22-文件命令">2.2 文件命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 退出：q</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 退出：q</span>
 </code></pre></div><h4 id="touchecho">touch、echo</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># touch 文件名</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># touch 文件名</span>
 touch 1.txt
-<span style="color:#75715e"># 将内容保存到文件</span>
-echo <span style="color:#e6db74">&#39;1&#39;</span> &gt; 1.txt
-<span style="color:#75715e"># 将内容追加到文件</span>
-echo <span style="color:#e6db74">&#39;2&#39;</span> &gt;&gt; 1.txt
+<span style="color:#008000"># 将内容保存到文件</span>
+echo <span style="color:#a31515">&#39;1&#39;</span> &gt; 1.txt
+<span style="color:#008000"># 将内容追加到文件</span>
+echo <span style="color:#a31515">&#39;2&#39;</span> &gt;&gt; 1.txt
 </code></pre></div><h4 id="cattac">cat、tac</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -n 显示行号</span>
-<span style="color:#75715e"># 从前往后输出内容</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># -n 显示行号</span>
+<span style="color:#008000"># 从前往后输出内容</span>
 cat 1.txt
-<span style="color:#75715e"># 从后往前输出内容</span>
+<span style="color:#008000"># 从后往前输出内容</span>
 tac 1.txt
 </code></pre></div><h4 id="morelesss">more、lesss</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 从前往后输出内容</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 从前往后输出内容</span>
 
-<span style="color:#75715e"># more与less共用</span>
-<span style="color:#75715e">#   下一行：enter</span>
-<span style="color:#75715e">#   下一页：space或f</span>
+<span style="color:#008000"># more与less共用</span>
+<span style="color:#008000">#   下一行：enter</span>
+<span style="color:#008000">#   下一页：space或f</span>
 
-<span style="color:#75715e"># less</span>
-<span style="color:#75715e">#   上一行：向上简头</span>
-<span style="color:#75715e">#   下一行：向下简头</span>
-<span style="color:#75715e">#   上一页：PgUp</span>
-<span style="color:#75715e">#   下一页：PgDn</span>
+<span style="color:#008000"># less</span>
+<span style="color:#008000">#   上一行：向上简头</span>
+<span style="color:#008000">#   下一行：向下简头</span>
+<span style="color:#008000">#   上一页：PgUp</span>
+<span style="color:#008000">#   下一页：PgDn</span>
 </code></pre></div><h4 id="headtail">head、tail</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 读取顶部几行，其中5为具体的行数</span>
-head <span style="color:#ae81ff">5</span> /etc/nginx/nginx.conf
-<span style="color:#75715e"># 读取前几行，其中5为具体的行数</span>
-<span style="color:#75715e"># -f 读取后不退出，当文件数据变化时自动刷新</span>
-tail <span style="color:#ae81ff">5</span> /etc/nginx/nginx.conf
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 读取顶部几行，其中5为具体的行数</span>
+head 5 /etc/nginx/nginx.conf
+<span style="color:#008000"># 读取前几行，其中5为具体的行数</span>
+<span style="color:#008000"># -f 读取后不退出，当文件数据变化时自动刷新</span>
+tail 5 /etc/nginx/nginx.conf
 </code></pre></div><h3 id="23-链接命令">2.3 链接命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ln 源文件 目标文件</span>
-<span style="color:#75715e"># 默认创建硬链接，-s表示创建软链接（相当于windows的快捷方式）</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># ln 源文件 目标文件</span>
+<span style="color:#008000"># 默认创建硬链接，-s表示创建软链接（相当于windows的快捷方式）</span>
 
-<span style="color:#75715e"># 硬链接</span>
-<span style="color:#75715e"># 1. 相当于完全拷贝（cp -p） + 文件同步更新</span>
-<span style="color:#75715e"># 2. 通过i节点识别</span>
-<span style="color:#75715e"># 3. 不能跨分区</span>
-<span style="color:#75715e"># 4. 不能针对目录使用</span>
+<span style="color:#008000"># 硬链接</span>
+<span style="color:#008000"># 1. 相当于完全拷贝（cp -p） + 文件同步更新</span>
+<span style="color:#008000"># 2. 通过i节点识别</span>
+<span style="color:#008000"># 3. 不能跨分区</span>
+<span style="color:#008000"># 4. 不能针对目录使用</span>
 
-<span style="color:#75715e"># linux中一个文件肯定有一个i节点，但一个i节点可能为多个文件</span>
+<span style="color:#008000"># linux中一个文件肯定有一个i节点，但一个i节点可能为多个文件</span>
 </code></pre></div><h2 id="3-权限管理命令">3. 权限管理命令</h2>
 <h3 id="31-权限说明">3.1 权限说明</h3>
 <table>
@@ -278,344 +278,344 @@ tail <span style="color:#ae81ff">5</span> /etc/nginx/nginx.conf
 </table>
 <h3 id="32-相关命令">3.2 相关命令</h3>
 <h4 id="chmod">chmod</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 全称： change the permissions mode of a file</span>
-<span style="color:#75715e"># 语法： chmod [{ugoa}{+-=}{rwx}] [文件或目录]</span>
-<span style="color:#75715e">#             [mode=421] [文件或目录]</span>
-<span style="color:#75715e">#             -R 递归修改</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 全称： change the permissions mode of a file</span>
+<span style="color:#008000"># 语法： chmod [{ugoa}{+-=}{rwx}] [文件或目录]</span>
+<span style="color:#008000">#             [mode=421] [文件或目录]</span>
+<span style="color:#008000">#             -R 递归修改</span>
 </code></pre></div><h4 id="chown">chown</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 描述：改变文件或目录的所有者</span>
-<span style="color:#75715e"># 全称：change file ownership</span>
-<span style="color:#75715e"># 语法：chown [用户] [文件或目录]</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 描述：改变文件或目录的所有者</span>
+<span style="color:#008000"># 全称：change file ownership</span>
+<span style="color:#008000"># 语法：chown [用户] [文件或目录]</span>
 chown linjs 1.txt
 </code></pre></div><h4 id="chgrp">chgrp</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 描述：改变文件或目录的所属组</span>
-<span style="color:#75715e"># 全称：change file group ownership</span>
-<span style="color:#75715e"># 语法：chown [用户组] [文件或目录]</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 描述：改变文件或目录的所属组</span>
+<span style="color:#008000"># 全称：change file group ownership</span>
+<span style="color:#008000"># 语法：chown [用户组] [文件或目录]</span>
 chown devp 1.txt
 </code></pre></div><h4 id="umask">umask</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 描述：显示、设置文件的缺省权限</span>
-<span style="color:#75715e"># 全称：the user file-creation mask</span>
-<span style="color:#75715e"># 语法：umask [-S]</span>
-<span style="color:#75715e">#      -S 以rwx形式显示新建文件的缺省权限</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 描述：显示、设置文件的缺省权限</span>
+<span style="color:#008000"># 全称：the user file-creation mask</span>
+<span style="color:#008000"># 语法：umask [-S]</span>
+<span style="color:#008000">#      -S 以rwx形式显示新建文件的缺省权限</span>
 
-<span style="color:#75715e"># 输出 u=rwx,g=rx,o=rx</span>
-<span style="color:#75715e"># 注意目录是完全按照缺省权限来的，但文件的所有者、所属组与其他人没有可执行权限x</span>
+<span style="color:#008000"># 输出 u=rwx,g=rx,o=rx</span>
+<span style="color:#008000"># 注意目录是完全按照缺省权限来的，但文件的所有者、所属组与其他人没有可执行权限x</span>
 umask -S 
-<span style="color:#75715e"># 输出 022 </span>
-<span style="color:#75715e"># 与 077 进行与运算得到真实权限：755</span>
+<span style="color:#008000"># 输出 022 </span>
+<span style="color:#008000"># 与 077 进行与运算得到真实权限：755</span>
 umask 
 
-<span style="color:#75715e"># 设置缺省权限700，需要执行以下命令</span>
-umask <span style="color:#ae81ff">077</span>
+<span style="color:#008000"># 设置缺省权限700，需要执行以下命令</span>
+umask 077
 </code></pre></div><h2 id="4-文件查找命令">4. 文件查找命令</h2>
 <h3 id="find">find</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：文件搜索</span>
-<span style="color:#75715e"># 语法：find [搜索范围] [匹配条件]</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：文件搜索</span>
+<span style="color:#008000"># 语法：find [搜索范围] [匹配条件]</span>
 
-<span style="color:#75715e"># 文件名称查找</span>
-<span style="color:#75715e"># -name 严格区分大小写</span>
+<span style="color:#008000"># 文件名称查找</span>
+<span style="color:#008000"># -name 严格区分大小写</span>
 find /etc -name nginx
-<span style="color:#75715e"># -iname 不区分大小写</span>
+<span style="color:#008000"># -iname 不区分大小写</span>
 find /etc -iname nginx 
-<span style="color:#75715e"># 模糊匹配</span>
-<span style="color:#75715e"># * 匹配多个字符</span>
-<span style="color:#75715e"># ? 匹配一个字符</span>
-find /etc -name <span style="color:#e6db74">&#39;nginx*&#39;</span>
-find /etc -name <span style="color:#e6db74">&#39;?.txt&#39;</span>
+<span style="color:#008000"># 模糊匹配</span>
+<span style="color:#008000"># * 匹配多个字符</span>
+<span style="color:#008000"># ? 匹配一个字符</span>
+find /etc -name <span style="color:#a31515">&#39;nginx*&#39;</span>
+find /etc -name <span style="color:#a31515">&#39;?.txt&#39;</span>
 
-<span style="color:#75715e"># 文件大小查找</span>
-<span style="color:#75715e"># -size +201800</span>
-<span style="color:#75715e"># +n 大于；-n 小于；n 等于</span>
+<span style="color:#008000"># 文件大小查找</span>
+<span style="color:#008000"># -size +201800</span>
+<span style="color:#008000"># +n 大于；-n 小于；n 等于</span>
 find / -size +204800
 
-<span style="color:#75715e"># 根据所有者查找</span>
-<span style="color:#75715e"># -user [所有者]</span>
+<span style="color:#008000"># 根据所有者查找</span>
+<span style="color:#008000"># -user [所有者]</span>
 find / -user root
 
-<span style="color:#75715e"># 根据所属组查找</span>
-<span style="color:#75715e"># -group [所属组]</span>
+<span style="color:#008000"># 根据所属组查找</span>
+<span style="color:#008000"># -group [所属组]</span>
 find / -group devp
 
-<span style="color:#75715e"># 根据时间进行查找</span>
-<span style="color:#75715e"># -amin 访问时间access</span>
-<span style="color:#75715e"># -cmin 文件属性change</span>
-<span style="color:#75715e"># -mmin 文件内容modify</span>
+<span style="color:#008000"># 根据时间进行查找</span>
+<span style="color:#008000"># -amin 访问时间access</span>
+<span style="color:#008000"># -cmin 文件属性change</span>
+<span style="color:#008000"># -mmin 文件内容modify</span>
 
-<span style="color:#75715e"># -n 多少分钟内；+n 多少分钟外；n 多少分钟</span>
+<span style="color:#008000"># -n 多少分钟内；+n 多少分钟外；n 多少分钟</span>
 
-<span style="color:#75715e"># 在/etc下查找5分钟内被修改过属性的文件和目录</span>
+<span style="color:#008000"># 在/etc下查找5分钟内被修改过属性的文件和目录</span>
 find /etc -cmin -5
 
-<span style="color:#75715e"># 条件组件查询</span>
-<span style="color:#75715e"># -a 两个条件同时满足</span>
-<span style="color:#75715e"># -o 两个条件满足任意一个即可</span>
+<span style="color:#008000"># 条件组件查询</span>
+<span style="color:#008000"># -a 两个条件同时满足</span>
+<span style="color:#008000"># -o 两个条件满足任意一个即可</span>
 
-<span style="color:#75715e"># 对搜索结果执行</span>
-<span style="color:#75715e"># -exec/-ok 命令 {} \;</span>
-<span style="color:#75715e"># -ok命令会询问每个查询子记录操作是否执行，而-exec则不会</span>
-<span style="color:#75715e"># 查找当前目录下文件名为1.txt的文件，然后删除</span>
-find . -name 1.txt -a -type f -exec rm <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<span style="color:#008000"># 对搜索结果执行</span>
+<span style="color:#008000"># -exec/-ok 命令 {} \;</span>
+<span style="color:#008000"># -ok命令会询问每个查询子记录操作是否执行，而-exec则不会</span>
+<span style="color:#008000"># 查找当前目录下文件名为1.txt的文件，然后删除</span>
+find . -name 1.txt -a -type f -exec rm {} <span style="color:#a31515">\;</span>
 
-<span style="color:#75715e"># 根据文件类型查找</span>
-<span style="color:#75715e"># -type</span>
-<span style="color:#75715e"># f 文件；d 目录；l 软链接文件</span>
+<span style="color:#008000"># 根据文件类型查找</span>
+<span style="color:#008000"># -type</span>
+<span style="color:#008000"># f 文件；d 目录；l 软链接文件</span>
 find . -type f
 
-<span style="color:#75715e"># 根据i节点查找</span>
-<span style="color:#75715e"># -inum [i节点编号]</span>
-find . -inum <span style="color:#ae81ff">530860</span>
+<span style="color:#008000"># 根据i节点查找</span>
+<span style="color:#008000"># -inum [i节点编号]</span>
+find . -inum 530860
 </code></pre></div><p><strong>linux系统以512字节大小为一个数据块，因此 1相当于0.5MB，根据此换算法则：100MB相当于204800</strong></p>
 <h3 id="locate">locate</h3>
 <p>用于查询系统文件，linux会定时将系统的文件信息更新到数据库中（但tmp文件夹的内容不会），同时用户可以使用<code>updatedb</code>更新文件信息</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># locate 文件名称</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># locate 文件名称</span>
 </code></pre></div><h3 id="which">which</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查询命令所在的位置与别名信息</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 查询命令所在的位置与别名信息</span>
 which ll
 </code></pre></div><h3 id="whereis">whereis</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查询命令所在的位置与帮助文件</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 查询命令所在的位置与帮助文件</span>
 whereis ll
 </code></pre></div><h3 id="grep">grep</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 作用：在文件中搜索内容</span>
-<span style="color:#75715e"># 语法：grep 搜索内容 文件名称</span>
-<span style="color:#75715e">#      -i 忽略大小写</span>
-<span style="color:#75715e">#      -v 剔除符合的部分</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 作用：在文件中搜索内容</span>
+<span style="color:#008000"># 语法：grep 搜索内容 文件名称</span>
+<span style="color:#008000">#      -i 忽略大小写</span>
+<span style="color:#008000">#      -v 剔除符合的部分</span>
 
-<span style="color:#75715e"># 输出文件中不包含注释的内容</span>
-grep -v <span style="color:#e6db74">&#39;^#&#39;</span> /etc/nginx/nginx.conf
+<span style="color:#008000"># 输出文件中不包含注释的内容</span>
+grep -v <span style="color:#a31515">&#39;^#&#39;</span> /etc/nginx/nginx.conf
 </code></pre></div><h2 id="5-帮助命令">5. 帮助命令</h2>
 <h3 id="man">man</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：获取帮助信息</span>
-<span style="color:#75715e"># 全称：manual</span>
-<span style="color:#75715e"># 语法：man [命令或配置文件]</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：获取帮助信息</span>
+<span style="color:#008000"># 全称：manual</span>
+<span style="color:#008000"># 语法：man [命令或配置文件]</span>
 
-<span style="color:#75715e"># 查看ls命令的帮助信息</span>
+<span style="color:#008000"># 查看ls命令的帮助信息</span>
 man ls
-<span style="color:#75715e"># 查看配置文件services的帮助信息</span>
+<span style="color:#008000"># 查看配置文件services的帮助信息</span>
 man services
 
-<span style="color:#75715e"># 如果 命令或配置文件同名，可使用标记区分</span>
-<span style="color:#75715e"># 1 命令的帮助</span>
-<span style="color:#75715e"># 5 配置文件的帮助</span>
+<span style="color:#008000"># 如果 命令或配置文件同名，可使用标记区分</span>
+<span style="color:#008000"># 1 命令的帮助</span>
+<span style="color:#008000"># 5 配置文件的帮助</span>
 
-<span style="color:#75715e"># 操作与more命令雷同</span>
-<span style="color:#75715e"># 下一行：enter</span>
-<span style="color:#75715e"># 下一页：space或f</span>
-<span style="color:#75715e"># 退出：q</span>
-<span style="color:#75715e"># 搜索选项：/-选择参数，如 /-l</span>
+<span style="color:#008000"># 操作与more命令雷同</span>
+<span style="color:#008000"># 下一行：enter</span>
+<span style="color:#008000"># 下一页：space或f</span>
+<span style="color:#008000"># 退出：q</span>
+<span style="color:#008000"># 搜索选项：/-选择参数，如 /-l</span>
 </code></pre></div><h3 id="whatis">whatis</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：显示命令功能描述</span>
-<span style="color:#75715e"># whatis 命令名称</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：显示命令功能描述</span>
+<span style="color:#008000"># whatis 命令名称</span>
 whatis ls
 </code></pre></div><h3 id="apropos">apropos</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：显示配置文件描述</span>
-<span style="color:#75715e"># apropos 配置名称</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：显示配置文件描述</span>
+<span style="color:#008000"># apropos 配置名称</span>
 apropos services
 </code></pre></div><h3 id="help">help</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：获得shell内置命令的帮助信息</span>
-<span style="color:#75715e"># shell内置命令，某些shell不包含</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：获得shell内置命令的帮助信息</span>
+<span style="color:#008000"># shell内置命令，某些shell不包含</span>
 help umask
 </code></pre></div><h2 id="6-用户管理命令">6. 用户管理命令</h2>
 <h3 id="useradd">useradd</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 路径：/usr/sbin/useradd</span>
-<span style="color:#75715e"># 权限：root</span>
-<span style="color:#75715e"># 语法：useradd 用户名</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 路径：/usr/sbin/useradd</span>
+<span style="color:#008000"># 权限：root</span>
+<span style="color:#008000"># 语法：useradd 用户名</span>
 useradd linjs
 </code></pre></div><h3 id="groupadd">groupadd</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 语法：groupadd 用户名</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 语法：groupadd 用户名</span>
 groupadd devp
 </code></pre></div><h3 id="passwd">passwd</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 路径：/usr/bin/passwd</span>
-<span style="color:#75715e"># 权限：所有用户</span>
-<span style="color:#75715e"># 语法：passwd [用户名]</span>
-<span style="color:#75715e"># 若不传用户名则修改当前密码</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 路径：/usr/bin/passwd</span>
+<span style="color:#008000"># 权限：所有用户</span>
+<span style="color:#008000"># 语法：passwd [用户名]</span>
+<span style="color:#008000"># 若不传用户名则修改当前密码</span>
 passwd linjs
 </code></pre></div><h3 id="whow">who、w</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 命令 who 查看当前登录的用户列表</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 命令 who 查看当前登录的用户列表</span>
 
-<span style="color:#75715e"># 命令 w 查看登录用户信息的详细信息</span>
-<span style="color:#75715e"># 位置 /usr/bin/w</span>
+<span style="color:#008000"># 命令 w 查看登录用户信息的详细信息</span>
+<span style="color:#008000"># 位置 /usr/bin/w</span>
 
-<span style="color:#75715e"># 以上命令输出内容中某些字符的含义：</span>
-<span style="color:#75715e"># 用户级别</span>
-<span style="color:#75715e"># tty: 本地登录用户；</span>
-<span style="color:#75715e"># pts: 远程登录用户；</span>
+<span style="color:#008000"># 以上命令输出内容中某些字符的含义：</span>
+<span style="color:#008000"># 用户级别</span>
+<span style="color:#008000"># tty: 本地登录用户；</span>
+<span style="color:#008000"># pts: 远程登录用户；</span>
 </code></pre></div><h3 id="uptime">uptime</h3>
 <p>linux系统截止到目前的开机时间。</p>
 <h2 id="7-压缩解压命令">7. 压缩解压命令</h2>
 <h3 id="gzipgunzip">gzip、gunzip</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># gzip</span>
-<span style="color:#75715e"># 功能：压缩文件（生成压缩文件后会删除原文件），只能操作文件</span>
-<span style="color:#75715e"># 原意：GNU zip</span>
-<span style="color:#75715e"># 格式：.gz</span>
-gzip 1.txt <span style="color:#75715e"># 生成 1.txt.gz</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># gzip</span>
+<span style="color:#008000"># 功能：压缩文件（生成压缩文件后会删除原文件），只能操作文件</span>
+<span style="color:#008000"># 原意：GNU zip</span>
+<span style="color:#008000"># 格式：.gz</span>
+gzip 1.txt <span style="color:#008000"># 生成 1.txt.gz</span>
 
-<span style="color:#75715e"># gunzip</span>
-<span style="color:#75715e"># 功能：解压文件（生成解压文件后会删除原文件）</span>
-gunzip 1.txt.gz  <span style="color:#75715e">#生成 1.txt</span>
+<span style="color:#008000"># gunzip</span>
+<span style="color:#008000"># 功能：解压文件（生成解压文件后会删除原文件）</span>
+gunzip 1.txt.gz  <span style="color:#008000">#生成 1.txt</span>
 gzip -d 1.txt.gz  
-<span style="color:#75715e">#后缀名需要为.gz</span>
+<span style="color:#008000">#后缀名需要为.gz</span>
 </code></pre></div><h3 id="tar">tar</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 压缩解压命令</span>
-<span style="color:#75715e"># 功能：打包目录</span>
-<span style="color:#75715e"># 语法：tar 选项[-cvf] [压缩后文件名] [目录]</span>
-<span style="color:#75715e">#      -c 打包</span>
-<span style="color:#75715e">#      -v 显示详细信息</span>
-<span style="color:#75715e">#      -f 指定文件名</span>
-<span style="color:#75715e">#      -z 打包同时使用zip压缩</span>
-<span style="color:#75715e">#      -j 打包同时使用bzip2压缩</span>
-<span style="color:#75715e"># 格式：.tar</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 压缩解压命令</span>
+<span style="color:#008000"># 功能：打包目录</span>
+<span style="color:#008000"># 语法：tar 选项[-cvf] [压缩后文件名] [目录]</span>
+<span style="color:#008000">#      -c 打包</span>
+<span style="color:#008000">#      -v 显示详细信息</span>
+<span style="color:#008000">#      -f 指定文件名</span>
+<span style="color:#008000">#      -z 打包同时使用zip压缩</span>
+<span style="color:#008000">#      -j 打包同时使用bzip2压缩</span>
+<span style="color:#008000"># 格式：.tar</span>
 tar -cvf nginx.tar nignx
-<span style="color:#75715e"># 格式：.tar.gz</span>
+<span style="color:#008000"># 格式：.tar.gz</span>
 tar -zcvf nginx.tar.gz nginx
-<span style="color:#75715e"># 格式：.tar.bz2</span>
+<span style="color:#008000"># 格式：.tar.bz2</span>
 tar -jcvf nginx.targ.bz2 nginx
 
-<span style="color:#75715e"># 功能：解压目录</span>
-<span style="color:#75715e"># 语法：tar 选项[-xvf] [压缩后文件名]</span>
-<span style="color:#75715e">#      -x 解压</span>
-<span style="color:#75715e">#      -v 显示详细信息</span>
-<span style="color:#75715e">#      -f 指定文件名</span>
-<span style="color:#75715e">#      -z 拆包同时使用zip解压</span>
-<span style="color:#75715e">#      -j 拆包同时使用bzip2解压</span>
-<span style="color:#75715e"># 格式：.tar</span>
+<span style="color:#008000"># 功能：解压目录</span>
+<span style="color:#008000"># 语法：tar 选项[-xvf] [压缩后文件名]</span>
+<span style="color:#008000">#      -x 解压</span>
+<span style="color:#008000">#      -v 显示详细信息</span>
+<span style="color:#008000">#      -f 指定文件名</span>
+<span style="color:#008000">#      -z 拆包同时使用zip解压</span>
+<span style="color:#008000">#      -j 拆包同时使用bzip2解压</span>
+<span style="color:#008000"># 格式：.tar</span>
 tar -xvf nginx.tar
-<span style="color:#75715e"># 格式：.tar.gz</span>
+<span style="color:#008000"># 格式：.tar.gz</span>
 tar -zxvf nginx.tar.gz
-<span style="color:#75715e"># 格式：.tar.bz2</span>
+<span style="color:#008000"># 格式：.tar.bz2</span>
 tar -jxvf nginx.tar.bz2
 </code></pre></div><h3 id="zipunzip">zip、unzip</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># zip</span>
-<span style="color:#75715e"># 功能：压缩文件或目录</span>
-<span style="color:#75715e"># 语法：zip 选项[-r] [压缩后文件名] [文件或目录]</span>
-<span style="color:#75715e">#      -r 压缩目录</span>
-<span style="color:#75715e"># 格式：.zip</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># zip</span>
+<span style="color:#008000"># 功能：压缩文件或目录</span>
+<span style="color:#008000"># 语法：zip 选项[-r] [压缩后文件名] [文件或目录]</span>
+<span style="color:#008000">#      -r 压缩目录</span>
+<span style="color:#008000"># 格式：.zip</span>
 zip 1.txt.zip 1.txt
 zip -r nginx.zip nginx
 
-<span style="color:#75715e"># unzip</span>
-<span style="color:#75715e"># 功能：解压文件或目录</span>
+<span style="color:#008000"># unzip</span>
+<span style="color:#008000"># 功能：解压文件或目录</span>
 unzip 1.txt.zip
 unzip nginx.zip
 </code></pre></div><h3 id="bzip2bunzip2">bzip2、bunzip2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：压缩文件</span>
-<span style="color:#75715e"># 语法：bzip2 选项[-k] [文件]</span>
-<span style="color:#75715e">#      -k 压缩后保留原文件</span>
-<span style="color:#75715e"># 格式：.bz</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：压缩文件</span>
+<span style="color:#008000"># 语法：bzip2 选项[-k] [文件]</span>
+<span style="color:#008000">#      -k 压缩后保留原文件</span>
+<span style="color:#008000"># 格式：.bz</span>
 bzip2 -k 1.txt
 
-<span style="color:#75715e"># 功能：解压文件或</span>
-<span style="color:#75715e"># 语法：bunzip2 选项[-k] [压缩后文件名]</span>
-<span style="color:#75715e">#      -k 解压后保留原文件</span>
+<span style="color:#008000"># 功能：解压文件或</span>
+<span style="color:#008000"># 语法：bunzip2 选项[-k] [压缩后文件名]</span>
+<span style="color:#008000">#      -k 解压后保留原文件</span>
 bunzip2 -k 1.txt.bz
 </code></pre></div><h2 id="8-网络操作命令">8. 网络操作命令</h2>
 <h3 id="writewall">write、wall</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># write</span>
-<span style="color:#75715e"># 功能：给用户发消息，以Ctrl+D保存结束</span>
-<span style="color:#75715e"># 语法：wirte &lt;用户名&gt;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># write</span>
+<span style="color:#008000"># 功能：给用户发消息，以Ctrl+D保存结束</span>
+<span style="color:#008000"># 语法：wirte &lt;用户名&gt;</span>
 write linjs
 
-<span style="color:#75715e"># wall</span>
-<span style="color:#75715e"># 原意：write all</span>
-<span style="color:#75715e"># 功能：发广播信息</span>
-<span style="color:#75715e"># 语法：wall [message]</span>
+<span style="color:#008000"># wall</span>
+<span style="color:#008000"># 原意：write all</span>
+<span style="color:#008000"># 功能：发广播信息</span>
+<span style="color:#008000"># 语法：wall [message]</span>
 </code></pre></div><h3 id="pingifconfig">ping、ifconfig</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ping</span>
-<span style="color:#75715e"># 功能：测试网络连通性</span>
-<span style="color:#75715e"># 语法：ping 选项 IP地址</span>
-<span style="color:#75715e">#      -c 指定发送次数</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># ping</span>
+<span style="color:#008000"># 功能：测试网络连通性</span>
+<span style="color:#008000"># 语法：ping 选项 IP地址</span>
+<span style="color:#008000">#      -c 指定发送次数</span>
 ping baidu.com
 
-<span style="color:#75715e"># ifconfig</span>
-<span style="color:#75715e"># 原意：interface configure</span>
-<span style="color:#75715e"># 功能：查看和设置网卡信息</span>
-<span style="color:#75715e"># 权限：root</span>
+<span style="color:#008000"># ifconfig</span>
+<span style="color:#008000"># 原意：interface configure</span>
+<span style="color:#008000"># 功能：查看和设置网卡信息</span>
+<span style="color:#008000"># 权限：root</span>
 ifconfig
 ifconfig etho 192.168.1.110
 </code></pre></div><h3 id="mail">mail</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：查看发送电子邮件</span>
-<span style="color:#75715e"># 语法：mail [用户名]</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：查看发送电子邮件</span>
+<span style="color:#008000"># 语法：mail [用户名]</span>
 
-<span style="color:#75715e"># 发送（输入Subject回车后，输入内容，最后Ctrl+D发送）</span>
+<span style="color:#008000"># 发送（输入Subject回车后，输入内容，最后Ctrl+D发送）</span>
 mail linjs
 
-<span style="color:#75715e"># 查看</span>
-mail <span style="color:#75715e"># 查看所有邮件，并进入编辑模板（输入help查看帮助）</span>
-<span style="color:#75715e"># 输入邮件编号，查看内容（返回输入h）</span>
+<span style="color:#008000"># 查看</span>
+mail <span style="color:#008000"># 查看所有邮件，并进入编辑模板（输入help查看帮助）</span>
+<span style="color:#008000"># 输入邮件编号，查看内容（返回输入h）</span>
 </code></pre></div><h3 id="lastlastlog">last、lastlog</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># last</span>
-<span style="color:#75715e"># 功能：列出目录与过去登入系统的用户信息</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># last</span>
+<span style="color:#008000"># 功能：列出目录与过去登入系统的用户信息</span>
 last
 
-<span style="color:#75715e"># lastlog</span>
-<span style="color:#75715e"># 检查某特定用户上次登录的时间</span>
+<span style="color:#008000"># lastlog</span>
+<span style="color:#008000"># 检查某特定用户上次登录的时间</span>
 lastlog
-last -u <span style="color:#ae81ff">502</span> <span style="color:#75715e"># 502为指定用户的id</span>
+last -u 502 <span style="color:#008000"># 502为指定用户的id</span>
 </code></pre></div><h3 id="traceroute">traceroute</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 显示数据包到主机间的路径</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 显示数据包到主机间的路径</span>
 traceroute baidu.com
 </code></pre></div><h3 id="netstat">netstat</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：查看本机网络状态</span>
-<span style="color:#75715e"># 选项：-t：TCP协议</span>
-<span style="color:#75715e">#      -u：UDP协议</span>
-<span style="color:#75715e">#      -l：监听</span>
-<span style="color:#75715e">#      -r：路由</span>
-<span style="color:#75715e">#      -n：显示ip地址和端口号</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：查看本机网络状态</span>
+<span style="color:#008000"># 选项：-t：TCP协议</span>
+<span style="color:#008000">#      -u：UDP协议</span>
+<span style="color:#008000">#      -l：监听</span>
+<span style="color:#008000">#      -r：路由</span>
+<span style="color:#008000">#      -n：显示ip地址和端口号</span>
 
-<span style="color:#75715e"># 范例</span>
-netstat -tuln <span style="color:#75715e"># 查看本机监听的端口</span>
-netstat -an <span style="color:#75715e"># 查看本机所有的网络连接</span>
-netstat -rn <span style="color:#75715e"># 查看本机路由表</span>
+<span style="color:#008000"># 范例</span>
+netstat -tuln <span style="color:#008000"># 查看本机监听的端口</span>
+netstat -an <span style="color:#008000"># 查看本机所有的网络连接</span>
+netstat -rn <span style="color:#008000"># 查看本机路由表</span>
 </code></pre></div><h3 id="setup">setup</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># redhat系统独有</span>
-<span style="color:#75715e"># 功能：配置网络</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># redhat系统独有</span>
+<span style="color:#008000"># 功能：配置网络</span>
 </code></pre></div><h3 id="mountunmount">mount、unmount</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># mount</span>
-<span style="color:#75715e"># 语法：mount [-t 文件系统] 设备文件名 挂载点</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># mount</span>
+<span style="color:#008000"># 语法：mount [-t 文件系统] 设备文件名 挂载点</span>
 mount -t iso9660 /dev/sr0 /mnt/cdrom
 
-<span style="color:#75715e"># unmount</span>
-<span style="color:#75715e"># 当前工作目录在挂载点时，不能执行以下命令（会报busy）</span>
+<span style="color:#008000"># unmount</span>
+<span style="color:#008000"># 当前工作目录在挂载点时，不能执行以下命令（会报busy）</span>
 unmount /dev/sr0
 unmount /mnt/cdrom
 </code></pre></div><h2 id="9-关机重启命令">9. 关机重启命令</h2>
 <h3 id="shutdown">shutdown</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 功能：关机、重启或取消操作</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 功能：关机、重启或取消操作</span>
 
-<span style="color:#75715e"># 指定某个时间关机</span>
+<span style="color:#008000"># 指定某个时间关机</span>
 shutdown -h 20:00
 
-<span style="color:#75715e"># 指定某个时间重启</span>
+<span style="color:#008000"># 指定某个时间重启</span>
 shutdown -r 20:00
 
-<span style="color:#75715e"># 取消上一步操作（关机或重启）</span>
+<span style="color:#008000"># 取消上一步操作（关机或重启）</span>
 shutdown -c
 
-<span style="color:#75715e"># 其它不常用的命令</span>
-<span style="color:#75715e"># 关机</span>
+<span style="color:#008000"># 其它不常用的命令</span>
+<span style="color:#008000"># 关机</span>
 halt
 poweroff
-init <span style="color:#ae81ff">0</span>
+init 0
 
-<span style="color:#75715e"># 重启</span>
+<span style="color:#008000"># 重启</span>
 reboot
-init <span style="color:#ae81ff">6</span>
+init 6
 
-<span style="color:#75715e"># 系统运行级别</span>
+<span style="color:#008000"># 系统运行级别</span>
 
-<span style="color:#75715e"># 0 关机</span>
-<span style="color:#75715e"># 1 单用户</span>
-<span style="color:#75715e"># 2 不完全多用户，不含NFS服务</span>
-<span style="color:#75715e"># 3 完全多用户</span>
-<span style="color:#75715e"># 4 未分配</span>
-<span style="color:#75715e"># 5 图形界面</span>
-<span style="color:#75715e"># 6 重启</span>
+<span style="color:#008000"># 0 关机</span>
+<span style="color:#008000"># 1 单用户</span>
+<span style="color:#008000"># 2 不完全多用户，不含NFS服务</span>
+<span style="color:#008000"># 3 完全多用户</span>
+<span style="color:#008000"># 4 未分配</span>
+<span style="color:#008000"># 5 图形界面</span>
+<span style="color:#008000"># 6 重启</span>
 
-<span style="color:#75715e"># 查看系统运行级别的配置信息</span>
+<span style="color:#008000"># 查看系统运行级别的配置信息</span>
 cat /etc/inittab
-<span style="color:#75715e"># 修改系统默认运行级别（修改/etc/inittab）</span>
+<span style="color:#008000"># 修改系统默认运行级别（修改/etc/inittab）</span>
 id:3:initdefault:
 
-<span style="color:#75715e"># 查询系统运行级别</span>
+<span style="color:#008000"># 查询系统运行级别</span>
 runlevel
 
 </code></pre></div>
@@ -628,12 +628,18 @@ runlevel
     
       上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/"> 
       
-        linux常用命令汇总
+        日常工作中关于Linux常用命令的汇总
       
       </a>
     
     </div>
       <div class="btn">
+    
+      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/">
+      
+        基于js的正则表达式入门教程
+      
+      </a>
     
     </div>
 
@@ -669,18 +675,12 @@ runlevel
 <section class="widget">
   
 
-<h3 class="widget-title">最近文章</h3>
+<h3 class="widget-title">最新内容</h3>
 <ul class="widget-list">
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/linux/%E5%91%BD%E4%BB%A4%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="linux基础命令快速开始">linux基础命令快速开始</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="linux常用命令汇总">linux常用命令汇总</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
@@ -692,7 +692,7 @@ runlevel
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/01.javase/01.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="javase01.语法基础">javase01.语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
@@ -702,43 +702,25 @@ runlevel
         
     </li>
     
+    <li>
+        
+        <a href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="基于js的正则表达式入门教程">基于js的正则表达式入门教程</a>
+        
+    </li>
+    
 </ul>
 </section>
 
 
 <section class="widget">
   <h3 class="widget-title">
-  <a href='/categories/'>分类</a>
+  <a href='/categories/'>内容分类</a>
 </h3>
 <ul class="widget-list">
   
   <li>
-    <a href="https://linjiasen63.github.io/categories/flag/">
-    flag (1)
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/idea/">
-    idea (1)
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/java/">
-    java (1)
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/linux/">
-    linux (2)
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/mysql/">
-    mysql (1)
+    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/">
+    编码人生 
     </a>
   </li>
   
@@ -747,22 +729,6 @@ runlevel
 </section>
 
 
-
-<section class="widget">
-  <h3 class="widget-title">
-  <a href='/tags/'>标签</a>
-</h3>
-<ul class="widget-list">
-  
-  <li>
-    <a href="https://linjiasen63.github.io/tags/shell/">
-    shell
-    </a>
-  </li>
-  
-</ul>
-
-</section>
 
 
       </aside>
