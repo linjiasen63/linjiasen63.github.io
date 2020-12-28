@@ -19,10 +19,10 @@
     
     <item>
       <title>服务端学习之java基础系列：语法进阶</title>
-      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html</link>
+      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advance.html</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advance.html</guid>
       <description>1. 常用接口 1.1 系统内置 1.1.1 Object // 子类可重写以定制输出内容 Object.toString(); // 子类可重写以定制对象比较 Object.equals(); 1.1.2 Objects // 对两个对象进行比较，防止空指针异常 Objects.equals(变量a, 变量b); 1.1.3 System public static long currentTimeMillis()：返回此毫秒为单位的当前时间 public static void arraycopy(object src, int srcPos, object dest, int destPos, int length)：将数组中的指定数据拷贝到另一个数组中 1.2 时间转换 1.2.1 Date java.util.Date表示时间和日期的类，特定的瞬间，精确到毫秒（千分之一秒）
 时间戳是指从标准基准时间（历元），即1970年1月1日00:00:00(GMT：英国格林威治)以来的毫秒数
 // 获取从历元到当前系统时间的毫秒数 long timestamp = System.currentTimeMillis(); // 注意：中国（CST）属于东八区，会把时间增加8个小时，即历元为：1970年1月1日08:00:00  // 获取当前时间（当前时区） Date d1 = new Date(); // 获取从历元经过指定毫秒的时间 Date d2 = new Date(0L); // 将日期转换为毫秒 long timestamp1 = d1.getTime(); // 转换本地时间（已过期） System.out.println(d1.toLocalString()); 1.2.2 DateFormat java.text.DateFormat，是抽象类。按照指定模式，进行日期与文本之间的转换。
