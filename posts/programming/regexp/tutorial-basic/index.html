@@ -17,7 +17,7 @@
   <title>基于js的正则表达式入门教程</title>
 
   <link rel="canonical" href="/" />
-<link href="/scss/index.min.166253a248a114e8fe3e4ebe0979cd18c8375a6c1d9a8a3dc2247bbae362b0f1.css" rel="stylesheet">
+<link href="/scss/index.min.ac5ee00b89e39a2a98a9a4c97363e8295d3e8fb604d16db53b448ca8f6f4fdc2.css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.min.js"></script>
   <link rel="stylesheet" href="/gitalk/gitalk.css">
   <script src="/gitalk/gitalk.min.js"></script>
@@ -118,52 +118,41 @@ function toggleNavbarmenu(ele) {
 <span style="color:#008000"># flag = 标识符</span>
 </code></pre></div><h2 id="1-精确匹配标识符">1. 精确匹配（标识符）</h2>
 <p>标识符</p>
-<ul>
-<li><code>i </code> : 忽略大小写</li>
-<li><code>g </code> : 全局查找</li>
-<li><code>m</code> : 多行查找</li>
-<li><code>u</code> : 支持unicode</li>
-</ul>
-<h2 id="2-横向模糊匹配">2. 横向模糊匹配</h2>
+<pre><code class="language-code" data-lang="code">i : 忽略大小写
+g : 全局查找
+m : 多行查找
+u : 支持unicode
+</code></pre><h2 id="2-横向模糊匹配">2. 横向模糊匹配</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#a31515">/p{m, n}/</span>
-</code></pre></div><ul>
-<li><code>*</code> : { 0, } 匹配0个或多个</li>
-<li><code>+</code> : { 1, } 匹配1个或多个</li>
-<li><code>?</code> : { 0, 1 } 匹配0个或1个
-<ul>
-<li>有两个含义：1. 惰性模式 2. 量词；区分方法：量词之后的?才表示惰性匹配</li>
-</ul>
-</li>
-<li><code>{ m }</code> : { m, m } 匹配m个</li>
-</ul>
-<h2 id="3-纵向模糊匹配">3. 纵向模糊匹配</h2>
+</code></pre></div><pre><code class="language-code" data-lang="code">* : { 0, } 匹配0个或多个
++ : { 1, } 匹配1个或多个
+? : { 0, 1 } 匹配0个或1个
+    有两个含义：1. 惰性模式 2. 量词；区分方法：量词之后的?才表示惰性匹配
+{ m } : { m, m } 匹配m个
+</code></pre><h2 id="3-纵向模糊匹配">3. 纵向模糊匹配</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#008000">// 匹配 apple或Apple
 </span><span style="color:#008000"></span><span style="color:#a31515">/[aA]pple/</span>
 </code></pre></div><h3 id="31-简写形式">3.1 简写形式</h3>
-<ul>
-<li><code>\d</code> : <code>[0-9]</code></li>
-<li><code>\D</code> : <code>[^0-9]</code></li>
-<li></li>
-<li><code>\w</code> : <code>[0-9a-zA-Z_]</code></li>
-<li><code>\W</code> : <code>[^0-9a-zA-Z_]</code></li>
-<li></li>
-<li><code>\s</code> : <code>[\t\v\n\r\f]</code>；表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符等。记忆方式：s是space character的首字母</li>
-<li><code>\S</code> : <code>[^\t\v\n\r\f]</code>；表示非空白字符</li>
-<li></li>
-<li><code>. </code> : <code>[^\n\r\u2018\u2029]</code></li>
-</ul>
-<h2 id="4-位置">4. 位置</h2>
-<ul>
-<li><code>^</code> : 文本开头</li>
-<li><code>$</code> : 文本结尾</li>
-<li></li>
-<li><code> \b</code> : 单词边界（一边是单词字符，一边是非单词字符）</li>
-<li><code>\B</code> : 非单词边界（两边要不都是单词字符，要不都是非单词字符）</li>
-<li></li>
-<li><code>(?=p)</code>  : 模式p之前的位置</li>
-<li><code>(?&lt;=p)</code> : 模式p之后的位置</li>
-</ul>
-<p>对于字符串“Hello world”，<code>/(?=wor)[\s\S]*/</code> 匹配的内容为: world；<code>/(?&lt;=wor)[\s\S]*/</code> 匹配的内容为: ld</p>
+<pre><code class="language-code" data-lang="code">.  等价于 [^\n\r\u2018\u2029]
+
+\d 等价于 [0-9]
+\D 等价于 [^0-9]
+
+\w 等价于 [0-9a-zA-Z_]
+\W 等价于 [^0-9a-zA-Z_]
+
+\s 等价于 [\t\v\n\r\f]；表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符等。记忆方式：s是space character的首字母
+\S 等价于 [^\t\v\n\r\f]；表示非空白字符
+</code></pre><h2 id="4-位置">4. 位置</h2>
+<pre><code class="language-code" data-lang="code">^ : 文本开头
+$ : 文本结尾
+
+ \b : 单词边界（一边是单词字符，一边是非单词字符）
+\B : 非单词边界（两边要不都是单词字符，要不都是非单词字符）
+
+(?=p)  : 模式p之前的位置
+(?&lt;=p) : 模式p之后的位置
+</code></pre><p>对于字符串“Hello world”，<code>/(?=wor)[\s\S]*/</code> 匹配的内容为: world；<code>/(?&lt;=wor)[\s\S]*/</code> 匹配的内容为: ld</p>
 <h2 id="5-分组">5. 分组</h2>
 <p>字符串 &ldquo;meet&rdquo;，如果想要匹配&quot;ee&quot;，正则表达式为：</p>
 <pre><code>/(e)\1/
@@ -192,7 +181,7 @@ function toggleNavbarmenu(ele) {
   <div class="pagination-single">
     <div class="btn">
     
-      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/linux/%E5%91%BD%E4%BB%A4%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/"> 
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic/"> 
       
         快速掌握Linux基本命令
       
@@ -201,9 +190,9 @@ function toggleNavbarmenu(ele) {
     </div>
       <div class="btn">
     
-      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/">
+      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/">
       
-        mysql快速开始
+        60min入门mysql
       
       </a>
     
@@ -241,36 +230,38 @@ function toggleNavbarmenu(ele) {
 <section class="widget">
   
 
-<h3 class="widget-title">最新内容</h3>
+<h3 class="widget-title">
+    <a href='/'>最新内容</a>
+</h3>
 <ul class="widget-list">
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point/" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="idea常用快捷键">idea常用快捷键</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/idea-keymap/" title="idea常用快捷键">idea常用快捷键</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="mysql快速开始">mysql快速开始</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="基于js的正则表达式入门教程">基于js的正则表达式入门教程</a>
+        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/" title="60min入门mysql">60min入门mysql</a>
         
     </li>
     

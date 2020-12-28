@@ -14,10 +14,10 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>日常工作中关于Linux常用命令的汇总</title>
+  <title>方便bash脚本开发的要点</title>
 
   <link rel="canonical" href="/" />
-<link href="/scss/index.min.166253a248a114e8fe3e4ebe0979cd18c8375a6c1d9a8a3dc2247bbae362b0f1.css" rel="stylesheet">
+<link href="/scss/index.min.ac5ee00b89e39a2a98a9a4c97363e8295d3e8fb604d16db53b448ca8f6f4fdc2.css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.min.js"></script>
   <link rel="stylesheet" href="/gitalk/gitalk.css">
   <script src="/gitalk/gitalk.min.js"></script>
@@ -83,38 +83,52 @@ function toggleNavbarmenu(ele) {
   <div>
     <article id="content" class="md-render">
       
-      <h1 id="title" class="title">日常工作中关于Linux常用命令的汇总</h1>
+      <h1 id="title" class="title">方便bash脚本开发的要点</h1>
       
       
         
         <h2 class="">目录</h2>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-文件传输">1. 文件传输</a>
+    <li><a href="#一set命令">一、set命令</a>
       <ul>
-        <li><a href="#scp">scp</a></li>
+        <li><a href="#总结">总结</a></li>
       </ul>
     </li>
   </ul>
 </nav>
         
       
-      <h2 id="1-文件传输">1. 文件传输</h2>
-<p><a href="https://wangdoc.com/ssh/scp.html">参考链接</a></p>
-<h3 id="scp">scp</h3>
-<ul>
-<li>本地复制到远程</li>
-<li>远程复制到本地</li>
-<li>两个远程之间复制</li>
-</ul>
-<p><code>scp source&lt;当前文件位置&gt; destination&lt;文件要复制到的位置&gt;</code></p>
-<p>远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 将远程服务器的文件 拷贝到本地</span>
-scp root@linjiasen.com:/root/tmp/helloworld.txt .
-<span style="color:#008000"># 如果没有配置免密，需要输入密码</span>
-</code></pre></div><h4 id="拷贝文件夹">拷贝文件夹</h4>
-<p>添加参数 <code>-r</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp -r root@linjiasen.com:/root/tmp/ .
+      <h2 id="一set命令">一、set命令</h2>
+<p><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html">参考链接</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它</span>
+<span style="color:#008000">#使用以下命令可改变默认行为：即遇到不存在的变量就会报错，并停止执行</span>
+set -u
+<span style="color:#008000"># 全写</span>
+set -o nounset
+
+<span style="color:#008000"># 默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</span>
+set -x
+<span style="color:#008000"># 全写</span>
+set -o xtrace
+
+<span style="color:#008000"># 如果脚本里面有运行失败的命令（返回值非0），Bash 默认会继续执行后面的命令。</span>
+<span style="color:#008000"># 使用以下命令可改变默认行为，即脚本只要发生错误，就终止执行。</span>
+set -e <span style="color:#008000"># 注意：不适用于管道命令，可使用以下命令处理。</span>
+<span style="color:#008000"># 全写</span>
+set -o errexit
+
+<span style="color:#008000"># 只要一个子命令失败，整个管道命令就失败，脚本就会终止执行</span>
+set -o pipefail
+<span style="color:#008000"># 管理中子命令失败，就退出</span>
+set -eo pipefail
+</code></pre></div><h3 id="总结">总结</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 写法一</span>
+set -euxo pipefail
+
+<span style="color:#008000"># 写法二</span>
+set -eux
+set -o pipefail
 </code></pre></div>
     </article>
   </div>
@@ -123,14 +137,14 @@ scp root@linjiasen.com:/root/tmp/helloworld.txt .
   <div class="pagination-single">
     <div class="btn">
     
-    </div>
-      <div class="btn">
-    
-      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/linux/%E5%91%BD%E4%BB%A4%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/">
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/"> 
       
-        快速掌握Linux基本命令
+        服务端学习之java基础系列：语法进阶
       
       </a>
+    
+    </div>
+      <div class="btn">
     
     </div>
 
@@ -166,36 +180,38 @@ scp root@linjiasen.com:/root/tmp/helloworld.txt .
 <section class="widget">
   
 
-<h3 class="widget-title">最新内容</h3>
+<h3 class="widget-title">
+    <a href='/'>最新内容</a>
+</h3>
 <ul class="widget-list">
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point/" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="idea常用快捷键">idea常用快捷键</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/idea-keymap/" title="idea常用快捷键">idea常用快捷键</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="mysql快速开始">mysql快速开始</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="基于js的正则表达式入门教程">基于js的正则表达式入门教程</a>
+        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/" title="60min入门mysql">60min入门mysql</a>
         
     </li>
     

@@ -17,7 +17,7 @@
   <title>服务端学习之java基础系列：语法基础</title>
 
   <link rel="canonical" href="/" />
-<link href="/scss/index.min.166253a248a114e8fe3e4ebe0979cd18c8375a6c1d9a8a3dc2247bbae362b0f1.css" rel="stylesheet">
+<link href="/scss/index.min.ac5ee00b89e39a2a98a9a4c97363e8295d3e8fb604d16db53b448ca8f6f4fdc2.css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.min.js"></script>
   <link rel="stylesheet" href="/gitalk/gitalk.css">
   <script src="/gitalk/gitalk.min.js"></script>
@@ -1208,14 +1208,14 @@ System.out.println(Arrays.toString(arr));
 System.out.println(arr);
 </code></pre></div><h3 id="63-math与objects">6.3 Math与Objects</h3>
 <h4 id="631--math">6.3.1  Math</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// public static T abs(T t)：取其绝对值
-</span><span style="color:#008000">// public static T ceil(T t)：向上取整
-</span><span style="color:#008000">// public static T floor(T t)：向下取整
-</span><span style="color:#008000"></span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">static</span> T abs(T t)<span style="">：</span>取其绝对值
+<span style="color:#00f">public</span> <span style="color:#00f">static</span> T ceil(T t)<span style="">：</span>向上取整
+<span style="color:#00f">public</span> <span style="color:#00f">static</span> T floor(T t)<span style="">：</span>向下取整
 
-<span style="color:#008000">// public static T round(T t)：四舍五入
-</span><span style="color:#008000">// PI：近似的圆周率常量
-</span></code></pre></div><h4 id="632--objects">6.3.2  Objects</h4>
+
+<span style="color:#00f">public</span> <span style="color:#00f">static</span> T round(T t)<span style="">：</span>四舍五入
+PI<span style="">：</span>近似的圆周率常量
+</code></pre></div><h4 id="632--objects">6.3.2  Objects</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">//  requireNonNull()：判断某个对象是否为空（为空会抛出空指针异常）
 </span></code></pre></div><h3 id="64-string">6.4 String</h3>
 <ul>
@@ -1225,13 +1225,13 @@ System.out.println(arr);
 </ul>
 <h4 id="641-创建方法">6.4.1 创建方法</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 直接创建
-</span><span style="color:#008000">//   String str = &#34;你好，世界！&#34;
-</span><span style="color:#008000"></span>
+</span><span style="color:#008000"></span>String str = <span style="color:#a31515">&#34;你好，世界！&#34;</span>
+
 <span style="color:#008000">// 构造方法创建
-</span><span style="color:#008000">//   public String(): 创建一个空白字符串
-</span><span style="color:#008000">//   public String(char[] arr)：根据字符数组创建字符串
-</span><span style="color:#008000">//   public String(byte[] arr)：根据字节数组创建字符串
-</span></code></pre></div><p>程序中直接使用双引号定义的字符串，如<code>String str = &quot;GOOD&quot;;</code>，就在<strong>字符串常量池</strong>中。</p>
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> String(): 创建一个空白字符串
+<span style="color:#00f">public</span> String(<span style="color:#2b91af">char</span>[] arr)<span style="">：</span>根据字符数组创建字符串
+<span style="color:#00f">public</span> String(<span style="color:#2b91af">byte</span>[] arr)<span style="">：</span>根据字节数组创建字符串
+</code></pre></div><p>程序中直接使用双引号定义的字符串，如<code>String str = &quot;GOOD&quot;;</code>，就在<strong>字符串常量池</strong>中。</p>
 <p>== 运算符的规则：</p>
 <ul>
 <li>对于基本类型来说，==是进行数值的比较</li>
@@ -1240,26 +1240,26 @@ System.out.println(arr);
 <p>字符串常量池在堆中。字符串常量池中保存的是字符串的地址，而不是字符串的内容。字符串的内容还是存放在堆中，跟字符串常量池并列。</p>
 <h4 id="642-常用方法">6.4.2 常用方法</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 判断内容是否相同
-</span><span style="color:#008000">//   public boolean equals(Object obj)：区分大小写
-</span><span style="color:#008000">//   public boolean equalsIgnoreCase(Object obj)：忽略大小写
-</span><span style="color:#008000"></span>  
-<span style="color:#008000">// public int length()：获取字符个数，即字符串长度
-</span><span style="color:#008000">// public String concat(String str)：拼接字符串（返回新的字符串）
-</span><span style="color:#008000">// public char chartAt(int index)：返回指定位置的字符
-</span><span style="color:#008000">// public int indexOf(String str)：返回指定字符串在本字符串首次出现的位置，如果不存在返回-1
-</span><span style="color:#008000"></span>  
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> <span style="color:#2b91af">boolean</span> equals(Object obj)<span style="">：</span>区分大小写
+<span style="color:#00f">public</span> <span style="color:#2b91af">boolean</span> equalsIgnoreCase(Object obj)<span style="">：</span>忽略大小写
+  
+<span style="color:#00f">public</span> <span style="color:#2b91af">int</span> length()<span style="">：</span>获取字符个数<span style="">，</span>即字符串长度
+<span style="color:#00f">public</span> String concat(String str)<span style="">：</span>拼接字符串<span style="">（</span>返回新的字符串<span style="">）</span>
+<span style="color:#00f">public</span> <span style="color:#2b91af">char</span> chartAt(<span style="color:#2b91af">int</span> index)<span style="">：</span>返回指定位置的字符
+<span style="color:#00f">public</span> <span style="color:#2b91af">int</span> indexOf(String str)<span style="">：</span>返回指定字符串在本字符串首次出现的位置<span style="">，</span>如果不存在返回-1
+  
 <span style="color:#008000">// 截取
-</span><span style="color:#008000">//   public String substring(int index)：从参数开始到未尾
-</span><span style="color:#008000">//   public String substring(int begin, int end)：从begin开始，到end结束，中间的字符串，左闭右开
-</span><span style="color:#008000"></span>
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> String substring(<span style="color:#2b91af">int</span> index)<span style="">：</span>从参数开始到未尾
+<span style="color:#00f">public</span> String substring(<span style="color:#2b91af">int</span> begin, <span style="color:#2b91af">int</span> end)<span style="">：</span>从begin开始<span style="">，</span>到end结束<span style="">，</span>中间的字符串<span style="">，</span>左闭右开
+
 <span style="color:#008000">// 转换
-</span><span style="color:#008000">// public char[] toCharArray()：获取字符串的字符数组
-</span><span style="color:#008000">// public byte[] getBytes()：获取字符串底层的字节数组
-</span><span style="color:#008000">// public String replace(CharSquence oldString, CharSquence newString)：将**所有**出现的老字符串替换为新的字符串
-</span><span style="color:#008000"></span>
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> <span style="color:#2b91af">char</span>[] toCharArray()<span style="">：</span>获取字符串的字符数组
+<span style="color:#00f">public</span> <span style="color:#2b91af">byte</span>[] getBytes()<span style="">：</span>获取字符串底层的字节数组
+<span style="color:#00f">public</span> String replace(CharSquence oldString, CharSquence newString)<span style="">：</span>将**所有**出现的老字符串替换为新的字符串
+
 <span style="color:#008000">// 分割
-</span><span style="color:#008000">// public String[] split(String regex)：按照参数（正则表达式）的规则，将字符串分成若干份。
-</span></code></pre></div><p><code>a.equals(b)</code> 等价于 <code>b.equals(a)</code>。如果a为常量，建议使用为<code>a.equals(b)</code>，如<code>&quot;你好，世界&quot;.equals(str)</code></p>
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> String[] split(String regex)<span style="">：</span>按照参数<span style="">（</span>正则表达式<span style="">）</span>的规则<span style="">，</span>将字符串分成若干份<span style="">。</span>
+</code></pre></div><p><code>a.equals(b)</code> 等价于 <code>b.equals(a)</code>。如果a为常量，建议使用为<code>a.equals(b)</code>，如<code>&quot;你好，世界&quot;.equals(str)</code></p>
 
     </article>
   </div>
@@ -1268,16 +1268,16 @@ System.out.println(arr);
   <div class="pagination-single">
     <div class="btn">
     
-      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/"> 
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/"> 
       
-        mysql快速开始
+        60min入门mysql
       
       </a>
     
     </div>
       <div class="btn">
     
-      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/java/idea-keymap/">
       
         idea常用快捷键
       
@@ -1317,36 +1317,38 @@ System.out.println(arr);
 <section class="widget">
   
 
-<h3 class="widget-title">最新内容</h3>
+<h3 class="widget-title">
+    <a href='/'>最新内容</a>
+</h3>
 <ul class="widget-list">
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E8%BF%9B%E9%98%B6/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point/" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="idea常用快捷键">idea常用快捷键</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/idea-keymap/" title="idea常用快捷键">idea常用快捷键</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/mysql/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="mysql快速开始">mysql快速开始</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/regexp/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/" title="基于js的正则表达式入门教程">基于js的正则表达式入门教程</a>
+        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/" title="60min入门mysql">60min入门mysql</a>
         
     </li>
     
