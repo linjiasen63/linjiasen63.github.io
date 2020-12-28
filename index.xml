@@ -9,20 +9,20 @@
     <lastBuildDate>Fri, 25 Dec 2020 16:43:35 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>方便bash脚本开发的要点</title>
-      <link>https://linjiasen63.github.io/posts/programming/linux/bash-program-point/</link>
+      <link>https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html</link>
       <pubDate>Fri, 25 Dec 2020 16:43:35 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/linux/bash-program-point/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html</guid>
       <description>一、set命令 参考链接
 # 执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它 #使用以下命令可改变默认行为：即遇到不存在的变量就会报错，并停止执行 set -u # 全写 set -o nounset # 默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。 set -x # 全写 set -o xtrace # 如果脚本里面有运行失败的命令（返回值非0），Bash 默认会继续执行后面的命令。 # 使用以下命令可改变默认行为，即脚本只要发生错误，就终止执行。 set -e # 注意：不适用于管道命令，可使用以下命令处理。 # 全写 set -o errexit # 只要一个子命令失败，整个管道命令就失败，脚本就会终止执行 set -o pipefail # 管理中子命令失败，就退出 set -eo pipefail 总结 # 写法一 set -euxo pipefail # 写法二 set -eux set -o pipefail </description>
     </item>
     
     <item>
       <title>服务端学习之java基础系列：语法进阶</title>
-      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/</link>
+      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html</guid>
       <description>1. 常用接口 1.1 系统内置 1.1.1 Object // 子类可重写以定制输出内容 Object.toString(); // 子类可重写以定制对象比较 Object.equals(); 1.1.2 Objects // 对两个对象进行比较，防止空指针异常 Objects.equals(变量a, 变量b); 1.1.3 System public static long currentTimeMillis()：返回此毫秒为单位的当前时间 public static void arraycopy(object src, int srcPos, object dest, int destPos, int length)：将数组中的指定数据拷贝到另一个数组中 1.2 时间转换 1.2.1 Date java.util.Date表示时间和日期的类，特定的瞬间，精确到毫秒（千分之一秒）
 时间戳是指从标准基准时间（历元），即1970年1月1日00:00:00(GMT：英国格林威治)以来的毫秒数
 // 获取从历元到当前系统时间的毫秒数 long timestamp = System.currentTimeMillis(); // 注意：中国（CST）属于东八区，会把时间增加8个小时，即历元为：1970年1月1日08:00:00  // 获取当前时间（当前时区） Date d1 = new Date(); // 获取从历元经过指定毫秒的时间 Date d2 = new Date(0L); // 将日期转换为毫秒 long timestamp1 = d1.getTime(); // 转换本地时间（已过期） System.out.println(d1.toLocalString()); 1.2.2 DateFormat java.text.DateFormat，是抽象类。按照指定模式，进行日期与文本之间的转换。
@@ -31,19 +31,19 @@ SimpleDateFormat dateFormat = new SimpleDateFormat(&amp;#34;yyyy-MM-dd HH:mm:ss&
     
     <item>
       <title>idea常用快捷键</title>
-      <link>https://linjiasen63.github.io/posts/programming/java/idea-keymap/</link>
+      <link>https://linjiasen63.github.io/posts/programming/java/idea-keymap.html</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/java/idea-keymap/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/java/idea-keymap.html</guid>
       <description>   mac快捷键 win快捷键 具休功能描述     option + / alt + / 代码提示（自定义配置）   option + enter alt + enter 自动导包、或声明变量（光标需停留在相应的类名上）   command + X ctrl + Y 删除光标所在行   command + D ctrl + D 复制光标所在行，插入到光标位置下方   command + option + L ctrl + alt + L 格式化代码   command + / ctrl + / 单行注释，再按取消注释   command + shift + / ctrl + shift + / 注释选中代码，再按取消注释   command + N alt + ins 自动生成代码，如get、set等方法   option + shift + ↑或↓ alt + shift + ↑或↓ 向上或向下移动光标所在行   shift + F6 shift + F6 重命名    </description>
     </item>
     
     <item>
       <title>服务端学习之java基础系列：语法基础</title>
-      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/</link>
+      <link>https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic.html</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic.html</guid>
       <description>1. 计算机通识 1.1 进制转换  辗转相除法（十进制转换为其它进制） 位权累加法（其它进制转换为十进制）  1.2 存储单位  1bit = 位（表示0或1） 1Byte = 8bit （数据存储的最小单元） 1KB = 1024Byte 1MB = 1024KB 1GB = 1024MB 1TB = 1024GB 1PB = 1024TB &amp;hellip;  1.3 Java简介 95年发布，已有20来年的历史。目前大部分公司使用的主要版本还是java8。
 java编写的程序是跨平台的，但是JVM是非跨平台的（每种平台都有各自版本的JVM）
  JDK = 编译器等开发工具 + JRE； JRE = 运行类库 + JVM；  1.3.1 DOS  盘符切换，如：D: (${磁盘标识}:) 切换目录 cd 清除 cls （全写：clear screen） 退出 exit  1.3.2 安装  配置JAVA_HOME 配置PATH  mac下无需如此，开发配置简单。
@@ -53,38 +53,38 @@ java编写的程序是跨平台的，但是JVM是非跨平台的（每种平台�
     
     <item>
       <title>60min入门mysql</title>
-      <link>https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/</link>
+      <link>https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html</guid>
       <description>1. 基础知识 1.1 连接 # 连接mysql简写 # mysql -u${帐号名称} -p[${帐号密码}] mysql -uroot -p # 连接mysql全写 # mysql --user=${帐号名称} --password[=${帐号密码}] mysql --user=root --password # 指定mysql的ip 或 port # mysql [-h${服务器ip地址}] [-P${服务器端口}] -u${帐号名称} -p[${帐号密码}] mysql -h49.233.143.65 -P3306 -uroot -p 1.2 注释 -- 单行注释  # 单行注释 /* 块注释 */ 1.3 分类  DDL：数据定义语言。如定义数据库以及表结构等 DML：数据操作语言。如添加、创建、删除数据库以及表的记录等 DQL：数据查询语言。如查询数据库以及表的记录等 DCL：数据控制语言。如授权GRANK等 数据库使用相关语言。如USE ${数据库名称}; 或 show DATABASES;等语句  1.4 备份 1.4.1 命令行 -- 一、备份 -- mysqldump -u${帐号} -p${密码} ${数据库名} &amp;gt; ${备份文件的位置}  -- 二、恢复 -- 1. 登录数据库管理系统 -- 2. 创建指定名称数据库 -- 3. 使用数据库 -- 4. 恢复数据 -- source ${备份文件的位置} 1.5 其它 -- 输出所有系统变量 show variables; 2. DDL 2.1 库的操作 2.</description>
     </item>
     
     <item>
       <title>基于js的正则表达式入门教程</title>
-      <link>https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic/</link>
+      <link>https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html</guid>
       <description>参考资料  正则极简教程，再也不会学了忘  # 结构：/pattern/flag # pattern = 模式  # flag = 标识符 1. 精确匹配（标识符） 标识符
 i : 忽略大小写 g : 全局查找 m : 多行查找 u : 支持unicode 2. 横向模糊匹配 /p{m, n}/ * : { 0, } 匹配0个或多个 + : { 1, } 匹配1个或多个 ? : { 0, 1 } 匹配0个或1个 有两个含义：1. 惰性模式 2. 量词；区分方法：量词之后的?才表示惰性匹配 { m } : { m, m } 匹配m个 3. 纵向模糊匹配 // 匹配 apple或Apple /[aA]pple/ 3.1 简写形式 . 等价于 [^\n\r\u2018\u2029] \d 等价于 [0-9] \D 等价于 [^0-9] \w 等价于 [0-9a-zA-Z_] \W 等价于 [^0-9a-zA-Z_] \s 等价于 [\t\v\n\r\f]；表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符等。记忆方式：s是space character的首字母 \S 等价于 [^\t\v\n\r\f]；表示非空白字符 4. 位置 ^ : 文本开头 $ : 文本结尾 \b : 单词边界（一边是单词字符，一边是非单词字符） \B : 非单词边界（两边要不都是单词字符，要不都是非单词字符） (?</description>
     </item>
     
     <item>
       <title>快速掌握Linux基本命令</title>
-      <link>https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic/</link>
+      <link>https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic.html</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic.html</guid>
       <description>1. 命令组成原则 # 命令名称 [-命令选项...] 命令参数 # 如 ls -l 2. 文件处理命令 2.1 目录命令 ls # -l --long的简写，展示具体信息 # -a --all的简写，展示所有内容 # -d 展示指定文件夹的信息 # -i 输出文件在系统中唯一的id信息 # -h 人性化输出（如将文件大小自动转换为KB、MB等） mkdir # 全称：make directories # -p 创建指定路径中不存在的目录 # 其中tmp目录不存在 mkdir -p ./tmp/200606 cd # 全称：change directories # cd 指定路径 cd .. cd /root cd ./tmp/200606 pwd # 全称：print working directories # 输出当前目录 pwd rmdir # 全称：remove empty directories # 删除空目录 rm # 全称：remove empty # 删除文件 # -r 删除目录 # -f 强制删除，不会二次询问 cp # -r 拷贝目录 cp -r ./tmp/200606 ./ mv # 移动与重命名 mv ./tmp/200606 ./2006 2.2 文件命令 # 退出：q touch、echo # touch 文件名 touch 1.</description>
     </item>
     
     <item>
       <title>日常工作中关于Linux常用命令的汇总</title>
-      <link>https://linjiasen63.github.io/posts/programming/linux/job-bash-usage/</link>
+      <link>https://linjiasen63.github.io/posts/programming/linux/job-bash-usage.html</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/posts/programming/linux/job-bash-usage/</guid>
+      <guid>https://linjiasen63.github.io/posts/programming/linux/job-bash-usage.html</guid>
       <description>1. 文件传输 参考链接
 scp  本地复制到远程 远程复制到本地 两个远程之间复制  scp source&amp;lt;当前文件位置&amp;gt; destination&amp;lt;文件要复制到的位置&amp;gt;
 远程文件位置的描述：${用户}@${ip地址或域名}:${文件的绝对路径}，如：root@linjiasen.com:/root/tmp/helloworld.txt
@@ -94,28 +94,28 @@ scp -r root@linjiasen.com:/root/tmp/ . </description>
     
     <item>
       <title>我是谁？</title>
-      <link>https://linjiasen63.github.io/about/</link>
+      <link>https://linjiasen63.github.io/about.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/about/</guid>
+      <guid>https://linjiasen63.github.io/about.html</guid>
       <description>我是谁？</description>
     </item>
     
     <item>
       <title>文章归档</title>
-      <link>https://linjiasen63.github.io/archives/</link>
+      <link>https://linjiasen63.github.io/archives.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/archives/</guid>
+      <guid>https://linjiasen63.github.io/archives.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>文章搜索</title>
-      <link>https://linjiasen63.github.io/search/</link>
+      <link>https://linjiasen63.github.io/search.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://linjiasen63.github.io/search/</guid>
+      <guid>https://linjiasen63.github.io/search.html</guid>
       <description></description>
     </item>
     

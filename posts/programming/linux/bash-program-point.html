@@ -14,7 +14,7 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>我是谁？</title>
+  <title>方便bash脚本开发的要点</title>
 
   <link rel="canonical" href="/" />
 <link href="/scss/index.min.4c76afcb98a29fc32e9e1f5bf0b7d6c71578f1b48bd68acc3cb6793a0caa2b59.css" rel="stylesheet">
@@ -79,16 +79,78 @@ function toggleNavbarmenu(ele) {
       
       <main class="site-main">
       
-<div class="single-default">
+<div class="single-post">
   <div>
-      <article id="content" class="md-render">
+    <article id="content" class="md-render">
+      
+      <h1 id="title" class="title">方便bash脚本开发的要点</h1>
+      
+      
         
-        <h1 id="title" class="title">我是谁？</h1>
+        <h2 class="">目录</h2>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一set命令">一、set命令</a>
+      <ul>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
         
-        <p>我是谁？</p>
+      
+      <h2 id="一set命令">一、set命令</h2>
+<p><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html">参考链接</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它</span>
+<span style="color:#008000">#使用以下命令可改变默认行为：即遇到不存在的变量就会报错，并停止执行</span>
+set -u
+<span style="color:#008000"># 全写</span>
+set -o nounset
 
-      </article>
+<span style="color:#008000"># 默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</span>
+set -x
+<span style="color:#008000"># 全写</span>
+set -o xtrace
+
+<span style="color:#008000"># 如果脚本里面有运行失败的命令（返回值非0），Bash 默认会继续执行后面的命令。</span>
+<span style="color:#008000"># 使用以下命令可改变默认行为，即脚本只要发生错误，就终止执行。</span>
+set -e <span style="color:#008000"># 注意：不适用于管道命令，可使用以下命令处理。</span>
+<span style="color:#008000"># 全写</span>
+set -o errexit
+
+<span style="color:#008000"># 只要一个子命令失败，整个管道命令就失败，脚本就会终止执行</span>
+set -o pipefail
+<span style="color:#008000"># 管理中子命令失败，就退出</span>
+set -eo pipefail
+</code></pre></div><h3 id="总结">总结</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 写法一</span>
+set -euxo pipefail
+
+<span style="color:#008000"># 写法二</span>
+set -eux
+set -o pipefail
+</code></pre></div>
+    </article>
   </div>
+
+  
+  <div class="pagination-single">
+    <div class="btn">
+    
+      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html"> 
+      
+        服务端学习之java基础系列：语法进阶
+      
+      </a>
+    
+    </div>
+      <div class="btn">
+    
+    </div>
+
+    
+  </div>
+  
 </div>
 
       </main>
@@ -125,31 +187,31 @@ function toggleNavbarmenu(ele) {
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point/" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
+        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced/" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advanced.html" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/idea-keymap/" title="idea常用快捷键">idea常用快捷键</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/idea-keymap.html" title="idea常用快捷键">idea常用快捷键</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic/" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic.html" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic/" title="60min入门mysql">60min入门mysql</a>
+        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html" title="60min入门mysql">60min入门mysql</a>
         
     </li>
     
@@ -164,7 +226,7 @@ function toggleNavbarmenu(ele) {
 <ul class="widget-list">
   
   <li>
-    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F/">
+    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html">
     编码人生 
     </a>
   </li>
