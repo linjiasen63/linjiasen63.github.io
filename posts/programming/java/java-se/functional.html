@@ -14,7 +14,7 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>Posts</title>
+  <title>服务端学习之java基础系列：函数式编程</title>
 
   <link rel="canonical" href="/" />
 <link href="/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css" rel="stylesheet">
@@ -80,209 +80,110 @@ function toggleNavbarmenu(ele) {
       <main class="site-main">
       
 <div class="site-main-wrapper">
-  <div>
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html">
-    <div class="article-title">
-      
-        60min入门mysql
-      
+  <div class="single-post">
+    <div>
+      <article id="content" class="md-render">
+        
+        <h1 id="title" class="title">服务端学习之java基础系列：函数式编程</h1>
+        
+        
+          
+          <h2 class="">目录</h2>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-lambda">1. lambda</a>
+      <ul>
+        <li><a href="#11-示例">1.1 示例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+          
+        
+        <h2 id="1-lambda">1. lambda</h2>
+<p>从jdk8开始支持，条件如下：</p>
+<ul>
+<li>必须具有接口，且接口中有仅仅有一个抽象方法</li>
+<li>必须具有上下文推断</li>
+</ul>
+<p>有且只有一个方法接口，称之为：函数式接口。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#2b91af">void</span> main(String[] args) {
+  <span style="color:#00f">new</span> Thread(() -&gt; {
+    System.out.println(<span style="color:#a31515">&#34;Hello world!&#34;</span>);
+  }).start();
+}
+</code></pre></div><p>由以下组成：</p>
+<ul>
+<li>一些参数</li>
+<li>一个箭头</li>
+<li>一段代码</li>
+<li></li>
+</ul>
+<p>标准格式：<code>(参数列表) -&gt; { 一些重写方法的代码 }</code></p>
+<h3 id="11-示例">1.1 示例</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#2b91af">void</span> main(String[] args) {
+  Integer[] arr = { 1, 2, 4, 3 };
+  Arrays.sort(arr, (Integer o1, Integer o2) -&gt; {
+    <span style="color:#00f">return</span> o2 - o1;
+  });
+  System.out.println(Arrays.toString(arr));
+}
+</code></pre></div><p>可推导，可省略。凡是根据上下文推导出来的内容都可以省略不写</p>
+<ul>
+<li>括号中的参数列表的数据类型</li>
+<li>括号中的参数列表只有一个，类型和()都可省略</li>
+<li>如果{}中的代码只有一行，无论是否有返回值，都可以省略（{}，return, 分号），这三者需要一起省略。</li>
+</ul>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#2b91af">void</span> main(String[] args) {
+  Integer[] arr = { 1, 2, 4, 3 };
+  Arrays.sort(arr, (o1, o2) -&gt; o2 - o1);
+  System.out.println(Arrays.toString(arr));
+}
+</code></pre></div>
+      </article>
     </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
 
     
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html">
-    <div class="article-title">
+    <div class="pagination-single">
+      <div class="btn">
       
-        基于js的正则表达式入门教程
+        上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html"> 
+        
+          前端面试系列：浏览器输入url到网页展示期间发生了什么？
+        
+        </a>
       
-    </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
+      </div>
+        <div class="btn">
+      
+      </div>
 
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-basic.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：语法基础
       
     </div>
-    <div class="article-info">
-      <span>2020年12月23日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/idea-keymap.html">
-    <div class="article-title">
-      
-        idea常用快捷键
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月25日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html">
-    <div class="article-title">
-      
-        方便bash脚本开发的要点
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月25日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-advance.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：语法进阶
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月26日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：反射
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：网络请求
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html">
-    <div class="article-title">
-      
-        前端面试系列：浏览器输入url到网页展示期间发生了什么？
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/functional.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：函数式编程
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
     
   </div>
-  
+  <div id="pageScrollTop" class="page-scroll-top">
+  <span class="arr"></span>
+  <span class="txt">顶部</span>
+</div>
 
-  
-  <div class="page-navigator">
-    <ul class="page-navigator-wrapper">
-      
-      <li class="page-navigator-li prev disable">
-        <a class="page-navigator-a" >&lt;</a>
-      </li>
-      
+<script>
+  var $pageScrollTop = $("#pageScrollTop");
+  $pageScrollTop.hide();
+  $pageScrollTop.on('click', function() {
+    $('html,body').animate({scrollTop: '0px'}, 300);;
+  });
+  $(document).scroll(function () {
+    var scroTop = $(document).scrollTop();
+    var contentHeight = $(document).height();
 
-      
-      <li class="page-navigator-li current" >
-        <a class="page-navigator-a" href="https://linjiasen63.github.io/posts.html">1</a>
-      </li>
-      
-      <li class="page-navigator-li " >
-        <a class="page-navigator-a" href="https://linjiasen63.github.io/posts/page/2.html">2</a>
-      </li>
-      
-
-      
-      <li class="page-navigator-li next">
-        <a class="page-navigator-a" href="https://linjiasen63.github.io/posts/page/2.html">></a>
-      </li>
-      
-    </ul>
-  </div>
-  
-
+    if (scroTop > contentHeight * 0.2) {
+      $pageScrollTop.show();
+    } else {
+      $pageScrollTop.hide();
+    }
+  });
+</script>
 
 </div>
 

@@ -6,7 +6,21 @@
     <description>Recent content on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 29 Dec 2020 14:42:56 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 23:16:42 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>服务端学习之java基础系列：函数式编程</title>
+      <link>https://linjiasen63.github.io/posts/programming/java/java-se/functional.html</link>
+      <pubDate>Tue, 29 Dec 2020 23:16:42 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/java/java-se/functional.html</guid>
+      <description>1. lambda 从jdk8开始支持，条件如下：
+ 必须具有接口，且接口中有仅仅有一个抽象方法 必须具有上下文推断  有且只有一个方法接口，称之为：函数式接口。
+public static void main(String[] args) { new Thread(() -&amp;gt; { System.out.println(&amp;#34;Hello world!&amp;#34;); }).start(); } 由以下组成：
+ 一些参数 一个箭头 一段代码   标准格式：(参数列表) -&amp;gt; { 一些重写方法的代码 }
+1.1 示例 public static void main(String[] args) { Integer[] arr = { 1, 2, 4, 3 }; Arrays.sort(arr, (Integer o1, Integer o2) -&amp;gt; { return o2 - o1; }); System.out.println(Arrays.toString(arr)); } 可推导，可省略。凡是根据上下文推导出来的内容都可以省略不写
+ 括号中的参数列表的数据类型 括号中的参数列表只有一个，类型和()都可省略 如果{}中的代码只有一行，无论是否有返回值，都可以省略（{}，return, 分号），这三者需要一起省略。  public static void main(String[] args) { Integer[] arr = { 1, 2, 4, 3 }; Arrays.sort(arr, (o1, o2) -&amp;gt; o2 - o1); System.out.println(Arrays.toString(arr)); } </description>
+    </item>
+    
     <item>
       <title>前端面试系列：浏览器输入url到网页展示期间发生了什么？</title>
       <link>https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html</link>
@@ -22,6 +36,15 @@
       <pubDate>Tue, 29 Dec 2020 13:58:31 +0000</pubDate>
       
       <guid>https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>服务端学习之java基础系列：网络请求</title>
+      <link>https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html</link>
+      <pubDate>Tue, 29 Dec 2020 13:58:31 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html</guid>
       <description></description>
     </item>
     
