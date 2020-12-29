@@ -17,7 +17,7 @@
   <title>服务端学习之java基础系列：语法进阶</title>
 
   <link rel="canonical" href="/" />
-<link href="/scss/index.min.54c2945a945ce08b730a7ca7c0b78c281e057b371a6ef73c3aeda89a47c11199.css" rel="stylesheet">
+<link href="/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css" rel="stylesheet">
 <script type="text/javascript" src="/js/jquery.min.js"></script>
   <link rel="stylesheet" href="/gitalk/gitalk.css">
   <script src="/gitalk/gitalk.min.js"></script>
@@ -79,16 +79,17 @@ function toggleNavbarmenu(ele) {
       
       <main class="site-main">
       
-<div class="single-post">
-  <div>
-    <article id="content" class="md-render">
-      
-      <h1 id="title" class="title">服务端学习之java基础系列：语法进阶</h1>
-      
-      
+<div class="site-main-wrapper">
+  <div class="single-post">
+    <div>
+      <article id="content" class="md-render">
         
-        <h2 class="">目录</h2>
-          <nav id="TableOfContents">
+        <h1 id="title" class="title">服务端学习之java基础系列：语法进阶</h1>
+        
+        
+          
+          <h2 class="">目录</h2>
+            <nav id="TableOfContents">
   <ul>
     <li><a href="#1--常用接口">1.  常用接口</a>
       <ul>
@@ -107,12 +108,16 @@ function toggleNavbarmenu(ele) {
     <li><a href="#3-集合">3. 集合</a>
       <ul>
         <li><a href="#31--数据结构">3.1  数据结构</a></li>
-        <li><a href="#32-单列集合-collection">3.2 单列集合: Collection</a></li>
-        <li><a href="#33-双列集合map">3.3. 双列集合：Map</a></li>
+        <li><a href="#32-单列集合">3.2 单列集合</a></li>
+        <li><a href="#33-双列集合">3.3 双列集合</a></li>
         <li><a href="#34-jdk9的优化">3.4 jdk9的优化</a></li>
       </ul>
     </li>
-    <li><a href="#4-异常">4. 异常</a></li>
+    <li><a href="#4-异常">4. 异常</a>
+      <ul>
+        <li><a href="#41-自定义异常类">4.1 自定义异常类</a></li>
+      </ul>
+    </li>
     <li><a href="#5-其它">5. 其它</a>
       <ul>
         <li><a href="#51-可变参数">5.1 可变参数</a></li>
@@ -121,9 +126,9 @@ function toggleNavbarmenu(ele) {
     </li>
   </ul>
 </nav>
+          
         
-      
-      <h2 id="1--常用接口">1.  常用接口</h2>
+        <h2 id="1--常用接口">1.  常用接口</h2>
 <h3 id="11-系统内置">1.1 系统内置</h3>
 <h4 id="111-object">1.1.1 Object</h4>
 <pre><code class="language-code" data-lang="code">// 子类可重写以定制输出内容
@@ -349,7 +354,7 @@ print(list02);
 <li>每个红色节点的子节点都是黑色的</li>
 <li>任意一个节点到其每个叶子节点的所有路径上黑色节点数相同</li>
 </ul>
-<h3 id="32-单列集合-collection">3.2 单列集合: Collection</h3>
+<h3 id="32-单列集合">3.2 单列集合</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 向集合中添加元素
 </span><span style="color:#008000"></span><span style="color:#2b91af">boolean</span> add(E e);
 
@@ -458,7 +463,7 @@ Iterator&lt;String&gt; it = coll.iterator();
 </span></code></pre></div><p>存储自定义类型元素，需要重写<code>hashCode()</code>与<code>equals()</code>，以确定数据是否相同的判断规则。</p>
 <h6 id="32211-linkedhashset">3.2.2.1.1 LinkedHashSet</h6>
 <p>底层是：哈希表（数组 + 链表/红黑树） + 链表；多了一条链表（记录元素顺序），保证有序</p>
-<h3 id="33-双列集合map">3.3. 双列集合：Map</h3>
+<h3 id="33-双列集合">3.3 双列集合</h3>
 <p>继承关系：</p>
 <p>双列集合，<code>Map&lt;K, V&gt;</code>，K即键，且键唯一</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 将指定的健与指定的键添加到集合中， 返回被替换的值
@@ -599,6 +604,23 @@ Map&lt;String&gt; map = Map.of(<span style="color:#a31515">&#34;k1&#34;</span>, 
   
   System.out.println(<span style="color:#a31515">&#34;读取文件内容&#34;</span>);
 }
+</code></pre></div><p>如果finally中有return语句，永远返回finally中结果，要避免这种情况</p>
+<ul>
+<li>父类父类方法抛出多个异常，子类重写父类方法时，抛出和父类方法相同的异常或者是父类异常的子类或者不抛出异常</li>
+<li>父类方法没有声明异常，子类重写时不能抛出异常。</li>
+</ul>
+<h3 id="41-自定义异常类">4.1 自定义异常类</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// 要不继续Exception，要不继承RuntimeException
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> <span style="color:#00f">class</span> <span style="color:#2b91af">RegisterException</span> <span style="color:#00f">extends</span> Exception {
+  <span style="color:#008000">// 1. 空参数构造方法
+</span><span style="color:#008000"></span>  <span style="color:#00f">public</span> RegisterException() {
+  }
+
+  <span style="color:#008000">// 2. 带异常信息的构造方法
+</span><span style="color:#008000"></span>  <span style="color:#00f">public</span> RegisterException(String msg) {
+    <span style="color:#00f">super</span>(msg);
+  }
+}
 </code></pre></div><h2 id="5-其它">5. 其它</h2>
 <h3 id="51-可变参数">5.1 可变参数</h3>
 <p>jdk1.5之后出现的新特性</p>
@@ -623,35 +645,35 @@ Map&lt;String&gt; map = Map.of(<span style="color:#a31515">&#34;k1&#34;</span>, 
 </li>
 </ul>
 
-    </article>
-  </div>
-
-  
-  <div class="pagination-single">
-    <div class="btn">
-    
-      上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/idea-keymap.html"> 
-      
-        idea常用快捷键
-      
-      </a>
-    
+      </article>
     </div>
+
+    
+    <div class="pagination-single">
       <div class="btn">
-    
-      下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html">
       
-        方便bash脚本开发的要点
+        上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/idea-keymap.html"> 
+        
+          idea常用快捷键
+        
+        </a>
       
-      </a>
-    
-    </div>
+      </div>
+        <div class="btn">
+      
+        下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html">
+        
+          方便bash脚本开发的要点
+        
+        </a>
+      
+      </div>
 
+      
+    </div>
     
   </div>
-  
-</div>
-<div id="pageScrollTop" class="page-scroll-top">
+  <div id="pageScrollTop" class="page-scroll-top">
   <span class="arr"></span>
   <span class="txt">顶部</span>
 </div>
@@ -674,6 +696,7 @@ Map&lt;String&gt; map = Map.of(<span style="color:#a31515">&#34;k1&#34;</span>, 
   });
 </script>
 
+</div>
 
       </main>
 
@@ -715,7 +738,7 @@ Map&lt;String&gt; map = Map.of(<span style="color:#a31515">&#34;k1&#34;</span>, 
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-advance.html" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-advance.html" title="服务端学习之java基础系列：语法进阶">服务端学习之java基础系列：语法进阶</a>
         
     </li>
     
@@ -727,13 +750,13 @@ Map&lt;String&gt; map = Map.of(<span style="color:#a31515">&#34;k1&#34;</span>, 
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/java/javase/syntax-basic.html" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html" title="服务端学习之java基础系列：反射">服务端学习之java基础系列：反射</a>
         
     </li>
     
     <li>
         
-        <a href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html" title="60min入门mysql">60min入门mysql</a>
+        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-basic.html" title="服务端学习之java基础系列：语法基础">服务端学习之java基础系列：语法基础</a>
         
     </li>
     
