@@ -6,7 +6,25 @@
     <description>Recent content in Posts on 林三木的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 25 Dec 2020 16:43:35 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 14:42:56 +0000</lastBuildDate><atom:link href="https://linjiasen63.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端面试系列：浏览器输入url到网页展示期间发生了什么？</title>
+      <link>https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html</link>
+      <pubDate>Tue, 29 Dec 2020 14:42:56 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html</guid>
+      <description>1. 概要流程  DNS查找，确定地址 三次握手，建立链接 客户端发送请求 服务端返回响应 浏览器解析内容  2. 详细解释 2.1 DNS查找，确定地址  依次向浏览器、操作系统、路由器询问：是否知道域名对应的DNS地址，若知道则进行三次握手； 否则向本地local DNS服务器询问，若知道则进行三次握手； 否则向运营商DNS询问根DNS的地址，之后向根DNS，询问域名对应的服务商  2.2 三次握手，建立链接 2.3 客户端发送请求 2.4 服务端返回响应 2.5 浏览器解析内容 </description>
+    </item>
+    
+    <item>
+      <title>服务端学习之java基础系列：反射</title>
+      <link>https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html</link>
+      <pubDate>Tue, 29 Dec 2020 13:58:31 +0000</pubDate>
+      
+      <guid>https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>方便bash脚本开发的要点</title>
       <link>https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html</link>
@@ -36,15 +54,6 @@ SimpleDateFormat dateFormat = new SimpleDateFormat(&amp;#34;yyyy-MM-dd HH:mm:ss&
       
       <guid>https://linjiasen63.github.io/posts/programming/java/idea-keymap.html</guid>
       <description>   mac快捷键 win快捷键 具休功能描述     option + / alt + / 代码提示（自定义配置）   option + enter alt + enter 自动导包、或声明变量（光标需停留在相应的类名上）   command + X ctrl + Y 删除光标所在行   command + D ctrl + D 复制光标所在行，插入到光标位置下方   command + option + L ctrl + alt + L 格式化代码   command + / ctrl + / 单行注释，再按取消注释   command + shift + / ctrl + shift + / 注释选中代码，再按取消注释   command + N alt + ins 自动生成代码，如get、set等方法   option + shift + ↑或↓ alt + shift + ↑或↓ 向上或向下移动光标所在行   shift + F6 shift + F6 重命名    </description>
-    </item>
-    
-    <item>
-      <title>服务端学习之java基础系列：反射</title>
-      <link>https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html</link>
-      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html</guid>
-      <description></description>
     </item>
     
     <item>

@@ -14,7 +14,7 @@
   <meta name="keyword" content="" />
 
   <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>Posts</title>
+  <title>前端面试系列：浏览器输入url到网页展示期间发生了什么？</title>
 
   <link rel="canonical" href="/" />
 <link href="/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css" rel="stylesheet">
@@ -80,183 +80,95 @@ function toggleNavbarmenu(ele) {
       <main class="site-main">
       
 <div class="site-main-wrapper">
-  <div>
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html">
-    <div class="article-title">
-      
-        60min入门mysql
-      
+  <div class="single-post">
+    <div>
+      <article id="content" class="md-render">
+        
+        <h1 id="title" class="title">前端面试系列：浏览器输入url到网页展示期间发生了什么？</h1>
+        
+        
+          
+          <h2 class="">目录</h2>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-概要流程">1. 概要流程</a></li>
+    <li><a href="#2-详细解释">2. 详细解释</a>
+      <ul>
+        <li><a href="#21-dns查找确定地址">2.1 DNS查找，确定地址</a></li>
+        <li><a href="#22-三次握手建立链接">2.2 三次握手，建立链接</a></li>
+        <li><a href="#23-客户端发送请求">2.3 客户端发送请求</a></li>
+        <li><a href="#24-服务端返回响应">2.4 服务端返回响应</a></li>
+        <li><a href="#25-浏览器解析内容">2.5 浏览器解析内容</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+          
+        
+        <h2 id="1-概要流程">1. 概要流程</h2>
+<ul>
+<li>DNS查找，确定地址</li>
+<li>三次握手，建立链接</li>
+<li>客户端发送请求</li>
+<li>服务端返回响应</li>
+<li>浏览器解析内容</li>
+</ul>
+<h2 id="2-详细解释">2. 详细解释</h2>
+<h3 id="21-dns查找确定地址">2.1 DNS查找，确定地址</h3>
+<ol>
+<li>依次向浏览器、操作系统、路由器询问：是否知道域名对应的DNS地址，若知道则进行三次握手；</li>
+<li>否则向本地local DNS服务器询问，若知道则进行三次握手；</li>
+<li>否则向运营商DNS询问根DNS的地址，之后向根DNS，询问域名对应的服务商</li>
+</ol>
+<h3 id="22-三次握手建立链接">2.2 三次握手，建立链接</h3>
+<h3 id="23-客户端发送请求">2.3 客户端发送请求</h3>
+<h3 id="24-服务端返回响应">2.4 服务端返回响应</h3>
+<h3 id="25-浏览器解析内容">2.5 浏览器解析内容</h3>
+
+      </article>
     </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
 
     
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html">
-    <div class="article-title">
+    <div class="pagination-single">
+      <div class="btn">
       
-        基于js的正则表达式入门教程
+        上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html"> 
+        
+          服务端学习之java基础系列：反射
+        
+        </a>
       
-    </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
+      </div>
+        <div class="btn">
+      
+      </div>
 
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic.html">
-    <div class="article-title">
-      
-        快速掌握Linux基本命令
       
     </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/linux/job-bash-usage.html">
-    <div class="article-title">
-      
-        日常工作中关于Linux常用命令的汇总
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月15日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-basic.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：语法基础
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月23日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/idea-keymap.html">
-    <div class="article-title">
-      
-        idea常用快捷键
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月25日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html">
-    <div class="article-title">
-      
-        方便bash脚本开发的要点
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月25日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-advance.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：语法进阶
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月26日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html">
-    <div class="article-title">
-      
-        服务端学习之java基础系列：反射
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
-    
-      <article class="article-item">
-  <a class="article-item-wrapper" href="https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html">
-    <div class="article-title">
-      
-        前端面试系列：浏览器输入url到网页展示期间发生了什么？
-      
-    </div>
-    <div class="article-info">
-      <span>2020年12月29日 </span>
-    </div>
-    <div class="article-footer">
-      <div class="article-more">查看全文</div>
-    </div>
-  </a>
-</article>
-
     
   </div>
-  
+  <div id="pageScrollTop" class="page-scroll-top">
+  <span class="arr"></span>
+  <span class="txt">顶部</span>
+</div>
 
-  
+<script>
+  var $pageScrollTop = $("#pageScrollTop");
+  $pageScrollTop.hide();
+  $pageScrollTop.on('click', function() {
+    $('html,body').animate({scrollTop: '0px'}, 300);;
+  });
+  $(document).scroll(function () {
+    var scroTop = $(document).scrollTop();
+    var contentHeight = $(document).height();
 
+    if (scroTop > contentHeight * 0.2) {
+      $pageScrollTop.show();
+    } else {
+      $pageScrollTop.hide();
+    }
+  });
+</script>
 
 </div>
 
