@@ -1,140 +1,19 @@
-
-
-<!DOCTYPE html>
-<html class="theme-light">
-  
-  <head lang="zh-cn" >
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="生活足迹" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <meta name="keyword" content="" />
-
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>基于js的正则表达式入门教程</title>
-
-  <link rel="canonical" href="/" />
-<link href="/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css" rel="stylesheet">
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="/gitalk/gitalk.css">
-  <script src="/gitalk/gitalk.min.js"></script>
-
-</head>
-
-
-  <body>
-    
-    <header class="site-header">
-      <div class="site-wrapper">
-      <nav class="site-navbar ">
-  <a class="site-navbar-brand" href="/">林三木</a>
- 
-  <div class="site-navbar-menu" onclick="toggleNavbarmenu(this)">
-    <div class="icon"></div>
-  </div>
-  <div class="site-navbar-collapse" id="site-navbarText" onclick="toggleNavbarmenu(this)">
-    <span class="site-navbar-text none"></span>
-    <ul class="site-navbar-nav">
-      
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/about.html">关于</a>
-      </li>
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/archives.html">归档</a>
-      </li>
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/">首页</a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-
-<script>
-function toggleNavbarmenu(ele) {
-  var $parent = $(ele).parent();
-  var className = 'site-navbar-open';
-  if ($parent.hasClass(className)) {
-    $parent.removeClass(className);
-  } else{
-    $parent.addClass(className);
-  }
-}
-</script>
-
-
-      </div>
-    </header>
- 
-
-    
-    <div class="site-body">
-     <div class="site-wrapper clearfix">
-      
-      <main class="site-main">
-      
-<div class="site-main-wrapper">
-  <div class="single-post">
-    <div>
-      <article id="content" class="md-render">
-        
-        <h1 id="title" class="title">基于js的正则表达式入门教程</h1>
-        
-        
-          
-          <h2 class="">目录</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#参考资料">参考资料</a></li>
-    <li><a href="#1-精确匹配标识符">1. 精确匹配（标识符）</a></li>
-    <li><a href="#2-横向模糊匹配">2. 横向模糊匹配</a></li>
-    <li><a href="#3-纵向模糊匹配">3. 纵向模糊匹配</a>
-      <ul>
-        <li><a href="#31-简写形式">3.1 简写形式</a></li>
-      </ul>
-    </li>
-    <li><a href="#4-位置">4. 位置</a></li>
-    <li><a href="#5-分组">5. 分组</a>
-      <ul>
-        <li><a href="#51-正则前瞻--与-非捕获性分组">5.1 正则前瞻： ?= 与 非捕获性分组：?:</a></li>
-      </ul>
-    </li>
-    <li><a href="#6-分支">6. 分支</a></li>
-  </ul>
-</nav>
-          
-        
-        <h2 id="参考资料">参考资料</h2>
-<ul>
-<li><a href="https://mp.weixin.qq.com/s/tTnStR6BiAHihnaNlXBB1Q">正则极简教程，再也不会学了忘</a></li>
-</ul>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 结构：/pattern/flag</span>
-<span style="color:#008000"># pattern = 模式 </span>
-<span style="color:#008000"># flag = 标识符</span>
-</code></pre></div><h2 id="1-精确匹配标识符">1. 精确匹配（标识符）</h2>
-<p>标识符</p>
-<pre><code class="language-code" data-lang="code">i : 忽略大小写
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>基于js的正则表达式入门教程</title><link rel=canonical href=/><link href=/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/about.html>关于</a></li><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>基于js的正则表达式入门教程</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#参考资料>参考资料</a></li><li><a href=#1-精确匹配标识符>1. 精确匹配（标识符）</a></li><li><a href=#2-横向模糊匹配>2. 横向模糊匹配</a></li><li><a href=#3-纵向模糊匹配>3. 纵向模糊匹配</a><ul><li><a href=#31-简写形式>3.1 简写形式</a></li></ul></li><li><a href=#4-位置>4. 位置</a></li><li><a href=#5-分组>5. 分组</a><ul><li><a href=#51-正则前瞻--与-非捕获性分组>5.1 正则前瞻： ?= 与 非捕获性分组：?:</a></li></ul></li><li><a href=#6-分支>6. 分支</a></li></ul></nav><h2 id=参考资料>参考资料</h2><ul><li><a href=https://mp.weixin.qq.com/s/tTnStR6BiAHihnaNlXBB1Q>正则极简教程，再也不会学了忘</a></li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:green># 结构：/pattern/flag</span>
+<span style=color:green># pattern = 模式 </span>
+<span style=color:green># flag = 标识符</span>
+</code></pre></div><h2 id=1-精确匹配标识符>1. 精确匹配（标识符）</h2><p>标识符</p><pre><code class=language-code data-lang=code>i : 忽略大小写
 g : 全局查找
 m : 多行查找
 u : 支持unicode
-</code></pre><h2 id="2-横向模糊匹配">2. 横向模糊匹配</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#a31515">/p{m, n}/</span>
-</code></pre></div><pre><code class="language-code" data-lang="code">* : { 0, } 匹配0个或多个
+</code></pre><h2 id=2-横向模糊匹配>2. 横向模糊匹配</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js> <span style=color:#a31515>/p{m, n}/</span>
+</code></pre></div><pre><code class=language-code data-lang=code>* : { 0, } 匹配0个或多个
 + : { 1, } 匹配1个或多个
 ? : { 0, 1 } 匹配0个或1个
     有两个含义：1. 惰性模式 2. 量词；区分方法：量词之后的?才表示惰性匹配
 { m } : { m, m } 匹配m个
-</code></pre><h2 id="3-纵向模糊匹配">3. 纵向模糊匹配</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#008000">// 匹配 apple或Apple
-</span><span style="color:#008000"></span><span style="color:#a31515">/[aA]pple/</span>
-</code></pre></div><h3 id="31-简写形式">3.1 简写形式</h3>
-<pre><code class="language-code" data-lang="code">.  等价于 [^\n\r\u2018\u2029]
+</code></pre><h2 id=3-纵向模糊匹配>3. 纵向模糊匹配</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// 匹配 apple或Apple
+</span><span style=color:green></span><span style=color:#a31515>/[aA]pple/</span>
+</code></pre></div><h3 id=31-简写形式>3.1 简写形式</h3><pre><code class=language-code data-lang=code>.  等价于 [^\n\r\u2018\u2029]
 
 \d 等价于 [0-9]
 \D 等价于 [^0-9]
@@ -144,8 +23,7 @@ u : 支持unicode
 
 \s 等价于 [\t\v\n\r\f]；表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符等。记忆方式：s是space character的首字母
 \S 等价于 [^\t\v\n\r\f]；表示非空白字符
-</code></pre><h2 id="4-位置">4. 位置</h2>
-<pre><code class="language-code" data-lang="code">^ : 文本开头
+</code></pre><h2 id=4-位置>4. 位置</h2><pre><code class=language-code data-lang=code>^ : 文本开头
 $ : 文本结尾
 
  \b : 单词边界（一边是单词字符，一边是非单词字符）
@@ -153,241 +31,20 @@ $ : 文本结尾
 
 (?=p)  : 模式p之前的位置
 (?&lt;=p) : 模式p之后的位置
-</code></pre><p>对于字符串“Hello world”，<code>/(?=wor)[\s\S]*/</code> 匹配的内容为: world；<code>/(?&lt;=wor)[\s\S]*/</code> 匹配的内容为: ld</p>
-<h2 id="5-分组">5. 分组</h2>
-<p>字符串 &ldquo;meet&rdquo;，如果想要匹配&quot;ee&quot;，正则表达式为：</p>
-<pre><code>/(e)\1/
-</code></pre><p>不同编程中应用</p>
-<ul>
-<li>js 使用 ${number} 获取相应的分组。如$1、$2等</li>
-</ul>
-<h3 id="51-正则前瞻--与-非捕获性分组">5.1 正则前瞻： ?= 与 非捕获性分组：?:</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00f">const</span> data = <span style="color:#a31515">&#39;mac 98 is ok&#39;</span>;
-<span style="color:#008000">// 普通匹配 [&#34;mac 98&#34;, &#34;98&#34;]
-</span><span style="color:#008000"></span>data.match(<span style="color:#a31515">/mac (\d+)/</span>);
+</code></pre><p>对于字符串“Hello world”，<code>/(?=wor)[\s\S]*/</code> 匹配的内容为: world；<code>/(?&lt;=wor)[\s\S]*/</code> 匹配的内容为: ld</p><h2 id=5-分组>5. 分组</h2><p>字符串 &ldquo;meet&rdquo;，如果想要匹配"ee"，正则表达式为：</p><pre><code>/(e)\1/
+</code></pre><p>不同编程中应用</p><ul><li>js 使用 ${number} 获取相应的分组。如$1、$2等</li></ul><h3 id=51-正则前瞻--与-非捕获性分组>5.1 正则前瞻： ?= 与 非捕获性分组：?:</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>const</span> data = <span style=color:#a31515>&#39;mac 98 is ok&#39;</span>;
+<span style=color:green>// 普通匹配 [&#34;mac 98&#34;, &#34;98&#34;]
+</span><span style=color:green></span>data.match(<span style=color:#a31515>/mac (\d+)/</span>);
 
-<span style="color:#008000">// 正则前瞻：匹配 [&#34;mac&#34;]
-</span><span style="color:#008000"></span>data.match(<span style="color:#a31515">/mac (?=\d+)/</span>); 
+<span style=color:green>// 正则前瞻：匹配 [&#34;mac&#34;]
+</span><span style=color:green></span>data.match(<span style=color:#a31515>/mac (?=\d+)/</span>); 
 
-<span style="color:#008000">// 非捕获性分组：匹配 [&#34;mac 98&#34;]
-</span><span style="color:#008000"></span>data.match(<span style="color:#a31515">/mac (?:\d+)/</span>);
-</code></pre></div><h2 id="6-分支">6. 分支</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a31515">/you|your/</span>
-</code></pre></div><p>以上正则表达式匹配字符串&quot;your&quot;时，只会匹配到&quot;you&quot;</p>
-
-      </article>
-    </div>
-
-    
-    <div class="pagination-single">
-      <div class="btn">
-      
-        上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic.html"> 
-        
-          快速掌握Linux基本命令
-        
-        </a>
-      
-      </div>
-        <div class="btn">
-      
-        下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html">
-        
-          60min入门mysql
-        
-        </a>
-      
-      </div>
-
-      
-    </div>
-    
-  </div>
-  <div id="pageScrollTop" class="page-scroll-top">
-  <span class="arr"></span>
-  <span class="txt">顶部</span>
-</div>
-
-<script>
-  var $pageScrollTop = $("#pageScrollTop");
-  $pageScrollTop.hide();
-  $pageScrollTop.on('click', function() {
-    $('html,body').animate({scrollTop: '0px'}, 300);;
-  });
-  $(document).scroll(function () {
-    var scroTop = $(document).scrollTop();
-    var contentHeight = $(document).height();
-
-    if (scroTop > contentHeight * 0.2) {
-      $pageScrollTop.show();
-    } else {
-      $pageScrollTop.hide();
-    }
-  });
-</script>
-
-</div>
-
-      </main>
-
-      
-      <aside class="site-aside">
-        <section class="widget">
-  <form
-  id="search"
-  action='
-    
-      https://linjiasen63.github.io/search.html
-    '
-  method="get"
-  accept-charset="utf-8"
-  target="_blank"
-  _lpchecked="1"
->
-  
-  <input type="text" name="wd" maxlength="20" placeholder="Search" />
-  <input type="hidden" name="sitesearch" value="https://linjiasen63.github.io" />
-  <button type="submit" class="submit icon-search">搜索</button>
-</form>
-
-</section>
-
-<section class="widget">
-  
-
-<h3 class="widget-title">
-    <a href='/'>最新内容</a>
-</h3>
-<ul class="widget-list">
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/functional.html" title="服务端学习之java基础系列：函数式编程">服务端学习之java基础系列：函数式编程</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html" title="前端面试系列：浏览器输入url到网页展示期间发生了什么？">前端面试系列：浏览器输入url到网页展示期间发生了什么？</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html" title="服务端学习之java基础系列：反射">服务端学习之java基础系列：反射</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html" title="服务端学习之java基础系列：网络请求">服务端学习之java基础系列：网络请求</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
-        
-    </li>
-    
-</ul>
-</section>
-
-
-<section class="widget">
-  <h3 class="widget-title">
-  <a href='/categories.html'>内容分类</a>
-</h3>
-<ul class="widget-list">
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html">
-    编码人生 
-    </a>
-  </li>
-  
-</ul>
-
-</section>
-
-
-
-<section class="widget">
-  <h3 class="widget-title">
-  <a href='/tags.html'>内容标签</a>
-</h3>
-<ul class="widget-list">
-  
-  <li>
-    <a href="https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html">
-    java学习
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html">
-    前端面试
-    </a>
-  </li>
-  
-</ul>
-
-</section>
-
-
-      </aside>
-     </div>
-    </div>
-
-    
-    
-    <footer class="site-footer">
-      <div>
-  &copy; 2020
-  <a href="https://linjiasen63.github.io">
-    林三木的博客 By linjiasen63
-  </a>
-  
-</div>
-
-
- 
-  
- 
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/mermaid.min.js"></script>
-<script>
-  Array.from(document.getElementsByClassName("language-mermaid")).forEach(function (el) {
-      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
-  });
-  mermaid.initialize({ startOnLoad: true });
-
-  // 更新流程图中条件框的样式
-  setTimeout(function() {
-    Array.from(document.getElementsByTagName("polygon")).forEach(function (el) {
-      
-      var nodeValue = el.attributes.transform.nodeValue;
-      nodeValue = nodeValue.replace(/\d\d*\.?\d*/ig, function(num) {
-        console.log(num);
-        return num + 'px';
-      });
-      console.log(nodeValue, $(el));
-      $(el).css('transform', 'scaleY(0.68) ' + nodeValue);
-    });
-  }, 100)
-  
-</script>
-
-
-
-
-    </footer>
-    
-  </body>
-</html>
+<span style=color:green>// 非捕获性分组：匹配 [&#34;mac 98&#34;]
+</span><span style=color:green></span>data.match(<span style=color:#a31515>/mac (?:\d+)/</span>);
+</code></pre></div><h2 id=6-分支>6. 分支</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a31515>/you|your/</span>
+</code></pre></div><p>以上正则表达式匹配字符串"your"时，只会匹配到"you"</p></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/linux/bash-usage-basic.html>
+快速掌握Linux基本命令</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/mysql/tutorial-basic.html>
+60min入门mysql</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/functional.html title=服务端学习之java基础系列：函数式编程>服务端学习之java基础系列：函数式编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html title=前端面试系列：浏览器输入url到网页展示期间发生了什么？>前端面试系列：浏览器输入url到网页展示期间发生了什么？</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=服务端学习之java基础系列：反射>服务端学习之java基础系列：反射</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html title=服务端学习之java基础系列：网络请求>服务端学习之java基础系列：网络请求</a></li><li><a href=https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html title=方便bash脚本开发的要点>方便bash脚本开发的要点</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2020
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>

@@ -1,930 +1,398 @@
-
-
-<!DOCTYPE html>
-<html class="theme-light">
-  
-  <head lang="zh-cn" >
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="生活足迹" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <meta name="keyword" content="" />
-
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"></link>
-  <title>60min入门mysql</title>
-
-  <link rel="canonical" href="/" />
-<link href="/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css" rel="stylesheet">
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="/gitalk/gitalk.css">
-  <script src="/gitalk/gitalk.min.js"></script>
-
-</head>
-
-
-  <body>
-    
-    <header class="site-header">
-      <div class="site-wrapper">
-      <nav class="site-navbar ">
-  <a class="site-navbar-brand" href="/">林三木</a>
- 
-  <div class="site-navbar-menu" onclick="toggleNavbarmenu(this)">
-    <div class="icon"></div>
-  </div>
-  <div class="site-navbar-collapse" id="site-navbarText" onclick="toggleNavbarmenu(this)">
-    <span class="site-navbar-text none"></span>
-    <ul class="site-navbar-nav">
-      
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/about.html">关于</a>
-      </li>
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/archives.html">归档</a>
-      </li>
-      
-      <li class="nav-item ">
-        <a class="nav-link" href="/">首页</a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-
-<script>
-function toggleNavbarmenu(ele) {
-  var $parent = $(ele).parent();
-  var className = 'site-navbar-open';
-  if ($parent.hasClass(className)) {
-    $parent.removeClass(className);
-  } else{
-    $parent.addClass(className);
-  }
-}
-</script>
-
-
-      </div>
-    </header>
- 
-
-    
-    <div class="site-body">
-     <div class="site-wrapper clearfix">
-      
-      <main class="site-main">
-      
-<div class="site-main-wrapper">
-  <div class="single-post">
-    <div>
-      <article id="content" class="md-render">
-        
-        <h1 id="title" class="title">60min入门mysql</h1>
-        
-        
-          
-          <h2 class="">目录</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-基础知识">1. 基础知识</a>
-      <ul>
-        <li><a href="#11-连接">1.1 连接</a></li>
-        <li><a href="#12-注释">1.2 注释</a></li>
-        <li><a href="#13-分类">1.3 分类</a></li>
-        <li><a href="#14-备份">1.4 备份</a></li>
-        <li><a href="#15-其它">1.5 其它</a></li>
-      </ul>
-    </li>
-    <li><a href="#2-ddl">2. DDL</a>
-      <ul>
-        <li><a href="#21-库的操作">2.1 库的操作</a></li>
-        <li><a href="#22-表的操作">2.2 表的操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#3-dml">3. DML</a>
-      <ul>
-        <li><a href="#31-插入记录">3.1 插入记录</a></li>
-        <li><a href="#32-修改记录">3.2 修改记录</a></li>
-        <li><a href="#33-删除记录">3.3 删除记录</a></li>
-      </ul>
-    </li>
-    <li><a href="#4-dql">4. DQL</a>
-      <ul>
-        <li><a href="#41-查找内容">4.1 查找内容</a></li>
-        <li><a href="#42-表的约束">4.2 表的约束</a></li>
-        <li><a href="#43-多表查询">4.3 多表查询</a></li>
-      </ul>
-    </li>
-    <li><a href="#5-dcl">5. DCL</a>
-      <ul>
-        <li><a href="#51-用户操作">5.1 用户操作</a></li>
-        <li><a href="#52-用户授权">5.2 用户授权</a></li>
-      </ul>
-    </li>
-    <li><a href="#6-事务">6. 事务</a>
-      <ul>
-        <li><a href="#61-基本用法">6.1 基本用法</a></li>
-        <li><a href="#62-四种特性">6.2 四种特性</a></li>
-        <li><a href="#63-隔离级别">6.3 隔离级别</a></li>
-      </ul>
-    </li>
-    <li><a href="#7-数据库设计">7. 数据库设计</a>
-      <ul>
-        <li><a href="#71-表的关系">7.1 表的关系</a></li>
-        <li><a href="#72-范式规范">7.2 范式规范</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-          
-        
-        <h2 id="1-基础知识">1. 基础知识</h2>
-<h3 id="11-连接">1.1 连接</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 连接mysql简写</span>
-<span style="color:#008000"># mysql -u${帐号名称} -p[${帐号密码}]</span>
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>60min入门mysql</title><link rel=canonical href=/><link href=/scss/index.min.121e4d922e7f9f42970b2cc440035cd582708c377be0caf24fce45d19037be24.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/about.html>关于</a></li><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>60min入门mysql</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-基础知识>1. 基础知识</a><ul><li><a href=#11-连接>1.1 连接</a></li><li><a href=#12-注释>1.2 注释</a></li><li><a href=#13-分类>1.3 分类</a></li><li><a href=#14-备份>1.4 备份</a></li><li><a href=#15-其它>1.5 其它</a></li></ul></li><li><a href=#2-ddl>2. DDL</a><ul><li><a href=#21-库的操作>2.1 库的操作</a></li><li><a href=#22-表的操作>2.2 表的操作</a></li></ul></li><li><a href=#3-dml>3. DML</a><ul><li><a href=#31-插入记录>3.1 插入记录</a></li><li><a href=#32-修改记录>3.2 修改记录</a></li><li><a href=#33-删除记录>3.3 删除记录</a></li></ul></li><li><a href=#4-dql>4. DQL</a><ul><li><a href=#41-查找内容>4.1 查找内容</a></li><li><a href=#42-表的约束>4.2 表的约束</a></li><li><a href=#43-多表查询>4.3 多表查询</a></li></ul></li><li><a href=#5-dcl>5. DCL</a><ul><li><a href=#51-用户操作>5.1 用户操作</a></li><li><a href=#52-用户授权>5.2 用户授权</a></li></ul></li><li><a href=#6-事务>6. 事务</a><ul><li><a href=#61-基本用法>6.1 基本用法</a></li><li><a href=#62-四种特性>6.2 四种特性</a></li><li><a href=#63-隔离级别>6.3 隔离级别</a></li></ul></li><li><a href=#7-数据库设计>7. 数据库设计</a><ul><li><a href=#71-表的关系>7.1 表的关系</a></li><li><a href=#72-范式规范>7.2 范式规范</a></li></ul></li></ul></nav><h2 id=1-基础知识>1. 基础知识</h2><h3 id=11-连接>1.1 连接</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:green># 连接mysql简写</span>
+<span style=color:green># mysql -u${帐号名称} -p[${帐号密码}]</span>
 mysql -uroot -p
-<span style="color:#008000"># 连接mysql全写</span>
-<span style="color:#008000"># mysql --user=${帐号名称} --password[=${帐号密码}]</span>
+<span style=color:green># 连接mysql全写</span>
+<span style=color:green># mysql --user=${帐号名称} --password[=${帐号密码}]</span>
 mysql --user=root --password
-<span style="color:#008000"># 指定mysql的ip 或 port</span>
-<span style="color:#008000"># mysql [-h${服务器ip地址}] [-P${服务器端口}] -u${帐号名称} -p[${帐号密码}]</span>
+<span style=color:green># 指定mysql的ip 或 port</span>
+<span style=color:green># mysql [-h${服务器ip地址}] [-P${服务器端口}] -u${帐号名称} -p[${帐号密码}]</span>
 mysql -h49.233.143.65 -P3306 -uroot -p
-</code></pre></div><h3 id="12-注释">1.2 注释</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 单行注释
-</span><span style="color:#008000"></span>
-# <span style="">单行注释</span>
+</code></pre></div><h3 id=12-注释>1.2 注释</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 单行注释
+</span><span style=color:green></span>
+# <span>单行注释</span>
 
-<span style="color:#008000">/* 块注释 */</span>
-</code></pre></div><h3 id="13-分类">1.3 分类</h3>
-<ul>
-<li>DDL：数据定义语言。如定义数据库以及表结构等</li>
-<li>DML：数据操作语言。如添加、创建、删除数据库以及表的记录等</li>
-<li>DQL：数据查询语言。如查询数据库以及表的记录等</li>
-<li>DCL：数据控制语言。如授权GRANK等</li>
-<li>数据库使用相关语言。如<code>USE ${数据库名称};</code> 或 <code>show DATABASES;</code>等语句</li>
-</ul>
-<h3 id="14-备份">1.4 备份</h3>
-<h4 id="141-命令行">1.4.1 命令行</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 一、备份
-</span><span style="color:#008000">-- mysqldump -u${帐号} -p${密码} ${数据库名} &gt; ${备份文件的位置}
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 二、恢复
-</span><span style="color:#008000">-- 1. 登录数据库管理系统
-</span><span style="color:#008000">-- 2. 创建指定名称数据库
-</span><span style="color:#008000">-- 3. 使用数据库
-</span><span style="color:#008000">-- 4. 恢复数据
-</span><span style="color:#008000">-- source ${备份文件的位置}
-</span></code></pre></div><h3 id="15-其它">1.5 其它</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 输出所有系统变量
-</span><span style="color:#008000"></span><span style="color:#00f">show</span> variables;
-</code></pre></div><h2 id="2-ddl">2. DDL</h2>
-<h3 id="21-库的操作">2.1 库的操作</h3>
-<h4 id="211-增加create">2.1.1 增加：create</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 直接创建数据库
-</span><span style="color:#008000">-- create database ${数据库名称};
-</span><span style="color:#008000">-- 如果不存在创建
-</span><span style="color:#008000">-- create database if not exists ${数据库名称};
-</span><span style="color:#008000">-- 创建并指定字符集
-</span><span style="color:#008000">-- create database ${数据库名称} character set ${字符集：如gbk、utf8mb4等};
-</span></code></pre></div><h4 id="212-读取retrieve">2.1.2 读取：Retrieve</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 查询所有的数据库（输出名称列表）
-</span><span style="color:#008000"></span><span style="color:#00f">show</span> databases;
-<span style="color:#008000">-- 查询指定的数据库（输出详细属性）
-</span><span style="color:#008000">-- show create database ${数据库名称};
-</span><span style="color:#008000">-- 查询当前的数据库（输出正在使用的数据库名称）
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> <span style="color:#00f">database</span>();
-</code></pre></div><h4 id="213-更新update">2.1.3 更新：Update</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 修改数据库字符集
-</span><span style="color:#008000">-- alter database ${数据库名称} character set ${字符集：如gbk、utf8mb4等};
-</span></code></pre></div><h4 id="214-删除delete">2.1.4 删除：Delete</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 直接删除指定的数据库
-</span><span style="color:#008000">-- drop database ${数据库名称};
-</span><span style="color:#008000">-- 指定的数据库如果存在则删除
-</span><span style="color:#008000">-- drop database if exists ${数据库名称};
-</span></code></pre></div><h3 id="22-表的操作">2.2 表的操作</h3>
-<h4 id="211-增加create-1">2.1.1 增加：create</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 创建新的表
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   ${列名1} ${数据类型1},
-</span><span style="color:#008000">--   ${列名2} ${数据类型2},
-</span><span style="color:#008000">--   ...
-</span><span style="color:#008000">--   ${列名n} ${数据类型n},
-</span><span style="color:#008000">--   [${其它，如主外键约束等}]
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000">-- 除了最后一行外其它内容的结尾都需要加上“,”
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 根据已有的表去创建新的表（即复制）
-</span><span style="color:#008000">-- create table ${新的表名} like ${已有表名};
-</span></code></pre></div><p>表中字段常见的数据类型</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 字符类型
-</span><span style="color:#008000">-- varchar(${最大长度})
-</span><span style="color:#008000">-- character(${指定长度})
-</span><span style="color:#008000"></span>  
-<span style="color:#008000">-- 整数类型
-</span><span style="color:#008000">-- tinyint
-</span><span style="color:#008000">-- smallint
-</span><span style="color:#008000">-- int
-</span><span style="color:#008000">-- long
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 浮点类型
-</span><span style="color:#008000">-- float(${长度}, ${保留多少位小数})
-</span><span style="color:#008000">-- double(${长度}, ${保留多少位小数})
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 时间类型
-</span><span style="color:#008000">-- date `yyyy-MM-dd`
-</span><span style="color:#008000">-- datetime `yyyy-MM-dd HH:mm:ss`
-</span><span style="color:#008000">-- timestamp`yyyy-MM-dd HH:mm:ss`（没有指定值或赋值为NULL时使用默认值当前时间）
-</span></code></pre></div><h4 id="212-读取retrieve-1">2.1.2 读取：Retrieve</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 查看当前数据库的所有表
-</span><span style="color:#008000"></span><span style="color:#00f">show</span> tables;
-<span style="color:#008000">-- 查看指定表的具体结构
-</span><span style="color:#008000">-- desc ${表名};
-</span><span style="color:#008000">-- 查看指定表的字符集
-</span><span style="color:#008000">-- show create table ${表名};
-</span></code></pre></div><h4 id="213-更新update-1">2.1.3 更新：Update</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 添加一列
-</span><span style="color:#008000">-- alter table ${表名} add ${列名} ${数据类型}
-</span><span style="color:#008000">-- 修改列名与列类型
-</span><span style="color:#008000">-- alter table ${表名} change ${列名} ${新的列名} ${新的列类型};
-</span><span style="color:#008000">-- 修改列类型
-</span><span style="color:#008000">-- alter table ${表名} modify ${列名} ${新的列类型};
-</span><span style="color:#008000">-- 删除列
-</span><span style="color:#008000">-- alter table ${表名} drop ${列名};
-</span><span style="color:#008000"></span>
+<span style=color:green>/* 块注释 */</span>
+</code></pre></div><h3 id=13-分类>1.3 分类</h3><ul><li>DDL：数据定义语言。如定义数据库以及表结构等</li><li>DML：数据操作语言。如添加、创建、删除数据库以及表的记录等</li><li>DQL：数据查询语言。如查询数据库以及表的记录等</li><li>DCL：数据控制语言。如授权GRANK等</li><li>数据库使用相关语言。如<code>USE ${数据库名称};</code> 或 <code>show DATABASES;</code>等语句</li></ul><h3 id=14-备份>1.4 备份</h3><h4 id=141-命令行>1.4.1 命令行</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 一、备份
+</span><span style=color:green>-- mysqldump -u${帐号} -p${密码} ${数据库名} &gt; ${备份文件的位置}
+</span><span style=color:green></span>
+<span style=color:green>-- 二、恢复
+</span><span style=color:green>-- 1. 登录数据库管理系统
+</span><span style=color:green>-- 2. 创建指定名称数据库
+</span><span style=color:green>-- 3. 使用数据库
+</span><span style=color:green>-- 4. 恢复数据
+</span><span style=color:green>-- source ${备份文件的位置}
+</span></code></pre></div><h3 id=15-其它>1.5 其它</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 输出所有系统变量
+</span><span style=color:green></span><span style=color:#00f>show</span> variables;
+</code></pre></div><h2 id=2-ddl>2. DDL</h2><h3 id=21-库的操作>2.1 库的操作</h3><h4 id=211-增加create>2.1.1 增加：create</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 直接创建数据库
+</span><span style=color:green>-- create database ${数据库名称};
+</span><span style=color:green>-- 如果不存在创建
+</span><span style=color:green>-- create database if not exists ${数据库名称};
+</span><span style=color:green>-- 创建并指定字符集
+</span><span style=color:green>-- create database ${数据库名称} character set ${字符集：如gbk、utf8mb4等};
+</span></code></pre></div><h4 id=212-读取retrieve>2.1.2 读取：Retrieve</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 查询所有的数据库（输出名称列表）
+</span><span style=color:green></span><span style=color:#00f>show</span> databases;
+<span style=color:green>-- 查询指定的数据库（输出详细属性）
+</span><span style=color:green>-- show create database ${数据库名称};
+</span><span style=color:green>-- 查询当前的数据库（输出正在使用的数据库名称）
+</span><span style=color:green></span><span style=color:#00f>select</span> <span style=color:#00f>database</span>();
+</code></pre></div><h4 id=213-更新update>2.1.3 更新：Update</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 修改数据库字符集
+</span><span style=color:green>-- alter database ${数据库名称} character set ${字符集：如gbk、utf8mb4等};
+</span></code></pre></div><h4 id=214-删除delete>2.1.4 删除：Delete</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 直接删除指定的数据库
+</span><span style=color:green>-- drop database ${数据库名称};
+</span><span style=color:green>-- 指定的数据库如果存在则删除
+</span><span style=color:green>-- drop database if exists ${数据库名称};
+</span></code></pre></div><h3 id=22-表的操作>2.2 表的操作</h3><h4 id=211-增加create-1>2.1.1 增加：create</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 创建新的表
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   ${列名1} ${数据类型1},
+</span><span style=color:green>--   ${列名2} ${数据类型2},
+</span><span style=color:green>--   ...
+</span><span style=color:green>--   ${列名n} ${数据类型n},
+</span><span style=color:green>--   [${其它，如主外键约束等}]
+</span><span style=color:green>-- );
+</span><span style=color:green>-- 除了最后一行外其它内容的结尾都需要加上“,”
+</span><span style=color:green></span>
+<span style=color:green>-- 根据已有的表去创建新的表（即复制）
+</span><span style=color:green>-- create table ${新的表名} like ${已有表名};
+</span></code></pre></div><p>表中字段常见的数据类型</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 字符类型
+</span><span style=color:green>-- varchar(${最大长度})
+</span><span style=color:green>-- character(${指定长度})
+</span><span style=color:green></span>  
+<span style=color:green>-- 整数类型
+</span><span style=color:green>-- tinyint
+</span><span style=color:green>-- smallint
+</span><span style=color:green>-- int
+</span><span style=color:green>-- long
+</span><span style=color:green></span>
+<span style=color:green>-- 浮点类型
+</span><span style=color:green>-- float(${长度}, ${保留多少位小数})
+</span><span style=color:green>-- double(${长度}, ${保留多少位小数})
+</span><span style=color:green></span>
+<span style=color:green>-- 时间类型
+</span><span style=color:green>-- date `yyyy-MM-dd`
+</span><span style=color:green>-- datetime `yyyy-MM-dd HH:mm:ss`
+</span><span style=color:green>-- timestamp`yyyy-MM-dd HH:mm:ss`（没有指定值或赋值为NULL时使用默认值当前时间）
+</span></code></pre></div><h4 id=212-读取retrieve-1>2.1.2 读取：Retrieve</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 查看当前数据库的所有表
+</span><span style=color:green></span><span style=color:#00f>show</span> tables;
+<span style=color:green>-- 查看指定表的具体结构
+</span><span style=color:green>-- desc ${表名};
+</span><span style=color:green>-- 查看指定表的字符集
+</span><span style=color:green>-- show create table ${表名};
+</span></code></pre></div><h4 id=213-更新update-1>2.1.3 更新：Update</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 添加一列
+</span><span style=color:green>-- alter table ${表名} add ${列名} ${数据类型}
+</span><span style=color:green>-- 修改列名与列类型
+</span><span style=color:green>-- alter table ${表名} change ${列名} ${新的列名} ${新的列类型};
+</span><span style=color:green>-- 修改列类型
+</span><span style=color:green>-- alter table ${表名} modify ${列名} ${新的列类型};
+</span><span style=color:green>-- 删除列
+</span><span style=color:green>-- alter table ${表名} drop ${列名};
+</span><span style=color:green></span>
 
-<span style="color:#008000">-- 修改指定表的名称
-</span><span style="color:#008000">-- alter table ${表名} rename to ${新的表名};
-</span><span style="color:#008000">-- 修改指定表的字符集
-</span><span style="color:#008000">-- alter table ${表名} character set ${字符集};
-</span></code></pre></div><h4 id="214-删除delete-1">2.1.4 删除：Delete</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 直接删除指定的表
-</span><span style="color:#008000">-- drop table ${表名};
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 如果指定的表存在则将其删除
-</span><span style="color:#008000">-- drop table if exists ${表名};
-</span></code></pre></div><h2 id="3-dml">3. DML</h2>
-<h3 id="31-插入记录">3.1 插入记录</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- insert into ${表名}[(列名1, 列名2, ..., 列名n)] values((值1, 值2, ..., 值n));
-</span><span style="color:#008000">-- 如
-</span><span style="color:#008000"></span><span style="color:#00f">insert</span> <span style="color:#00f">into</span> student(user_name, age) <span style="color:#00f">values</span>(<span style="color:#a31515">&#39;tom01&#39;</span>, 18);
-</code></pre></div><h3 id="32-修改记录">3.2 修改记录</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- update ${表名} set ${列名1}=${值1} [, ${列名2}=${值2} [, ...]] where ${列名1}=${值1}[, ${列名2}=${值2} [, ...]];
-</span><span style="color:#008000">-- 如
-</span><span style="color:#008000"></span><span style="color:#00f">update</span> student <span style="color:#00f">set</span> user_name=<span style="color:#a31515">&#39;tom02&#39;</span>, age=20 <span style="color:#00f">where</span> age=18;
-</code></pre></div><h3 id="33-删除记录">3.3 删除记录</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 删除指定表中的指定记录
-</span><span style="color:#008000">-- delete from ${表名} where ${列名1}=${值1}[, ${列名2}=${值2} [, ...]];
-</span><span style="color:#008000"></span>
-<span style="color:#008000">-- 删除指定表中的所有记录（谨慎使用）
-</span><span style="color:#008000">-- delete from ${表名};
-</span><span style="color:#008000">-- 删除指定表并重新创建表（建议使用）
-</span><span style="color:#008000">-- truncate ${表名};
-</span></code></pre></div><h2 id="4-dql">4. DQL</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- select ${列名列表}
-</span><span style="color:#008000">-- from ${表名列表}
-</span><span style="color:#008000">-- [ where ${条件列表} ]
-</span><span style="color:#008000">-- [
-</span><span style="color:#008000">--   group by ${分组条件}
-</span><span style="color:#008000">--   [ having ${分组之后的筛选条件} ]
-</span><span style="color:#008000">-- ]
-</span><span style="color:#008000">-- [ order by ${排序条件} ]
-</span><span style="color:#008000">-- [ limit ${分页查找} ]
-</span></code></pre></div><h3 id="41-查找内容">4.1 查找内容</h3>
-<h4 id="411-基础查找">4.1.1 基础查找</h4>
-<h5 id="4111-去重">4.1.1.1 去重</h5>
-<p>distinct 去除结果集中完全相同的结果（即所有列的值完全一样）只保留一条记录</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- select distinct ${列名列表} from ${表名};
-</span></code></pre></div><h5 id="4112-别名">4.1.1.2 别名</h5>
-<p>as 后面跟着别名（AS可省略）</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- select ${列名1} [as] ${列名1的别名} [, ${列名1} [as] ${列名1的别名} ] from ${表名};
-</span></code></pre></div><h5 id="4113-计算">4.1.1.3 计算</h5>
-<p>不同列可使用四则运算（一般只有数值类型的列使用）进行组合运算。null参与运算的最终结果均为null</p>
-<p><code>ifnull(${expr1}, ${expr2}) </code> 如expr1的运算结果为null则使用expr2的运算结果代替</p>
-<h4 id="412-条件查找">4.1.2 条件查找</h4>
-<ul>
-<li>&lt;、&lt;=、&gt;、&gt;=、=、!=（或&lt;&gt;）</li>
-<li>between &hellip; and &hellip;</li>
-<li>like</li>
-<li>in</li>
-<li>and（或 &amp;&amp;）</li>
-<li>or（或 ||）</li>
-<li>not（或 !）</li>
-<li>is</li>
-</ul>
-<h5 id="4121-集合查找">4.1.2.1 集合查找</h5>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">where</span> age <span style="color:#00f">in</span> (20, 22, 24);
-</code></pre></div><h5 id="4122-模糊查找">4.1.2.2 模糊查找</h5>
-<ul>
-<li><code>%</code>：匹配任意个数的字符</li>
-<li><code>_</code>：匹配一个字符</li>
-</ul>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">where</span> name <span style="color:#00f">like</span> <span style="color:#a31515">&#39;%2&#39;</span>;
-</code></pre></div><h5 id="4123-判空查找">4.1.2.3 判空查找</h5>
-<p>判断值是否为NULL需要使用<code>is null</code>。如：<code>select * from student where name is null;</code>。非NULL则需要使用<code>is not null</code>。</p>
-<h4 id="413-排序查找">4.1.3 排序查找</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- select * from ${表名} order by ${排序列名1} [${排序类型}] [, ${排序列名2} [${排序类型}, ..., ${排序列名n} [${排序类型}] ] ]
-</span><span style="color:#008000">-- 排序类型（默认为升序）
-</span><span style="color:#008000">-- 1. 升序 asc
-</span><span style="color:#008000">-- 2. 降序 desc
-</span><span style="color:#008000"></span>
-<span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">order</span> <span style="color:#00f">by</span> age;
-</code></pre></div><h4 id="414-聚合函数">4.1.4 聚合函数</h4>
-<p>将列作为一个整体进行纵向计算。</p>
-<ul>
-<li>count()：计算数量</li>
-<li>max()：求最大值</li>
-<li>min()：求最小值</li>
-<li>avg()：求平均值</li>
-<li>sum()：求和</li>
-</ul>
-<p><strong>注意：聚合函数中空值会被跳过</strong>
-解决方法：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 筛选出非空数据进行聚合函数计算
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> <span style="color:#00f">count</span>(age) <span style="color:#00f">from</span> student <span style="color:#00f">where</span> age <span style="color:#00f">is</span> <span style="color:#00f">not</span> <span style="color:#00f">null</span>;
-<span style="color:#008000">-- 对空值使用ifnull函数赋默认值
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> <span style="color:#00f">count</span>(ifnull(age, 0)) <span style="color:#00f">from</span> student;
-</code></pre></div><h4 id="415-分组查找">4.1.5 分组查找</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- select ${分组中的某些列名} from ${表名} group by ${分组的列名列表};
-</span><span style="color:#008000"></span>
-<span style="color:#00f">select</span> name <span style="color:#00f">from</span> student <span style="color:#00f">group</span> <span style="color:#00f">by</span> name;
+<span style=color:green>-- 修改指定表的名称
+</span><span style=color:green>-- alter table ${表名} rename to ${新的表名};
+</span><span style=color:green>-- 修改指定表的字符集
+</span><span style=color:green>-- alter table ${表名} character set ${字符集};
+</span></code></pre></div><h4 id=214-删除delete-1>2.1.4 删除：Delete</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 直接删除指定的表
+</span><span style=color:green>-- drop table ${表名};
+</span><span style=color:green></span>
+<span style=color:green>-- 如果指定的表存在则将其删除
+</span><span style=color:green>-- drop table if exists ${表名};
+</span></code></pre></div><h2 id=3-dml>3. DML</h2><h3 id=31-插入记录>3.1 插入记录</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- insert into ${表名}[(列名1, 列名2, ..., 列名n)] values((值1, 值2, ..., 值n));
+</span><span style=color:green>-- 如
+</span><span style=color:green></span><span style=color:#00f>insert</span> <span style=color:#00f>into</span> student(user_name, age) <span style=color:#00f>values</span>(<span style=color:#a31515>&#39;tom01&#39;</span>, 18);
+</code></pre></div><h3 id=32-修改记录>3.2 修改记录</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- update ${表名} set ${列名1}=${值1} [, ${列名2}=${值2} [, ...]] where ${列名1}=${值1}[, ${列名2}=${值2} [, ...]];
+</span><span style=color:green>-- 如
+</span><span style=color:green></span><span style=color:#00f>update</span> student <span style=color:#00f>set</span> user_name=<span style=color:#a31515>&#39;tom02&#39;</span>, age=20 <span style=color:#00f>where</span> age=18;
+</code></pre></div><h3 id=33-删除记录>3.3 删除记录</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 删除指定表中的指定记录
+</span><span style=color:green>-- delete from ${表名} where ${列名1}=${值1}[, ${列名2}=${值2} [, ...]];
+</span><span style=color:green></span>
+<span style=color:green>-- 删除指定表中的所有记录（谨慎使用）
+</span><span style=color:green>-- delete from ${表名};
+</span><span style=color:green>-- 删除指定表并重新创建表（建议使用）
+</span><span style=color:green>-- truncate ${表名};
+</span></code></pre></div><h2 id=4-dql>4. DQL</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- select ${列名列表}
+</span><span style=color:green>-- from ${表名列表}
+</span><span style=color:green>-- [ where ${条件列表} ]
+</span><span style=color:green>-- [
+</span><span style=color:green>--   group by ${分组条件}
+</span><span style=color:green>--   [ having ${分组之后的筛选条件} ]
+</span><span style=color:green>-- ]
+</span><span style=color:green>-- [ order by ${排序条件} ]
+</span><span style=color:green>-- [ limit ${分页查找} ]
+</span></code></pre></div><h3 id=41-查找内容>4.1 查找内容</h3><h4 id=411-基础查找>4.1.1 基础查找</h4><h5 id=4111-去重>4.1.1.1 去重</h5><p>distinct 去除结果集中完全相同的结果（即所有列的值完全一样）只保留一条记录</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- select distinct ${列名列表} from ${表名};
+</span></code></pre></div><h5 id=4112-别名>4.1.1.2 别名</h5><p>as 后面跟着别名（AS可省略）</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- select ${列名1} [as] ${列名1的别名} [, ${列名1} [as] ${列名1的别名} ] from ${表名};
+</span></code></pre></div><h5 id=4113-计算>4.1.1.3 计算</h5><p>不同列可使用四则运算（一般只有数值类型的列使用）进行组合运算。null参与运算的最终结果均为null</p><p><code>ifnull(${expr1}, ${expr2})</code> 如expr1的运算结果为null则使用expr2的运算结果代替</p><h4 id=412-条件查找>4.1.2 条件查找</h4><ul><li>&lt;、&lt;=、>、>=、=、!=（或&lt;>）</li><li>between &mldr; and &mldr;</li><li>like</li><li>in</li><li>and（或 &&）</li><li>or（或 ||）</li><li>not（或 !）</li><li>is</li></ul><h5 id=4121-集合查找>4.1.2.1 集合查找</h5><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>where</span> age <span style=color:#00f>in</span> (20, 22, 24);
+</code></pre></div><h5 id=4122-模糊查找>4.1.2.2 模糊查找</h5><ul><li><code>%</code>：匹配任意个数的字符</li><li><code>_</code>：匹配一个字符</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>where</span> name <span style=color:#00f>like</span> <span style=color:#a31515>&#39;%2&#39;</span>;
+</code></pre></div><h5 id=4123-判空查找>4.1.2.3 判空查找</h5><p>判断值是否为NULL需要使用<code>is null</code>。如：<code>select * from student where name is null;</code>。非NULL则需要使用<code>is not null</code>。</p><h4 id=413-排序查找>4.1.3 排序查找</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- select * from ${表名} order by ${排序列名1} [${排序类型}] [, ${排序列名2} [${排序类型}, ..., ${排序列名n} [${排序类型}] ] ]
+</span><span style=color:green>-- 排序类型（默认为升序）
+</span><span style=color:green>-- 1. 升序 asc
+</span><span style=color:green>-- 2. 降序 desc
+</span><span style=color:green></span>
+<span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>order</span> <span style=color:#00f>by</span> age;
+</code></pre></div><h4 id=414-聚合函数>4.1.4 聚合函数</h4><p>将列作为一个整体进行纵向计算。</p><ul><li>count()：计算数量</li><li>max()：求最大值</li><li>min()：求最小值</li><li>avg()：求平均值</li><li>sum()：求和</li></ul><p><strong>注意：聚合函数中空值会被跳过</strong>
+解决方法：</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 筛选出非空数据进行聚合函数计算
+</span><span style=color:green></span><span style=color:#00f>select</span> <span style=color:#00f>count</span>(age) <span style=color:#00f>from</span> student <span style=color:#00f>where</span> age <span style=color:#00f>is</span> <span style=color:#00f>not</span> <span style=color:#00f>null</span>;
+<span style=color:green>-- 对空值使用ifnull函数赋默认值
+</span><span style=color:green></span><span style=color:#00f>select</span> <span style=color:#00f>count</span>(ifnull(age, 0)) <span style=color:#00f>from</span> student;
+</code></pre></div><h4 id=415-分组查找>4.1.5 分组查找</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- select ${分组中的某些列名} from ${表名} group by ${分组的列名列表};
+</span><span style=color:green></span>
+<span style=color:#00f>select</span> name <span style=color:#00f>from</span> student <span style=color:#00f>group</span> <span style=color:#00f>by</span> name;
 </code></pre></div><p>根据某些列名进行分组，查询的列名也只能在这些分组的列名中选择（否则没有意义）
-。</p>
-<h4 id="416-分页查找">4.1.6 分页查找</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 仅mysql支持
-</span><span style="color:#008000">-- select * from ${表名} limit [${开始索引},] ${查询数据};
-</span><span style="color:#008000"></span>
-<span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">limit</span> 0, 1;
-</code></pre></div><h3 id="42-表的约束">4.2 表的约束</h3>
-<h4 id="421-非空">4.2.1 非空</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 建表时定义非空约束
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   ${列名1} ${数据类型} not null
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000"></span><span style="color:#00f">create</span> <span style="color:#00f">table</span> student (
-  name varchar(32) <span style="color:#00f">not</span> <span style="color:#00f">null</span>
+。</p><h4 id=416-分页查找>4.1.6 分页查找</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 仅mysql支持
+</span><span style=color:green>-- select * from ${表名} limit [${开始索引},] ${查询数据};
+</span><span style=color:green></span>
+<span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>limit</span> 0, 1;
+</code></pre></div><h3 id=42-表的约束>4.2 表的约束</h3><h4 id=421-非空>4.2.1 非空</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 建表时定义非空约束
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   ${列名1} ${数据类型} not null
+</span><span style=color:green>-- );
+</span><span style=color:green></span><span style=color:#00f>create</span> <span style=color:#00f>table</span> student (
+  name varchar(32) <span style=color:#00f>not</span> <span style=color:#00f>null</span>
 );
 
-<span style="color:#008000">-- 2. 建表后添加非空约束
-</span><span style="color:#008000">-- alter table ${表名} modify ${列名} ${列类型} not null;
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> student <span style="color:#00f">modify</span> name varchar(32) <span style="color:#00f">not</span> <span style="color:#00f">null</span>;
+<span style=color:green>-- 2. 建表后添加非空约束
+</span><span style=color:green>-- alter table ${表名} modify ${列名} ${列类型} not null;
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> student <span style=color:#00f>modify</span> name varchar(32) <span style=color:#00f>not</span> <span style=color:#00f>null</span>;
 
-<span style="color:#008000">-- 3. 删除表中已有的非空约束
-</span><span style="color:#008000">-- alter table ${表名} modify ${列名} ${列类型};
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> student <span style="color:#00f">modify</span> name varchar(32);
-</code></pre></div><h4 id="422-唯一">4.2.2 唯一</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 建表时定义唯一约束
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   ${列名1} ${数据类型} unique
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000"></span><span style="color:#00f">create</span> <span style="color:#00f">table</span> student (
-  id int(11) <span style="color:#00f">unique</span>
+<span style=color:green>-- 3. 删除表中已有的非空约束
+</span><span style=color:green>-- alter table ${表名} modify ${列名} ${列类型};
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> student <span style=color:#00f>modify</span> name varchar(32);
+</code></pre></div><h4 id=422-唯一>4.2.2 唯一</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 建表时定义唯一约束
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   ${列名1} ${数据类型} unique
+</span><span style=color:green>-- );
+</span><span style=color:green></span><span style=color:#00f>create</span> <span style=color:#00f>table</span> student (
+  id int(11) <span style=color:#00f>unique</span>
 );
 
-<span style="color:#008000">-- 2. 建表后添加唯一约束
-</span><span style="color:#008000">-- alter table ${表名} modify ${列名} ${列类型} unique;
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> student <span style="color:#00f">modify</span> id int(11) <span style="color:#00f">unique</span>;
+<span style=color:green>-- 2. 建表后添加唯一约束
+</span><span style=color:green>-- alter table ${表名} modify ${列名} ${列类型} unique;
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> student <span style=color:#00f>modify</span> id int(11) <span style=color:#00f>unique</span>;
 
-<span style="color:#008000">-- 3. 删除表中已有的唯一约束
-</span><span style="color:#008000">-- alter table ${表名} drop index ${列名};
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> student <span style="color:#00f">drop</span> <span style="color:#00f">index</span> id;
-</code></pre></div><h4 id="423-主键">4.2.3 主键</h4>
-<ul>
-<li>非空且唯一</li>
-<li>一个表中只能有一个主键（一条记录的唯一标识）</li>
-</ul>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 建表时定义主键
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   ${列名1} ${数据类型} primary key
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000">-- 或
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   ${列名1} ${数据类型},
-</span><span style="color:#008000">--   primary key(列名1)
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">create</span> <span style="color:#00f">table</span> student (
-  id int(11) <span style="color:#00f">primary</span> <span style="color:#00f">key</span>
+<span style=color:green>-- 3. 删除表中已有的唯一约束
+</span><span style=color:green>-- alter table ${表名} drop index ${列名};
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> student <span style=color:#00f>drop</span> <span style=color:#00f>index</span> id;
+</code></pre></div><h4 id=423-主键>4.2.3 主键</h4><ul><li>非空且唯一</li><li>一个表中只能有一个主键（一条记录的唯一标识）</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 建表时定义主键
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   ${列名1} ${数据类型} primary key
+</span><span style=color:green>-- );
+</span><span style=color:green>-- 或
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   ${列名1} ${数据类型},
+</span><span style=color:green>--   primary key(列名1)
+</span><span style=color:green>-- );
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>create</span> <span style=color:#00f>table</span> student (
+  id int(11) <span style=color:#00f>primary</span> <span style=color:#00f>key</span>
 );
 
-<span style="color:#008000">-- 2. 建表后添加主键
-</span><span style="color:#008000">-- alter table ${表名} modify ${列名} ${列类型} primary key;
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> stu01 <span style="color:#00f">modify</span> id int(11) <span style="color:#00f">primary</span> <span style="color:#00f">key</span>;
+<span style=color:green>-- 2. 建表后添加主键
+</span><span style=color:green>-- alter table ${表名} modify ${列名} ${列类型} primary key;
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> stu01 <span style=color:#00f>modify</span> id int(11) <span style=color:#00f>primary</span> <span style=color:#00f>key</span>;
 
-<span style="color:#008000">-- 3. 删除表中已有的主键
-</span><span style="color:#008000">-- alter table ${表名} drop primary key;
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> stu01 <span style="color:#00f">drop</span> <span style="color:#00f">primary</span> <span style="color:#00f">key</span>;
-</code></pre></div><h4 id="424-外键">4.2.4 外键</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 建表时定义主键
-</span><span style="color:#008000">-- create table ${表名} (
-</span><span style="color:#008000">--   -- ...
-</span><span style="color:#008000">--   ${外键列名与数据类型},
-</span><span style="color:#008000">--   [constraint ${外键约束名}] foreign key(${外键列1[, ..., 外键列n]}) references ${外表名称}(${外表列1[, ..., 外表列n]})
-</span><span style="color:#008000">-- );
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">create</span> <span style="color:#00f">table</span> department (
-  id int(11) <span style="color:#00f">primary</span> <span style="color:#00f">key</span>,
-  name varchar(32) <span style="color:#00f">not</span> <span style="color:#00f">null</span>
+<span style=color:green>-- 3. 删除表中已有的主键
+</span><span style=color:green>-- alter table ${表名} drop primary key;
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> stu01 <span style=color:#00f>drop</span> <span style=color:#00f>primary</span> <span style=color:#00f>key</span>;
+</code></pre></div><h4 id=424-外键>4.2.4 外键</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 建表时定义主键
+</span><span style=color:green>-- create table ${表名} (
+</span><span style=color:green>--   -- ...
+</span><span style=color:green>--   ${外键列名与数据类型},
+</span><span style=color:green>--   [constraint ${外键约束名}] foreign key(${外键列1[, ..., 外键列n]}) references ${外表名称}(${外表列1[, ..., 外表列n]})
+</span><span style=color:green>-- );
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>create</span> <span style=color:#00f>table</span> department (
+  id int(11) <span style=color:#00f>primary</span> <span style=color:#00f>key</span>,
+  name varchar(32) <span style=color:#00f>not</span> <span style=color:#00f>null</span>
 );
-<span style="color:#00f">create</span> <span style="color:#00f">table</span> emp (
-  id int(11) <span style="color:#00f">primary</span> <span style="color:#00f">key</span>,
-  name varchar(32) <span style="color:#00f">not</span> <span style="color:#00f">null</span>,
+<span style=color:#00f>create</span> <span style=color:#00f>table</span> emp (
+  id int(11) <span style=color:#00f>primary</span> <span style=color:#00f>key</span>,
+  name varchar(32) <span style=color:#00f>not</span> <span style=color:#00f>null</span>,
   dept_id int(11),
-  <span style="color:#00f">constraint</span> emp_dept_id <span style="color:#00f">foreign</span> <span style="color:#00f">key</span>(dept_id) <span style="color:#00f">references</span> department(id);
+  <span style=color:#00f>constraint</span> emp_dept_id <span style=color:#00f>foreign</span> <span style=color:#00f>key</span>(dept_id) <span style=color:#00f>references</span> department(id);
 );
 
-<span style="color:#008000">-- 2. 建表后添加主键
-</span><span style="color:#008000">-- alter table ${表名} add [constraint ${外键约束名}] foreign key(${外键列1[, ..., 外键列n]}) references ${外表名称}(${外表列1[, ..., 外表列n]});
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> emp <span style="color:#00f">add</span> <span style="color:#00f">constraint</span> emp_dept_id <span style="color:#00f">foreign</span> <span style="color:#00f">key</span>(dept_id) <span style="color:#00f">references</span> department(id);
+<span style=color:green>-- 2. 建表后添加主键
+</span><span style=color:green>-- alter table ${表名} add [constraint ${外键约束名}] foreign key(${外键列1[, ..., 外键列n]}) references ${外表名称}(${外表列1[, ..., 外表列n]});
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> emp <span style=color:#00f>add</span> <span style=color:#00f>constraint</span> emp_dept_id <span style=color:#00f>foreign</span> <span style=color:#00f>key</span>(dept_id) <span style=color:#00f>references</span> department(id);
 
-<span style="color:#008000">-- 3. 删除表中已有的主键
-</span><span style="color:#008000">-- alter table ${表名} drop foreign key ${外键约束名};
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">table</span> emp <span style="color:#00f">drop</span> <span style="color:#00f">foreign</span> <span style="color:#00f">key</span>  emp_dept_id;
+<span style=color:green>-- 3. 删除表中已有的主键
+</span><span style=color:green>-- alter table ${表名} drop foreign key ${外键约束名};
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>table</span> emp <span style=color:#00f>drop</span> <span style=color:#00f>foreign</span> <span style=color:#00f>key</span>  emp_dept_id;
 
-<span style="color:#008000">-- 4. 级联：**使用时需谨慎**
-</span><span style="color:#008000">-- on update cascade 更新“外列外键列的值”时同步更新“主表中的外键值”
-</span><span style="color:#008000">-- on delete cascade 更新“外列外键列的值”时同步删除“主表中的外键值”
-</span><span style="color:#008000">-- ${定义外键约束的语句} on update cascade on delete cascade;
-</span></code></pre></div><h3 id="43-多表查询">4.3 多表查询</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">create</span> <span style="color:#00f">table</span> dept (
+<span style=color:green>-- 4. 级联：**使用时需谨慎**
+</span><span style=color:green>-- on update cascade 更新“外列外键列的值”时同步更新“主表中的外键值”
+</span><span style=color:green>-- on delete cascade 更新“外列外键列的值”时同步删除“主表中的外键值”
+</span><span style=color:green>-- ${定义外键约束的语句} on update cascade on delete cascade;
+</span></code></pre></div><h3 id=43-多表查询>4.3 多表查询</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>create</span> <span style=color:#00f>table</span> dept (
   id int(11) auto_increment,
   name varchar(32),
-  <span style="color:#00f">primary</span> <span style="color:#00f">key</span>(id)
+  <span style=color:#00f>primary</span> <span style=color:#00f>key</span>(id)
 );
 
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> dept <span style="color:#00f">values</span>(1, <span style="color:#a31515">&#39;语文系&#39;</span>);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> dept <span style="color:#00f">values</span>(2, <span style="color:#a31515">&#39;数学系&#39;</span>);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> dept <span style="color:#00f">values</span>(<span style="color:#00f">NULL</span>, <span style="color:#a31515">&#39;英语系&#39;</span>);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> dept <span style=color:#00f>values</span>(1, <span style=color:#a31515>&#39;语文系&#39;</span>);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> dept <span style=color:#00f>values</span>(2, <span style=color:#a31515>&#39;数学系&#39;</span>);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> dept <span style=color:#00f>values</span>(<span style=color:#00f>NULL</span>, <span style=color:#a31515>&#39;英语系&#39;</span>);
 
-<span style="color:#00f">create</span> <span style="color:#00f">table</span> student (
+<span style=color:#00f>create</span> <span style=color:#00f>table</span> student (
   id int(11) auto_increment,
   name varchar(32),
   dept_id int(11),
-  <span style="color:#00f">primary</span> <span style="color:#00f">key</span>(id),
-  <span style="color:#00f">constraint</span> student_dept_id <span style="color:#00f">foreign</span> <span style="color:#00f">key</span>(dept_id) <span style="color:#00f">references</span> dept(id)
+  <span style=color:#00f>primary</span> <span style=color:#00f>key</span>(id),
+  <span style=color:#00f>constraint</span> student_dept_id <span style=color:#00f>foreign</span> <span style=color:#00f>key</span>(dept_id) <span style=color:#00f>references</span> dept(id)
 );
 
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> student <span style="color:#00f">values</span>(1, <span style="color:#a31515">&#39;张三&#39;</span>, 1);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> student <span style="color:#00f">values</span>(2, <span style="color:#a31515">&#39;李四&#39;</span>, 1);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> student <span style="color:#00f">values</span>(3, <span style="color:#a31515">&#39;王五&#39;</span>, 2);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> student <span style="color:#00f">values</span>(4, <span style="color:#a31515">&#39;赵六&#39;</span>, 3);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> student <span style="color:#00f">values</span>(5, <span style="color:#a31515">&#39;田七&#39;</span>, <span style="color:#00f">NULL</span>);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> student <span style=color:#00f>values</span>(1, <span style=color:#a31515>&#39;张三&#39;</span>, 1);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> student <span style=color:#00f>values</span>(2, <span style=color:#a31515>&#39;李四&#39;</span>, 1);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> student <span style=color:#00f>values</span>(3, <span style=color:#a31515>&#39;王五&#39;</span>, 2);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> student <span style=color:#00f>values</span>(4, <span style=color:#a31515>&#39;赵六&#39;</span>, 3);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> student <span style=color:#00f>values</span>(5, <span style=color:#a31515>&#39;田七&#39;</span>, <span style=color:#00f>NULL</span>);
 
-<span style="color:#008000">-- 输出笛卡尔乘积的结果（表student的数据量 * 表dept的数据量）
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student s, dept d;
-<span style="color:#008000">-- 给表起别名，并查出指定的列并给出别名
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> s.id stu_id, s.name stu_name, d.id dept_id, d.name dept_name <span style="color:#00f">from</span> student s, dept d;
-</code></pre></div><h4 id="431-内联查询">4.3.1 内联查询</h4>
-<p>查出多个表交集</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 隐式
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student, dept <span style="color:#00f">where</span> student.dept_id = dept.id;
+<span style=color:green>-- 输出笛卡尔乘积的结果（表student的数据量 * 表dept的数据量）
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student s, dept d;
+<span style=color:green>-- 给表起别名，并查出指定的列并给出别名
+</span><span style=color:green></span><span style=color:#00f>select</span> s.id stu_id, s.name stu_name, d.id dept_id, d.name dept_name <span style=color:#00f>from</span> student s, dept d;
+</code></pre></div><h4 id=431-内联查询>4.3.1 内联查询</h4><p>查出多个表交集</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 隐式
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student, dept <span style=color:#00f>where</span> student.dept_id = dept.id;
 
-<span style="color:#008000">-- 2. 显式
-</span><span style="color:#008000">-- select ${列名列表} from ${表1} [inner] join ${表2} on ${条件}
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">inner</span> <span style="color:#00f">join</span> dept <span style="color:#00f">on</span> student.dept_id = dept.id;
-</code></pre></div><h4 id="432-外联查询">4.3.2 外联查询</h4>
-<p>查出多个表交集 与 指定表的独有部分</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 左外联
-</span><span style="color:#008000">-- select ${列名列表} from ${表1} left [outer] join ${表2} on ${条件}
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">left</span> <span style="color:#00f">outer</span> <span style="color:#00f">join</span> dept <span style="color:#00f">on</span> student.dept_id = dept.id;
+<span style=color:green>-- 2. 显式
+</span><span style=color:green>-- select ${列名列表} from ${表1} [inner] join ${表2} on ${条件}
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>inner</span> <span style=color:#00f>join</span> dept <span style=color:#00f>on</span> student.dept_id = dept.id;
+</code></pre></div><h4 id=432-外联查询>4.3.2 外联查询</h4><p>查出多个表交集 与 指定表的独有部分</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 左外联
+</span><span style=color:green>-- select ${列名列表} from ${表1} left [outer] join ${表2} on ${条件}
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>left</span> <span style=color:#00f>outer</span> <span style=color:#00f>join</span> dept <span style=color:#00f>on</span> student.dept_id = dept.id;
 
-<span style="color:#008000">-- 2. 右外联
-</span><span style="color:#008000">-- select ${列名列表} from ${表1} right [outer] join ${表2} on ${条件}
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> dept <span style="color:#00f">right</span> <span style="color:#00f">outer</span> <span style="color:#00f">join</span> student <span style="color:#00f">on</span> student.dept_id = dept.id;
-</code></pre></div><h4 id="433-子查询">4.3.3 子查询</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 单行单列：查询结果直接作为下一次查询的条件
-</span><span style="color:#008000">-- 查询语文系的所有学生
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">where</span> dept_id = (<span style="color:#00f">select</span> id <span style="color:#00f">from</span> dept <span style="color:#00f">where</span> name=<span style="color:#a31515">&#39;语文系&#39;</span>);
-<span style="color:#008000">-- 2. 多行单列：查询结果直接作为下一次查询的条件
-</span><span style="color:#008000">-- 查询语文系或数学系的所有学生
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> student <span style="color:#00f">where</span> dept_id <span style="color:#00f">in</span> (<span style="color:#00f">select</span> id <span style="color:#00f">from</span> dept <span style="color:#00f">where</span> name=<span style="color:#a31515">&#39;语文系&#39;</span> <span style="color:#00f">or</span> name=<span style="color:#a31515">&#39;数学系&#39;</span>);
-<span style="color:#008000">-- 3. 多行多列：查询结果作为虚拟表参与下一次查询
-</span><span style="color:#008000">-- 查询系名中包含&#39;文&#39;字的所有学生
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> s.id, s.name, s.dept_id <span style="color:#00f">from</span> student s, (<span style="color:#00f">select</span> * <span style="color:#00f">from</span> dept <span style="color:#00f">where</span> name <span style="color:#00f">like</span> <span style="color:#a31515">&#39;%文%&#39;</span>) d <span style="color:#00f">where</span> s.dept_id=d.id;
-<span style="color:#008000">-- 简化
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> s.id, s.name, s.dept_id <span style="color:#00f">from</span> student s, dept d <span style="color:#00f">where</span> s.dept_id=d.id <span style="color:#00f">and</span> d.name <span style="color:#00f">like</span> <span style="color:#a31515">&#39;%文%&#39;</span>;
-</code></pre></div><h2 id="5-dcl">5. DCL</h2>
-<h3 id="51-用户操作">5.1 用户操作</h3>
-<h4 id="511-查询用户">5.1.1 查询用户</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. 切换到mysql数据库
-</span><span style="color:#008000"></span>use mysql;
-<span style="color:#008000">-- 2. 查询user表
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> * <span style="color:#00f">from</span> <span style="color:#00f">user</span>;
-<span style="color:#00f">select</span> <span style="color:#00f">User</span>, <span style="color:#00f">Host</span> <span style="color:#00f">from</span> <span style="color:#00f">user</span>;
-</code></pre></div><h4 id="512-创建用户">5.1.2 创建用户</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 没有授权（只能登录）
-</span><span style="color:#008000">-- 访问主机：通配符%可表示任何主机
-</span><span style="color:#008000">-- mysql8.0以上密码策略限制必须要大小写加数字特殊符号
-</span><span style="color:#008000">-- create user &#39;${用户名称}&#39;@&#39;${访问主机}&#39; identified by &#39;${用户密码}&#39;;
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">create</span> <span style="color:#00f">user</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span> identified <span style="color:#00f">by</span> <span style="color:#a31515">&#39;（需要符合密码设置规范）&#39;</span>;
-</code></pre></div><h4 id="513-删除用户">5.1.3 删除用户</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- drop user &#39;${用户名称1}&#39;@&#39;${访问主机1}&#39; [, &#39;${用户名称2}&#39;@&#39;${访问主机2}&#39;, ...];
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">drop</span> <span style="color:#00f">user</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;localhost&#39;</span>;
-</code></pre></div><h4 id="514-修改密码">5.1.4 修改密码</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 1. mysql 8以下
-</span><span style="color:#008000">-- update user set password = PASSWORD(&#39;${新的密码}&#39;) where User = &#39;${用户名}&#39;
-</span><span style="color:#008000">-- set password for &#39;${用户名称}&#39;@&#39;${访问主机}&#39;   = &#39;${新的密码}&#39;
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000">-- mysql 5.7.9以后废弃了password字段和password()函数，但可以使用直接加密方式代替它，比如，你可以md5(&#39;AAA&#39;)，还可以sha(&#39;AAA&#39;)，等
-</span><span style="color:#008000"></span><span style="color:#00f">update</span> <span style="color:#00f">user</span> <span style="color:#00f">set</span> password = password(<span style="color:#a31515">&#39;%123456Aa&#39;</span>) <span style="color:#00f">where</span> <span style="color:#00f">User</span> = <span style="color:#a31515">&#39;devp01&#39;</span>;
-<span style="color:#008000">-- or
-</span><span style="color:#008000"></span><span style="color:#00f">set</span> password <span style="color:#00f">for</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span>  = <span style="color:#a31515">&#39;%123456Aa&#39;</span>
+<span style=color:green>-- 2. 右外联
+</span><span style=color:green>-- select ${列名列表} from ${表1} right [outer] join ${表2} on ${条件}
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> dept <span style=color:#00f>right</span> <span style=color:#00f>outer</span> <span style=color:#00f>join</span> student <span style=color:#00f>on</span> student.dept_id = dept.id;
+</code></pre></div><h4 id=433-子查询>4.3.3 子查询</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 单行单列：查询结果直接作为下一次查询的条件
+</span><span style=color:green>-- 查询语文系的所有学生
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>where</span> dept_id = (<span style=color:#00f>select</span> id <span style=color:#00f>from</span> dept <span style=color:#00f>where</span> name=<span style=color:#a31515>&#39;语文系&#39;</span>);
+<span style=color:green>-- 2. 多行单列：查询结果直接作为下一次查询的条件
+</span><span style=color:green>-- 查询语文系或数学系的所有学生
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> student <span style=color:#00f>where</span> dept_id <span style=color:#00f>in</span> (<span style=color:#00f>select</span> id <span style=color:#00f>from</span> dept <span style=color:#00f>where</span> name=<span style=color:#a31515>&#39;语文系&#39;</span> <span style=color:#00f>or</span> name=<span style=color:#a31515>&#39;数学系&#39;</span>);
+<span style=color:green>-- 3. 多行多列：查询结果作为虚拟表参与下一次查询
+</span><span style=color:green>-- 查询系名中包含&#39;文&#39;字的所有学生
+</span><span style=color:green></span><span style=color:#00f>select</span> s.id, s.name, s.dept_id <span style=color:#00f>from</span> student s, (<span style=color:#00f>select</span> * <span style=color:#00f>from</span> dept <span style=color:#00f>where</span> name <span style=color:#00f>like</span> <span style=color:#a31515>&#39;%文%&#39;</span>) d <span style=color:#00f>where</span> s.dept_id=d.id;
+<span style=color:green>-- 简化
+</span><span style=color:green></span><span style=color:#00f>select</span> s.id, s.name, s.dept_id <span style=color:#00f>from</span> student s, dept d <span style=color:#00f>where</span> s.dept_id=d.id <span style=color:#00f>and</span> d.name <span style=color:#00f>like</span> <span style=color:#a31515>&#39;%文%&#39;</span>;
+</code></pre></div><h2 id=5-dcl>5. DCL</h2><h3 id=51-用户操作>5.1 用户操作</h3><h4 id=511-查询用户>5.1.1 查询用户</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. 切换到mysql数据库
+</span><span style=color:green></span>use mysql;
+<span style=color:green>-- 2. 查询user表
+</span><span style=color:green></span><span style=color:#00f>select</span> * <span style=color:#00f>from</span> <span style=color:#00f>user</span>;
+<span style=color:#00f>select</span> <span style=color:#00f>User</span>, <span style=color:#00f>Host</span> <span style=color:#00f>from</span> <span style=color:#00f>user</span>;
+</code></pre></div><h4 id=512-创建用户>5.1.2 创建用户</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 没有授权（只能登录）
+</span><span style=color:green>-- 访问主机：通配符%可表示任何主机
+</span><span style=color:green>-- mysql8.0以上密码策略限制必须要大小写加数字特殊符号
+</span><span style=color:green>-- create user &#39;${用户名称}&#39;@&#39;${访问主机}&#39; identified by &#39;${用户密码}&#39;;
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>create</span> <span style=color:#00f>user</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span> identified <span style=color:#00f>by</span> <span style=color:#a31515>&#39;（需要符合密码设置规范）&#39;</span>;
+</code></pre></div><h4 id=513-删除用户>5.1.3 删除用户</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- drop user &#39;${用户名称1}&#39;@&#39;${访问主机1}&#39; [, &#39;${用户名称2}&#39;@&#39;${访问主机2}&#39;, ...];
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>drop</span> <span style=color:#00f>user</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;localhost&#39;</span>;
+</code></pre></div><h4 id=514-修改密码>5.1.4 修改密码</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 1. mysql 8以下
+</span><span style=color:green>-- update user set password = PASSWORD(&#39;${新的密码}&#39;) where User = &#39;${用户名}&#39;
+</span><span style=color:green>-- set password for &#39;${用户名称}&#39;@&#39;${访问主机}&#39;   = &#39;${新的密码}&#39;
+</span><span style=color:green>-- 示例
+</span><span style=color:green>-- mysql 5.7.9以后废弃了password字段和password()函数，但可以使用直接加密方式代替它，比如，你可以md5(&#39;AAA&#39;)，还可以sha(&#39;AAA&#39;)，等
+</span><span style=color:green></span><span style=color:#00f>update</span> <span style=color:#00f>user</span> <span style=color:#00f>set</span> password = password(<span style=color:#a31515>&#39;%123456Aa&#39;</span>) <span style=color:#00f>where</span> <span style=color:#00f>User</span> = <span style=color:#a31515>&#39;devp01&#39;</span>;
+<span style=color:green>-- or
+</span><span style=color:green></span><span style=color:#00f>set</span> password <span style=color:#00f>for</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span>  = <span style=color:#a31515>&#39;%123456Aa&#39;</span>
 
-<span style="color:#008000">-- 2. mysql 8及以上
-</span><span style="color:#008000">-- alter user &#39;${用户名称}&#39;@&#39;${访问主机}&#39; identified [ with mysql_native_password ] by &#39;${新的密码}&#39; [password expire never];
-</span><span style="color:#008000">-- 示例
-</span><span style="color:#008000"></span><span style="color:#00f">alter</span> <span style="color:#00f">user</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span> identified <span style="color:#00f">with</span> mysql_native_password <span style="color:#00f">by</span> <span style="color:#a31515">&#39;%123456Aa&#39;</span> password expire never;
+<span style=color:green>-- 2. mysql 8及以上
+</span><span style=color:green>-- alter user &#39;${用户名称}&#39;@&#39;${访问主机}&#39; identified [ with mysql_native_password ] by &#39;${新的密码}&#39; [password expire never];
+</span><span style=color:green>-- 示例
+</span><span style=color:green></span><span style=color:#00f>alter</span> <span style=color:#00f>user</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span> identified <span style=color:#00f>with</span> mysql_native_password <span style=color:#00f>by</span> <span style=color:#a31515>&#39;%123456Aa&#39;</span> password expire never;
 
-<span style="color:#008000">-- 刷新策略（使用修改立即生效）
-</span><span style="color:#008000"></span>FLUSH <span style="color:#00f">PRIVILEGES</span>
-</code></pre></div><h5 id="5141-当忘记root密码时">5.1.4.1 当忘记root密码时</h5>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># 1. 配置mysql权限</span>
-<span style="color:#008000"># 1.1 打开mysql配置</span>
+<span style=color:green>-- 刷新策略（使用修改立即生效）
+</span><span style=color:green></span>FLUSH <span style=color:#00f>PRIVILEGES</span>
+</code></pre></div><h5 id=5141-当忘记root密码时>5.1.4.1 当忘记root密码时</h5><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:green># 1. 配置mysql权限</span>
+<span style=color:green># 1.1 打开mysql配置</span>
 vim /etc/my.cnf
-<span style="color:#008000"># 1.2 在文件未尾添加 skip-grant-table（跳过权限验证）, 并保存</span>
-<span style="color:#008000"># 2. 关闭mysql服务</span>
+<span style=color:green># 1.2 在文件未尾添加 skip-grant-table（跳过权限验证）, 并保存</span>
+<span style=color:green># 2. 关闭mysql服务</span>
 systemctl stop mysqld.service
-<span style="color:#008000"># 3. 启动mysql服务</span>
+<span style=color:green># 3. 启动mysql服务</span>
 systemctl start mysqld.service
-<span style="color:#008000"># 4. 登录mysql</span>
+<span style=color:green># 4. 登录mysql</span>
 mysql
-<span style="color:#008000"># 5. 修改密码</span>
-<span style="color:#008000"># 5.1 刷新策略</span>
+<span style=color:green># 5. 修改密码</span>
+<span style=color:green># 5.1 刷新策略</span>
 flush privileges;
-<span style="color:#008000"># 5.3 切换数据库</span>
+<span style=color:green># 5.3 切换数据库</span>
 use mysql;
-<span style="color:#008000"># 5.4 修改密码</span>
-alter user <span style="color:#a31515">&#39;root&#39;</span>@<span style="color:#a31515">&#39;localhost&#39;</span> identified by <span style="color:#a31515">&#39;%123456Aa&#39;</span> password expire never;
-<span style="color:#008000"># 6. 还原mysql配置</span>
-<span style="color:#008000"># 将上述添加的内容清除</span>
-<span style="color:#008000"># 7. 关闭mysql服务</span>
+<span style=color:green># 5.4 修改密码</span>
+alter user <span style=color:#a31515>&#39;root&#39;</span>@<span style=color:#a31515>&#39;localhost&#39;</span> identified by <span style=color:#a31515>&#39;%123456Aa&#39;</span> password expire never;
+<span style=color:green># 6. 还原mysql配置</span>
+<span style=color:green># 将上述添加的内容清除</span>
+<span style=color:green># 7. 关闭mysql服务</span>
 systemctl stop mysqld.service
-<span style="color:#008000"># 8. 启动mysql服务</span>
+<span style=color:green># 8. 启动mysql服务</span>
 systemctl start mysqld.service
-</code></pre></div><h4 id="515-权限管理">5.1.5 权限管理</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 查询权限
-</span><span style="color:#008000">-- show grants for &#39;${用户名称}&#39;@&#39;${访问主机}&#39;; 
-</span><span style="color:#008000"></span><span style="color:#00f">show</span> grants <span style="color:#00f">for</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span>;
+</code></pre></div><h4 id=515-权限管理>5.1.5 权限管理</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 查询权限
+</span><span style=color:green>-- show grants for &#39;${用户名称}&#39;@&#39;${访问主机}&#39;; 
+</span><span style=color:green></span><span style=color:#00f>show</span> grants <span style=color:#00f>for</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span>;
 
-<span style="color:#008000">-- 授予权限
-</span><span style="color:#008000">-- grant ${权限列表} on ${数据库}.${表名} to &#39;${用户名称}&#39;@&#39;${访问主机}&#39;;
-</span><span style="color:#008000"></span><span style="color:#00f">grant</span> <span style="color:#00f">select</span> <span style="color:#00f">on</span> db01.* <span style="color:#00f">to</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span>;
-<span style="color:#008000">-- 权限列表：select、delete、update等（所有权限用关键字all表示）
-</span><span style="color:#008000">-- 赋予所有权限
-</span><span style="color:#008000"></span><span style="color:#00f">grant</span> <span style="color:#00f">all</span> <span style="color:#00f">on</span> *.* <span style="color:#00f">to</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span>;
+<span style=color:green>-- 授予权限
+</span><span style=color:green>-- grant ${权限列表} on ${数据库}.${表名} to &#39;${用户名称}&#39;@&#39;${访问主机}&#39;;
+</span><span style=color:green></span><span style=color:#00f>grant</span> <span style=color:#00f>select</span> <span style=color:#00f>on</span> db01.* <span style=color:#00f>to</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span>;
+<span style=color:green>-- 权限列表：select、delete、update等（所有权限用关键字all表示）
+</span><span style=color:green>-- 赋予所有权限
+</span><span style=color:green></span><span style=color:#00f>grant</span> <span style=color:#00f>all</span> <span style=color:#00f>on</span> *.* <span style=color:#00f>to</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span>;
 
-<span style="color:#008000">-- 撤销权限
-</span><span style="color:#008000">-- revoke ${权限列表} on ${数据库}.${表名} from &#39;${用户名称}&#39;@&#39;${访问主机}&#39;;
-</span><span style="color:#008000"></span><span style="color:#00f">revoke</span> <span style="color:#00f">select</span> <span style="color:#00f">on</span> devp01.* <span style="color:#00f">from</span> <span style="color:#a31515">&#39;devp01&#39;</span>@<span style="color:#a31515">&#39;%&#39;</span>
-</code></pre></div><h3 id="52-用户授权">5.2 用户授权</h3>
-<h2 id="6-事务">6. 事务</h2>
-<h3 id="61-基本用法">6.1 基本用法</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">create</span> <span style="color:#00f">table</span> emp (
-  id int(11) <span style="color:#00f">primary</span> <span style="color:#00f">key</span> auto_increment,
-  name varchar(32) <span style="color:#00f">not</span> <span style="color:#00f">null</span> <span style="color:#00f">unique</span>,
-  salary int(11) <span style="color:#00f">not</span> <span style="color:#00f">null</span>
+<span style=color:green>-- 撤销权限
+</span><span style=color:green>-- revoke ${权限列表} on ${数据库}.${表名} from &#39;${用户名称}&#39;@&#39;${访问主机}&#39;;
+</span><span style=color:green></span><span style=color:#00f>revoke</span> <span style=color:#00f>select</span> <span style=color:#00f>on</span> devp01.* <span style=color:#00f>from</span> <span style=color:#a31515>&#39;devp01&#39;</span>@<span style=color:#a31515>&#39;%&#39;</span>
+</code></pre></div><h3 id=52-用户授权>5.2 用户授权</h3><h2 id=6-事务>6. 事务</h2><h3 id=61-基本用法>6.1 基本用法</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>create</span> <span style=color:#00f>table</span> emp (
+  id int(11) <span style=color:#00f>primary</span> <span style=color:#00f>key</span> auto_increment,
+  name varchar(32) <span style=color:#00f>not</span> <span style=color:#00f>null</span> <span style=color:#00f>unique</span>,
+  salary int(11) <span style=color:#00f>not</span> <span style=color:#00f>null</span>
 );
 
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> emp <span style="color:#00f">values</span>(1, <span style="color:#a31515">&#39;tom&#39;</span>, 10000);
-<span style="color:#00f">insert</span> <span style="color:#00f">into</span> emp <span style="color:#00f">values</span>(2, <span style="color:#a31515">&#39;joh&#39;</span>, 10000);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> emp <span style=color:#00f>values</span>(1, <span style=color:#a31515>&#39;tom&#39;</span>, 10000);
+<span style=color:#00f>insert</span> <span style=color:#00f>into</span> emp <span style=color:#00f>values</span>(2, <span style=color:#a31515>&#39;joh&#39;</span>, 10000);
 
-<span style="color:#008000">-- 事务开启
-</span><span style="color:#008000"></span><span style="color:#00f">start</span> <span style="color:#00f">transaction</span>;
-<span style="color:#00f">update</span> emp <span style="color:#00f">set</span> salary = salary - 1000 <span style="color:#00f">where</span> id = 1;
-<span style="color:#00f">update</span> emp <span style="color:#00f">set</span> salary = salary + 1000 <span style="color:#00f">where</span> id = 2;
-<span style="color:#008000">-- 事务提交
-</span><span style="color:#008000"></span><span style="color:#00f">commit</span>;
-<span style="color:#008000">-- 事务回滚（如果失败就回滚）
-</span><span style="color:#008000"></span><span style="color:#00f">rollback</span>;
+<span style=color:green>-- 事务开启
+</span><span style=color:green></span><span style=color:#00f>start</span> <span style=color:#00f>transaction</span>;
+<span style=color:#00f>update</span> emp <span style=color:#00f>set</span> salary = salary - 1000 <span style=color:#00f>where</span> id = 1;
+<span style=color:#00f>update</span> emp <span style=color:#00f>set</span> salary = salary + 1000 <span style=color:#00f>where</span> id = 2;
+<span style=color:green>-- 事务提交
+</span><span style=color:green></span><span style=color:#00f>commit</span>;
+<span style=color:green>-- 事务回滚（如果失败就回滚）
+</span><span style=color:green></span><span style=color:#00f>rollback</span>;
 
-<span style="color:#008000">-- 查询当前数据库DML语句是否自动提交
-</span><span style="color:#008000">-- 0.不自动提交 1.自动提交
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> @@autocommit;
-<span style="color:#008000">-- 修改当前数据库DML语句是否自动提交
-</span><span style="color:#008000"></span><span style="color:#00f">set</span> autocommit=0;
-</code></pre></div><h3 id="62-四种特性">6.2 四种特性</h3>
-<ol>
-<li>
-<p>原子性：一个事务是不可分割的，事务中的操作要么同时成功，要么同时失败</p>
-</li>
-<li>
-<p>持久性：事务一旦提交或回滚，数据就会保存下来（不会因为断电等原因丢失）</p>
-</li>
-<li>
-<p>隔离性：不同的事务在操作同一批数据时会有相互影响（不同数据则不会影响）</p>
-</li>
-<li>
-<p>一致性：事务处理之前的数据和与事务处理之前后数据总量一致（如员工工资）</p>
-</li>
-</ol>
-<h3 id="63-隔离级别">6.3 隔离级别</h3>
-<p>概念：多个事务之间隔离的，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</p>
-<h4 id="631-存在的问题">6.3.1 存在的问题</h4>
-<ol>
-<li>
-<p>脏读：一个事务，读取到另一个事务中没有提交的数据</p>
-</li>
-<li>
-<p>不可重复读（虚读）：在同一个事务中，两次读取到的数据不一样</p>
-</li>
-<li>
-<p>幻读：一个事务操作（DML）数据表中所有记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</p>
-</li>
-</ol>
-<h4 id="632-隔离级别">6.3.2 隔离级别</h4>
-<ol>
-<li>read uncommitted：读未提交
-<ul>
-<li>产生问题：脏读、不可重复读、幻读</li>
-</ul>
-</li>
-<li>read committed：读已提交（oracle默认）
-<ul>
-<li>产生问题：不可重复读、幻读</li>
-</ul>
-</li>
-<li>repeatable read：可重复读（mysql默认）
-<ul>
-<li>产生问题：幻读</li>
-</ul>
-</li>
-<li>serializable: 串行化
-<ul>
-<li>可以解决所有问题</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注意：隔离级别从小到大安全性越来越高，但效率越来越低</li>
-</ul>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000">-- 数据库查询隔离级别
-</span><span style="color:#008000"></span><span style="color:#00f">select</span> @@transaction_isolation;
-<span style="color:#008000">-- 数据库设置隔离级别
-</span><span style="color:#008000">-- set global transaction isolation level ${级别字符};
-</span></code></pre></div><h2 id="7-数据库设计">7. 数据库设计</h2>
-<h3 id="71-表的关系">7.1 表的关系</h3>
-<ul>
-<li>1:1</li>
-<li>1:n</li>
-<li>n:m</li>
-</ul>
-<h3 id="72-范式规范">7.2 范式规范</h3>
-<h4 id="721-第一范式">7.2.1 第一范式</h4>
-<p>数据库表中一定要有主键，并且任何字段都是单一属性（不可再分）。</p>
-<h4 id="722-第二范式">7.2.2 第二范式</h4>
-<p>数据库表中非关键字段对任一候选关键字段的都不存在部分函数依赖</p>
-<p>即：当一个表是复合主键时，非主键的字段不依赖于部分主键(即必须依赖于全部的主键字段)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">create</span> <span style="color:#00f">table</span> sci(
-  student_no int(32), <span style="color:#008000">-- 学生编号
-</span><span style="color:#008000"></span>  class_no int(32), <span style="color:#008000">-- 课程编号
-</span><span style="color:#008000"></span>  grade int(32), <span style="color:#008000">-- 分数
-</span><span style="color:#008000"></span>  credit int(32), <span style="color:#008000">-- 学分
-</span><span style="color:#008000"></span>  <span style="color:#00f">primary</span> <span style="color:#00f">key</span> student_no, class_no
+<span style=color:green>-- 查询当前数据库DML语句是否自动提交
+</span><span style=color:green>-- 0.不自动提交 1.自动提交
+</span><span style=color:green></span><span style=color:#00f>select</span> @@autocommit;
+<span style=color:green>-- 修改当前数据库DML语句是否自动提交
+</span><span style=color:green></span><span style=color:#00f>set</span> autocommit=0;
+</code></pre></div><h3 id=62-四种特性>6.2 四种特性</h3><ol><li><p>原子性：一个事务是不可分割的，事务中的操作要么同时成功，要么同时失败</p></li><li><p>持久性：事务一旦提交或回滚，数据就会保存下来（不会因为断电等原因丢失）</p></li><li><p>隔离性：不同的事务在操作同一批数据时会有相互影响（不同数据则不会影响）</p></li><li><p>一致性：事务处理之前的数据和与事务处理之前后数据总量一致（如员工工资）</p></li></ol><h3 id=63-隔离级别>6.3 隔离级别</h3><p>概念：多个事务之间隔离的，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</p><h4 id=631-存在的问题>6.3.1 存在的问题</h4><ol><li><p>脏读：一个事务，读取到另一个事务中没有提交的数据</p></li><li><p>不可重复读（虚读）：在同一个事务中，两次读取到的数据不一样</p></li><li><p>幻读：一个事务操作（DML）数据表中所有记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</p></li></ol><h4 id=632-隔离级别>6.3.2 隔离级别</h4><ol><li>read uncommitted：读未提交<ul><li>产生问题：脏读、不可重复读、幻读</li></ul></li><li>read committed：读已提交（oracle默认）<ul><li>产生问题：不可重复读、幻读</li></ul></li><li>repeatable read：可重复读（mysql默认）<ul><li>产生问题：幻读</li></ul></li><li>serializable: 串行化<ul><li>可以解决所有问题</li></ul></li></ol><ul><li>注意：隔离级别从小到大安全性越来越高，但效率越来越低</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:green>-- 数据库查询隔离级别
+</span><span style=color:green></span><span style=color:#00f>select</span> @@transaction_isolation;
+<span style=color:green>-- 数据库设置隔离级别
+</span><span style=color:green>-- set global transaction isolation level ${级别字符};
+</span></code></pre></div><h2 id=7-数据库设计>7. 数据库设计</h2><h3 id=71-表的关系>7.1 表的关系</h3><ul><li>1:1</li><li>1:n</li><li>n:m</li></ul><h3 id=72-范式规范>7.2 范式规范</h3><h4 id=721-第一范式>7.2.1 第一范式</h4><p>数据库表中一定要有主键，并且任何字段都是单一属性（不可再分）。</p><h4 id=722-第二范式>7.2.2 第二范式</h4><p>数据库表中非关键字段对任一候选关键字段的都不存在部分函数依赖</p><p>即：当一个表是复合主键时，非主键的字段不依赖于部分主键(即必须依赖于全部的主键字段)</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>create</span> <span style=color:#00f>table</span> sci(
+  student_no int(32), <span style=color:green>-- 学生编号
+</span><span style=color:green></span>  class_no int(32), <span style=color:green>-- 课程编号
+</span><span style=color:green></span>  grade int(32), <span style=color:green>-- 分数
+</span><span style=color:green></span>  credit int(32), <span style=color:green>-- 学分
+</span><span style=color:green></span>  <span style=color:#00f>primary</span> <span style=color:#00f>key</span> student_no, class_no
 )
-<span style="color:#008000">-- 以下为数据依赖关系：L=&gt;R(由L可确定R)
-</span><span style="color:#008000">-- student_no =&gt; class_no
-</span><span style="color:#008000">-- class_no =&gt; credit
-</span><span style="color:#008000">-- student_no + class_no =&gt; grade
-</span><span style="color:#008000">-- 如此一来，学分被大量重复存储，数据冗余
-</span></code></pre></div><h4 id="723-第三范式">7.2.3 第三范式</h4>
-<p>关系模式R（U，F）中的所有非主属性对任何候选关键字都不存在传递依赖</p>
-<p>例&mdash;-S1（SNO，SNAME，DNO，DNAME，LOCATION)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00f">create</span> <span style="color:#00f">table</span> student (
-  stud_no int(32), <span style="color:#008000">-- 学号
-</span><span style="color:#008000"></span>  stud_name varchar(32), <span style="color:#008000">-- 姓名
-</span><span style="color:#008000"></span>  dept_no int(32), <span style="color:#008000">-- 所在系
-</span><span style="color:#008000"></span>  dept_name varchar(32), <span style="color:#008000">-- 系名称
-</span><span style="color:#008000"></span>  loac varchar(32), <span style="color:#008000">-- 系地址
-</span><span style="color:#008000"></span>  <span style="color:#00f">primary</span> <span style="color:#00f">key</span> stud_no
+<span style=color:green>-- 以下为数据依赖关系：L=&gt;R(由L可确定R)
+</span><span style=color:green>-- student_no =&gt; class_no
+</span><span style=color:green>-- class_no =&gt; credit
+</span><span style=color:green>-- student_no + class_no =&gt; grade
+</span><span style=color:green>-- 如此一来，学分被大量重复存储，数据冗余
+</span></code></pre></div><h4 id=723-第三范式>7.2.3 第三范式</h4><p>关系模式R（U，F）中的所有非主属性对任何候选关键字都不存在传递依赖</p><p>例&mdash;-S1（SNO，SNAME，DNO，DNAME，LOCATION)</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>create</span> <span style=color:#00f>table</span> student (
+  stud_no int(32), <span style=color:green>-- 学号
+</span><span style=color:green></span>  stud_name varchar(32), <span style=color:green>-- 姓名
+</span><span style=color:green></span>  dept_no int(32), <span style=color:green>-- 所在系
+</span><span style=color:green></span>  dept_name varchar(32), <span style=color:green>-- 系名称
+</span><span style=color:green></span>  loac varchar(32), <span style=color:green>-- 系地址
+</span><span style=color:green></span>  <span style=color:#00f>primary</span> <span style=color:#00f>key</span> stud_no
 )
-</code></pre></div><p>关键字stud_no决定各个属性。由于是单个关键字，没有部分依赖的问题，肯定是2NF。但这关系肯定有大量的冗余，有关学生所在的几个属性dept_no，dept_name，loca将重复存储，插入，删除和修改时也将产生类似以上例的情况。</p>
-<p>原因:关系中存在传递依赖造成的。即stud_no 1=&gt;1 dept_no。 而dept_no 1=&gt;n dept_no却不存在， 而dept_no -&gt; loca存在, 因此关键辽 stud_no 对 loac 函数决定是通过传递依赖 stud_no -&gt; loca 实现的。也就是说，stud_no不直接决定非主属性loac。</p>
-<p>解决目地：每个关系模式中不能留有传递依赖。</p>
-<p>解决方法：分为两个关系 student（stud_no，stud_name，dept_no），dept（dept_no，dept_name，loac）</p>
-<p>注意：关系student中不能没有外关键字dept_no。否则两个关系之间失去联系</p>
-<h4 id="其它">其它</h4>
-
-      </article>
-    </div>
-
-    
-    <div class="pagination-single">
-      <div class="btn">
-      
-        上一篇：<a class="previous" href="https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html"> 
-        
-          基于js的正则表达式入门教程
-        
-        </a>
-      
-      </div>
-        <div class="btn">
-      
-        下一篇：<a class="next" href="https://linjiasen63.github.io/posts/programming/java/java-se/syntax-basic.html">
-        
-          服务端学习之java基础系列：语法基础
-        
-        </a>
-      
-      </div>
-
-      
-    </div>
-    
-  </div>
-  <div id="pageScrollTop" class="page-scroll-top">
-  <span class="arr"></span>
-  <span class="txt">顶部</span>
-</div>
-
-<script>
-  var $pageScrollTop = $("#pageScrollTop");
-  $pageScrollTop.hide();
-  $pageScrollTop.on('click', function() {
-    $('html,body').animate({scrollTop: '0px'}, 300);;
-  });
-  $(document).scroll(function () {
-    var scroTop = $(document).scrollTop();
-    var contentHeight = $(document).height();
-
-    if (scroTop > contentHeight * 0.2) {
-      $pageScrollTop.show();
-    } else {
-      $pageScrollTop.hide();
-    }
-  });
-</script>
-
-</div>
-
-      </main>
-
-      
-      <aside class="site-aside">
-        <section class="widget">
-  <form
-  id="search"
-  action='
-    
-      https://linjiasen63.github.io/search.html
-    '
-  method="get"
-  accept-charset="utf-8"
-  target="_blank"
-  _lpchecked="1"
->
-  
-  <input type="text" name="wd" maxlength="20" placeholder="Search" />
-  <input type="hidden" name="sitesearch" value="https://linjiasen63.github.io" />
-  <button type="submit" class="submit icon-search">搜索</button>
-</form>
-
-</section>
-
-<section class="widget">
-  
-
-<h3 class="widget-title">
-    <a href='/'>最新内容</a>
-</h3>
-<ul class="widget-list">
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/functional.html" title="服务端学习之java基础系列：函数式编程">服务端学习之java基础系列：函数式编程</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html" title="前端面试系列：浏览器输入url到网页展示期间发生了什么？">前端面试系列：浏览器输入url到网页展示期间发生了什么？</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html" title="服务端学习之java基础系列：反射">服务端学习之java基础系列：反射</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html" title="服务端学习之java基础系列：网络请求">服务端学习之java基础系列：网络请求</a>
-        
-    </li>
-    
-    <li>
-        
-        <a href="https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html" title="方便bash脚本开发的要点">方便bash脚本开发的要点</a>
-        
-    </li>
-    
-</ul>
-</section>
-
-
-<section class="widget">
-  <h3 class="widget-title">
-  <a href='/categories.html'>内容分类</a>
-</h3>
-<ul class="widget-list">
-  
-  <li>
-    <a href="https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html">
-    编码人生 
-    </a>
-  </li>
-  
-</ul>
-
-</section>
-
-
-
-<section class="widget">
-  <h3 class="widget-title">
-  <a href='/tags.html'>内容标签</a>
-</h3>
-<ul class="widget-list">
-  
-  <li>
-    <a href="https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html">
-    java学习
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html">
-    前端面试
-    </a>
-  </li>
-  
-</ul>
-
-</section>
-
-
-      </aside>
-     </div>
-    </div>
-
-    
-    
-    <footer class="site-footer">
-      <div>
-  &copy; 2020
-  <a href="https://linjiasen63.github.io">
-    林三木的博客 By linjiasen63
-  </a>
-  
-</div>
-
-
- 
-  
- 
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/mermaid.min.js"></script>
-<script>
-  Array.from(document.getElementsByClassName("language-mermaid")).forEach(function (el) {
-      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
-  });
-  mermaid.initialize({ startOnLoad: true });
-
-  // 更新流程图中条件框的样式
-  setTimeout(function() {
-    Array.from(document.getElementsByTagName("polygon")).forEach(function (el) {
-      
-      var nodeValue = el.attributes.transform.nodeValue;
-      nodeValue = nodeValue.replace(/\d\d*\.?\d*/ig, function(num) {
-        console.log(num);
-        return num + 'px';
-      });
-      console.log(nodeValue, $(el));
-      $(el).css('transform', 'scaleY(0.68) ' + nodeValue);
-    });
-  }, 100)
-  
-</script>
-
-
-
-
-    </footer>
-    
-  </body>
-</html>
+</code></pre></div><p>关键字stud_no决定各个属性。由于是单个关键字，没有部分依赖的问题，肯定是2NF。但这关系肯定有大量的冗余，有关学生所在的几个属性dept_no，dept_name，loca将重复存储，插入，删除和修改时也将产生类似以上例的情况。</p><p>原因:关系中存在传递依赖造成的。即stud_no 1=>1 dept_no。 而dept_no 1=>n dept_no却不存在， 而dept_no -> loca存在, 因此关键辽 stud_no 对 loac 函数决定是通过传递依赖 stud_no -> loca 实现的。也就是说，stud_no不直接决定非主属性loac。</p><p>解决目地：每个关系模式中不能留有传递依赖。</p><p>解决方法：分为两个关系 student（stud_no，stud_name，dept_no），dept（dept_no，dept_name，loac）</p><p>注意：关系student中不能没有外关键字dept_no。否则两个关系之间失去联系</p><h4 id=其它>其它</h4></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/regexp/tutorial-basic.html>
+基于js的正则表达式入门教程</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/java/java-se/syntax-basic.html>
+服务端学习之java基础系列：语法基础</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/functional.html title=服务端学习之java基础系列：函数式编程>服务端学习之java基础系列：函数式编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html title=前端面试系列：浏览器输入url到网页展示期间发生了什么？>前端面试系列：浏览器输入url到网页展示期间发生了什么？</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=服务端学习之java基础系列：反射>服务端学习之java基础系列：反射</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/tip-ip.html title=服务端学习之java基础系列：网络请求>服务端学习之java基础系列：网络请求</a></li><li><a href=https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html title=方便bash脚本开发的要点>方便bash脚本开发的要点</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2020
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>
