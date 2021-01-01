@@ -1,0 +1,350 @@
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>服务端学习之java基础系列：输入输出</title><link rel=canonical href=/><link href=/scss/index.min.14d9fb110d1af5c4f2a83be397e6c14c371b497a334e37107f1728ea7aaf72f4.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/about.html>关于</a></li><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>服务端学习之java基础系列：输入输出</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1--file类>1. File类</a><ul><li><a href=#11-file的静态常量>1.1 File的静态常量</a></li><li><a href=#12-构造方法>1.2 构造方法</a></li><li><a href=#13-常用方法>1.3 常用方法</a></li><li><a href=#14-递归>1.4 递归</a></li></ul></li><li><a href=#2-io流>2. IO流</a><ul><li><a href=#21-字节流>2.1 字节流</a></li><li><a href=#22-字符流>2.2 字符流</a></li><li><a href=#23-异常处理>2.3 异常处理</a></li><li><a href=#24-缓冲流>2.4 缓冲流</a></li><li><a href=#25-转换流>2.5 转换流</a></li></ul></li><li><a href=#3-其它>3. 其它</a><ul><li><a href=#31-properties>3.1 Properties</a></li><li><a href=#32-序列化>3.2 序列化</a></li><li><a href=#33-打印流>3.3 打印流</a></li></ul></li></ul></nav><h2 id=1--file类>1. File类</h2><p><code>java.io.File</code>，文件与目录的抽象表示形式</p><h3 id=11-file的静态常量>1.1 File的静态常量</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 与系统有关的路径分隔符
+</span><span style=color:green></span><span style=color:#00f>static</span> String pathSeparator <span style=color:green>// 为方便，为字符串
+</span><span style=color:green></span><span style=color:#00f>static</span> <span style=color:#2b91af>char</span> pathSeparatorChar
+<span style=color:green>// mac: 冒号` :`
+</span><span style=color:green>// win: 分号` ;`
+</span><span style=color:green></span>
+<span style=color:green>// 与系统有关的默认名称分隔符
+</span><span style=color:green></span><span style=color:#00f>static</span> String separator <span style=color:green>// 为方便，为字符串
+</span><span style=color:green></span><span style=color:#00f>static</span> <span style=color:#2b91af>char</span> separatorChar
+<span style=color:green>// mac: 正叙扛` /`
+</span><span style=color:green>// win: 反叙扛`\`
+</span></code></pre></div><h3 id=12-构造方法>1.2 构造方法</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> File(String pathname)
+
+<span style=color:#00f>public</span> File(String parent, String child)
+
+<span style=color:#00f>public</span> File(File parent, String child)
+</code></pre></div><h3 id=13-常用方法>1.3 常用方法</h3><h4 id=131-获取>1.3.1 获取</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 返回此File的绝对路径
+</span><span style=color:green></span><span style=color:#00f>public</span> String getAbsolutePath()
+<span style=color:green>// 返回此File的创建时传入的path
+</span><span style=color:green>// toString就是调用getPath
+</span><span style=color:green></span><span style=color:#00f>public</span> String getPath()
+<span style=color:green>// 返回File表示文件或目录的名称
+</span><span style=color:green></span><span style=color:#00f>public</span> String getName()
+<span style=color:green>// 返回File表示的文件长度，指向的文件大小，
+</span><span style=color:green>// 若为文件夹返回0；若文件不存在返回0
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>long</span> length()
+</code></pre></div><h4 id=132-判断>1.3.2 判断</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 判断File表示的目录或文件是否存在
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> exists()
+<span style=color:green>// 判断是否为目录
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> isDirectory()
+<span style=color:green>// 判断是否为文件
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> isFile()
+</code></pre></div><h4 id=133-创建删除>1.3.3 创建删除</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 当且仅当具有该名称的文件尚不存在时创建一个新的空文件
+</span><span style=color:green>// 文件不存在时创建文件返回true；存在时返回false；
+</span><span style=color:green>// 若创建文件的路径不存在会抛出异常：IOException
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> createNewFile()
+
+<span style=color:green>// 删除File表示的目录或文件
+</span><span style=color:green>// 返回值true：文件/文件夹删除成功
+</span><span style=color:green>// 返回值false：文件夹中有内容；构造方法中路径不存在
+</span><span style=color:green>// 不走回收站，彻底删除，需要谨慎操作
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> delete()
+
+<span style=color:green>// 若文件夹不存在，创建并返回true；若存在则直接返回false；
+</span><span style=color:green>// 若创建文件的路径不存在会抛出异常：IOException
+</span><span style=color:green>// 创建File表示的目录（单级）
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> mkdir()
+
+<span style=color:green>// 若文件夹不存在，创建并返回true；若存在则直接返回false；
+</span><span style=color:green>// 创建File表示的目录，包括任何必需但不存在的父目录，多级
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>boolean</span> mkdirs()
+</code></pre></div><h4 id=134-遍历>1.3.4 遍历</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 返回File目录中所有子文件或目录
+</span><span style=color:green></span><span style=color:#00f>public</span> String[] list()
+<span style=color:#00f>public</span> File[] listFiles()
+
+<span style=color:green>// 当构造方法中的路径 ”1.不是目录“ 或 ”2.不存在“ 会抛出异常
+</span><span style=color:green>// NullPointerException
+</span></code></pre></div><h4 id=135-过滤器>1.3.5 过滤器</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// FileFilter是一个接口，抽象方法用来过滤文件
+</span><span style=color:green>// boolean accept(File pathname)
+</span><span style=color:green></span><span style=color:#00f>public</span> File[] list(FileFilter filter)
+
+<span style=color:green>// FileNameFilter是一个接口，抽象方法用来过滤文件
+</span><span style=color:green>// boolean accept(File dir, String name)
+</span><span style=color:green></span><span style=color:#00f>public</span> File[] list(FileNameFilter filter)
+</code></pre></div><pre><code>File file = new File(&quot;/&quot;)
+</code></pre><h3 id=14-递归>1.4 递归</h3><p>类别：</p><ul><li>直接递归</li><li>间接递归</li></ul><p>条件：</p><ul><li>一定要有条件限定，保证递归能够退出，否则会发生栈内存溢出</li><li>虽然有条件限定，但是递归次数不能太大，否则会内存溢出</li><li>构造方法禁止递归，编译报错</li></ul><h2 id=2-io流>2. IO流</h2><ul><li>输入流</li><li>输出流</li></ul><table><thead><tr><th></th><th>输出流</th><th>输入流</th></tr></thead><tbody><tr><td>字节流</td><td>OutputStream</td><td>InputStream</td></tr><tr><td>字符流</td><td>Writer</td><td>Reader</td></tr></tbody></table><h3 id=21-字节流>2.1 字节流</h3><h4 id=211-outputstream>2.1.1 OutputStream</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// java.io.OutputStream
+</span><span style=color:green>// 关团输出流并释放相关的资源
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> close()
+<span style=color:green>// 刷新并强制任何缓冲的输出字节被写出
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> flush()
+<span style=color:green>// 将内容（参数对应的内容）输出
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>byte</span>[] b)
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>byte</span>[] b, <span style=color:#2b91af>int</span> off, <span style=color:#2b91af>int</span> len)
+<span style=color:#00f>public</span> <span style=color:#00f>abstract</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>int</span> b)
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 创建一个向指定文件写入数据的输出流
+</span><span style=color:green></span>FileOutputStream(String name)
+FileOutputStream(File file)
+<span style=color:green>// 1. 创建一个FileOutputStream对象
+</span><span style=color:green>// 2. 根据构造方法中传递的路径，创建一个空文件
+</span><span style=color:green>// 3. 将FileOutputStream对象指向刚创建的文件
+</span></code></pre></div><h4 id=212-inputstream>2.1.2 InputStream</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// java.io.InputStream
+</span><span style=color:green>// 关团输出流并释放相关的资源
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> close()
+<span style=color:green>// 从输入流中读取数据下一字节，若没有则返回-1
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>int</span> read()
+<span style=color:green>// 从输入流中读取一定数量的字节，并奖其存在到缓冲区数据b中
+</span><span style=color:green>// 返回读取的有效字节数量
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>int</span> read(<span style=color:#2b91af>byte</span>[] b)
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 将硬盘中的文件读取到内存中
+</span><span style=color:green></span>FileInputStream(String name)
+FileInputStream(File file)
+</code></pre></div><h3 id=22-字符流>2.2 字符流</h3><h4 id=221-writer>2.2.1 Writer</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// java.io.Writer
+</span><span style=color:green>// 关团输出流并释放相关的资源，会先刷新（即调用flush）
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> close()
+<span style=color:green>// 刷新并强制任何缓冲的输出字节被写出
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> flush()
+
+<span style=color:green>// 写入内容
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>int</span> c)
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>char</span>[] cbuf)
+<span style=color:#00f>public</span> <span style=color:#00f>abstract</span> <span style=color:#2b91af>void</span> write(<span style=color:#2b91af>char</span>[] cbuf<span>，</span><span style=color:#2b91af>int</span> off, <span style=color:#2b91af>int</span> len)
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(String str)
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> write(String str<span>，</span><span style=color:#2b91af>int</span> off, <span style=color:#2b91af>int</span> len)
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 将内存中的字符数据写入到文件中
+</span><span style=color:green></span>FileWriter(String name)
+FileWriter(File file)
+</code></pre></div><h4 id=222-reader>2.2.2 Reader</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// java.io.Reader
+</span><span style=color:green>// 关团输出流并释放相关的资源
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>void</span> close()
+<span style=color:green>// 从输入流中读取数据下一字符
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>int</span> read()
+<span style=color:green>// 从输入流中读取一定数量的字符，并奖其存在到缓冲区数据chuf中
+</span><span style=color:green></span><span style=color:#00f>public</span> <span style=color:#2b91af>int</span> read(<span style=color:#2b91af>char</span>[] chuf)
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 将硬盘中的文件读取到内存中
+</span><span style=color:green></span>FileReader(String name)
+FileReader(File file)
+
+<span style=color:green>// append续写开头
+</span><span style=color:green></span>FileReader(String name, <span style=color:#2b91af>boolean</span> append)
+FileReader(File file, <span style=color:#2b91af>boolean</span> append)
+
+<span style=color:green>// 换行
+</span><span style=color:green>// mac: \r
+</span><span style=color:green>// win: \r\n
+</span><span style=color:green>// linux: \n
+</span></code></pre></div><h3 id=23-异常处理>2.3 异常处理</h3><h4 id=231-jdk16及之前>2.3.1 jdk1.6及之前</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>FileWriter fw = <span style=color:#00f>null</span>;
+<span style=color:#00f>try</span> {
+  fw = <span style=color:#00f>new</span> FileWriter(<span style=color:#a31515>&#34;./a.txt&#34;</span>, <span style=color:#00f>true</span>);
+  <span style=color:#00f>for</span> (<span style=color:#2b91af>int</span> i = 0; i &lt; 10; i++) {
+    fw.write(<span style=color:#a31515>&#34;HelloWorld&#34;</span> + i + <span style=color:#a31515>&#34;\r&#34;</span>);
+  }
+} <span style=color:#00f>catch</span> (IOException e) {
+  e.printStackTrace();
+} <span style=color:#00f>finally</span> {
+  <span style=color:#00f>if</span> (fw != <span style=color:#00f>null</span>) {
+    <span style=color:#00f>try</span> {
+      fw.close();
+    } <span style=color:#00f>catch</span> (IOException e) {
+      e.printStackTrace();
+    }
+  }
+}
+</code></pre></div><h4 id=232-jdk17及之后>2.3.2 jdk1.7及之后</h4><p>在try的后边增加一个()，在括号中可以定义流对象，那么这个流对象的作用域在try有有效。try中的代码执行完毕，会自动把流对象释放，不用写finally</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>try</span> (
+    FileWriter fw = <span style=color:#00f>new</span> FileWriter(<span style=color:#a31515>&#34;./a.txt&#34;</span>, <span style=color:#00f>true</span>);
+) {
+  <span style=color:#00f>for</span> (<span style=color:#2b91af>int</span> i = 0; i &lt; 10; i++) {
+    fw.write(<span style=color:#a31515>&#34;HelloWorld&#34;</span> + i + <span style=color:#a31515>&#34;\r&#34;</span>);
+  }
+} <span style=color:#00f>catch</span> (IOException e) {
+  e.printStackTrace();
+}
+</code></pre></div><h4 id=232-jdk19及之后>2.3.2 jdk1.9及之后</h4><p>在try的前边定义流对象，在try后边的()中直接引入流对象的名称（变量名），在try中的代码执行完毕，会自动把流对象释放，不用写finally</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  <span style=color:green>// 此处可能抛出的异常还得处理
+</span><span style=color:green></span>  FileWriter fw = <span style=color:#00f>new</span> FileWriter(<span style=color:#a31515>&#34;./a.txt&#34;</span>, <span style=color:#00f>true</span>);
+  <span style=color:#00f>try</span> (
+      fw
+  ) {
+    <span style=color:#00f>for</span> (<span style=color:#2b91af>int</span> i = 0; i &lt; 10; i++) {
+      fw.write(<span style=color:#a31515>&#34;HelloWorld&#34;</span> + i + <span style=color:#a31515>&#34;\r&#34;</span>);
+    }
+  } <span style=color:#00f>catch</span> (IOException e) {
+    e.printStackTrace();
+  }
+}
+</code></pre></div><h3 id=24-缓冲流>2.4 缓冲流</h3><ul><li>BufferedInputStream、BufferedOutputStream</li><li>BufferedRead、BufferedWriter</li></ul><h4 id=241-字节流>2.4.1 字节流</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  FileOutputStream fos = <span style=color:#00f>new</span> FileOutputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  <span style=color:green>// 指定缓冲区的大小 ，要省略
+</span><span style=color:green></span>  BufferedOutputStream bos = <span style=color:#00f>new</span> BufferedOutputStream(fos, 1024);
+  bos.write(<span style=color:#a31515>&#34;你好世界&#34;</span>.getBytes());
+  <span style=color:green>// 可省略
+</span><span style=color:green></span>  <span style=color:green>// bos.flush();
+</span><span style=color:green></span>  bos.close();
+}
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  FileInputStream fis = <span style=color:#00f>new</span> FileInputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  BufferedInputStream bis = <span style=color:#00f>new</span> BufferedInputStream(fis, 8);
+  <span style=color:#2b91af>byte</span>[] bytes = <span style=color:#00f>new</span> <span style=color:#2b91af>byte</span>[4];
+  <span style=color:#2b91af>int</span> len = 0;
+  <span style=color:#00f>while</span> ((len = bis.read(bytes)) != -1) {
+    System.out.println(<span style=color:#00f>new</span> String(bytes, 0, len));
+  }
+  bis.close();
+}
+<span style=color:green>// 中文会有乱码
+</span></code></pre></div><h4 id=242-字符流>2.4.2 字符流</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  FileWriter fw = <span style=color:#00f>new</span> FileWriter(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  BufferedWriter bfw = <span style=color:#00f>new</span> BufferedWriter(fw);
+  bfw.write(<span style=color:#a31515>&#34;你好世界&#34;</span>);
+  <span style=color:green>// 输出一行（根据系统的不同自动处理）
+</span><span style=color:green></span>  bfw.newLine();
+  bfw.write(<span style=color:#a31515>&#34;HellWorld&#34;</span>);
+  bfw.close();
+}
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  FileReader fr = <span style=color:#00f>new</span> FileReader(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  BufferedReader bfr = <span style=color:#00f>new</span> BufferedReader(fr);
+  <span style=color:green>// 读取一行，没有内容返回null
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(bfr.readLine());;
+</span><span style=color:green></span>  <span style=color:#2b91af>int</span> len = 0;
+  <span style=color:#2b91af>char</span>[] cbuf = <span style=color:#00f>new</span> <span style=color:#2b91af>char</span>[1024];
+  <span style=color:#00f>while</span> ((len =  bfr.read(cbuf)) != -1) {
+    System.out.println(<span style=color:#00f>new</span> String(cbuf, 0, len));
+  }
+  bfr.close();
+}
+</code></pre></div><h3 id=25-转换流>2.5 转换流</h3><p>字符集</p><ul><li>ASCII</li><li>ISO-8859-1</li><li>GBxxx</li><li>unicode</li></ul><h4 id=251-代码实现>2.5.1 代码实现</h4><ul><li>InputStreamReader</li><li>OutputStreamWriter</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  FileOutputStream fos = <span style=color:#00f>new</span> FileOutputStream(<span style=color:#a31515>&#34;a_gbk.txt&#34;</span>);
+  OutputStreamWriter osw = <span style=color:#00f>new</span> OutputStreamWriter(fos, <span style=color:#a31515>&#34;gbk&#34;</span>);
+  osw.write(<span style=color:#a31515>&#34;你好世界！Hello World!&#34;</span>);
+  osw.close();
+
+  System.out.println(<span style=color:#a31515>&#34;====================================================&#34;</span>);
+
+  FileInputStream fis = <span style=color:#00f>new</span> FileInputStream(<span style=color:#a31515>&#34;./a_gbk.txt&#34;</span>);
+  InputStreamReader isr = <span style=color:#00f>new</span> InputStreamReader(fis, <span style=color:#a31515>&#34;gbk&#34;</span>);
+  <span style=color:#2b91af>int</span> len = 0;
+  <span style=color:#2b91af>char</span>[] cbuf = <span style=color:#00f>new</span> <span style=color:#2b91af>char</span>[1024];
+  <span style=color:#00f>while</span> ((len = isr.read(cbuf)) != -1) {
+    System.out.println(<span style=color:#00f>new</span> String(cbuf, 0, len));
+  }
+  isr.close();
+}
+</code></pre></div><h2 id=3-其它>3. 其它</h2><h3 id=31-properties>3.1 Properties</h3><p><code>java.util.Properties extends HanshTable&lt;K, v></code>， 双列集合，K与V默认都是字符串。唯一一个与io流相结合的集合</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 把集合中的临时数据持久化到硬盘中
+</span><span style=color:green></span>store
+<span style=color:green>// 把硬盘中的数据读取到内存中
+</span><span style=color:green></span>load
+
+<span style=color:green>// 向集合中添加数据，即Map.put
+</span><span style=color:green></span>Object setProperty(String key, String value)
+<span style=color:green>// 从集合中读取数据，即Map.get
+</span><span style=color:green></span>String getProperty(String key)
+<span style=color:green>// 返回集合的键集，即Map.KeySet
+</span><span style=color:green></span>Set&lt;String&gt; stringPropertyNames()
+</code></pre></div><h4 id=311-代码实现>3.1.1 代码实现</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException {
+  Properties p1 = <span style=color:#00f>new</span> Properties();
+  p1.setProperty(<span style=color:#a31515>&#34;1&#34;</span>, <span style=color:#a31515>&#34;a&#34;</span>);
+  p1.setProperty(<span style=color:#a31515>&#34;2&#34;</span>, <span style=color:#a31515>&#34;b&#34;</span>);
+  p1.setProperty(<span style=color:#a31515>&#34;3&#34;</span>, <span style=color:#a31515>&#34;c&#34;</span>);
+
+  <span style=color:#00f>for</span> (String key : p1.stringPropertyNames()) {
+    System.out.println(key + <span style=color:#a31515>&#34;===&#34;</span> + p1.getProperty(key));
+  }
+  FileWriter fw = <span style=color:#00f>new</span> FileWriter(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  <span style=color:green>// 第一个参数：Writer、OutputStream(不能有中文)
+</span><span style=color:green></span>  <span style=color:green>// 第二个参数comments: 注释不能使用中文
+</span><span style=color:green></span>  p1.store(fw, <span style=color:#a31515>&#34;&#34;</span>);
+  fw.close();
+
+  System.out.println(<span style=color:#a31515>&#34;============================================&#34;</span>);
+  Properties p2 = <span style=color:#00f>new</span> Properties();
+  <span style=color:green>// Reader、InputStream
+</span><span style=color:green></span>  <span style=color:green>// 键值使用=、空格进行连接
+</span><span style=color:green></span>  <span style=color:green>// 使用#进行注释
+</span><span style=color:green></span>  <span style=color:green>// 键值都是字符串，不用再加括号
+</span><span style=color:green></span>  FileReader fr = <span style=color:#00f>new</span> FileReader(<span style=color:#a31515>&#34;./a.txt&#34;</span>);
+  p2.load(fr);
+  <span style=color:#00f>for</span> (String key : p2.stringPropertyNames()) {
+    System.out.println(key + <span style=color:#a31515>&#34;===&#34;</span> + p2.getProperty(key));
+  }
+}
+</code></pre></div><h3 id=32-序列化>3.2 序列化</h3><ul><li>ObjectInputStream</li><li>ObjectOutputStream</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 序列化对象所属于类必须实现Serializable接口
+</span><span style=color:green>// Serializable接口只是一个标记，声明可序列化
+</span><span style=color:green></span><span style=color:#00f>class</span> <span style=color:#2b91af>Student</span> <span style=color:#00f>implements</span> Serializable{
+  <span style=color:green>// 默认情况下，当类的声明发生改变时，之前已序列化的内容将不能被反序列化
+</span><span style=color:green></span>  <span style=color:green>// 可以在序列化之前，在类的声明中增加属性serialVersionUID以解决问题
+</span><span style=color:green></span>  <span style=color:#00f>static</span> <span style=color:#00f>final</span> <span style=color:#2b91af>long</span> serialVersionUID = 20210101;
+
+  <span style=color:green>// 由于静态优先于对象存在，因此其修饰的属性不会被序列化
+</span><span style=color:green></span>  <span style=color:green>// public static String name;
+</span><span style=color:green></span>  <span style=color:green>// 若不想声明为静态，可使用transient指定属性不被序列化
+</span><span style=color:green></span>  <span style=color:green>// public transient String name;
+</span><span style=color:green></span>  <span style=color:#00f>private</span> String name;
+
+  <span style=color:#00f>public</span> Student() {
+  }
+
+  <span style=color:#00f>public</span> Student(String name) {
+    <span style=color:#00f>this</span>.name = name;
+  }
+
+  <span style=color:#00f>public</span> String getName() {
+    <span style=color:#00f>return</span> name;
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#2b91af>void</span> setName(String name) {
+    <span style=color:#00f>this</span>.name = name;
+  }
+
+  @Override
+  <span style=color:#00f>public</span> String toString() {
+    <span style=color:#00f>return</span> <span style=color:#a31515>&#34;Student{&#34;</span> +
+        <span style=color:#a31515>&#34;name=&#39;&#34;</span> + name + <span style=color:#a31515>&#39;\&#39;&#39;</span> +
+        <span style=color:#a31515>&#39;}&#39;</span>;
+  }
+}
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Main</span> {
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException, ClassNotFoundException {
+    <span style=color:green>// write();
+</span><span style=color:green></span>    <span style=color:green>// read();
+</span><span style=color:green></span>    writeAndReadList();
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> write() <span style=color:#00f>throws</span> IOException {
+    Student stu = <span style=color:#00f>new</span> Student(<span style=color:#a31515>&#34;小明&#34;</span>);
+    ObjectOutputStream oos = <span style=color:#00f>new</span> ObjectOutputStream(<span style=color:#00f>new</span> FileOutputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>));
+    oos.writeObject(stu);
+    oos.close();
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> read() <span style=color:#00f>throws</span> IOException, ClassNotFoundException {
+    ObjectInputStream ois = <span style=color:#00f>new</span> ObjectInputStream(<span style=color:#00f>new</span> FileInputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>));
+    Object o = ois.readObject();
+    ois.close();
+    Student stu = (Student) o;
+    System.out.println(stu);
+  }
+
+  <span style=color:green>// 序列化集合
+</span><span style=color:green></span>  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> writeAndReadList() <span style=color:#00f>throws</span> IOException, ClassNotFoundException {
+    ArrayList&lt;Student&gt; list1 = <span style=color:#00f>new</span> ArrayList&lt;&gt;();
+    list1.add(<span style=color:#00f>new</span> Student(<span style=color:#a31515>&#34;小明&#34;</span>));
+    list1.add(<span style=color:#00f>new</span> Student(<span style=color:#a31515>&#34;小红&#34;</span>));
+    list1.add(<span style=color:#00f>new</span> Student(<span style=color:#a31515>&#34;小李&#34;</span>));
+    ObjectOutputStream oos = <span style=color:#00f>new</span> ObjectOutputStream(<span style=color:#00f>new</span> FileOutputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>));
+    oos.writeObject(list1);
+    oos.close();
+
+    ObjectInputStream ois = <span style=color:#00f>new</span> ObjectInputStream(<span style=color:#00f>new</span> FileInputStream(<span style=color:#a31515>&#34;./a.txt&#34;</span>));
+    Object o = ois.readObject();
+    ArrayList&lt;Student&gt; list2 = (ArrayList&lt;Student&gt;) o;
+    <span style=color:#00f>for</span> (Student student : list2) {
+      System.out.println(student);
+    }
+  }
+}
+</code></pre></div><h3 id=33-打印流>3.3 打印流</h3><p>System.out就是一个PrintStream</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>PrintStream ps = <span style=color:#00f>new</span> PrintStream(<span style=color:#00f>new</span> FileOutputStream(<span style=color:#a31515>&#34;a.txt&#34;</span>));
+ps.println(<span style=color:#a31515>&#34;Hello world!&#34;</span>);
+
+System.out.println(<span style=color:#a31515>&#34;控制台输出&#34;</span>);
+<span style=color:green>// 指定输出流
+</span><span style=color:green></span>System.setOut(ps);
+System.out.println(<span style=color:#a31515>&#34;指定输出流&#34;</span>);
+
+ps.close();
+</code></pre></div></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/java/java-se/functional.html>
+服务端学习之java基础系列：函数式编程</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/front/interview/coding-fn.html>
+前端面试系列：手写常见方法</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/coding-fn.html title=前端面试系列：手写常见方法>前端面试系列：手写常见方法</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/intput-output.html title=服务端学习之java基础系列：输入输出>服务端学习之java基础系列：输入输出</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/functional.html title=服务端学习之java基础系列：函数式编程>服务端学习之java基础系列：函数式编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/things-about-from-url-to-html.html title=前端面试系列：浏览器输入url到网页展示期间发生了什么？>前端面试系列：浏览器输入url到网页展示期间发生了什么？</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=服务端学习之java基础系列：反射>服务端学习之java基础系列：反射</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>
