@@ -1,6 +1,124 @@
-<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>服务端学习之java基础系列：反射</title><link rel=canonical href=/><link href=/scss/index.min.14d9fb110d1af5c4f2a83be397e6c14c371b497a334e37107f1728ea7aaf72f4.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/about.html>关于</a></li><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>服务端学习之java基础系列：反射</h1><h2>目录</h2><nav id=TableOfContents></nav></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/linux/bash-program-point.html>
-方便bash脚本开发的要点</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/java/java-se/anomoation.html>
-服务端学习之java基础系列：反射</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>服务端学习之java基础系列：反射编程</title><link rel=canonical href=/><link href=/scss/index.min.14d9fb110d1af5c4f2a83be397e6c14c371b497a334e37107f1728ea7aaf72f4.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/about.html>关于</a></li><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>服务端学习之java基础系列：反射编程</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-基础>1. 基础</a><ul><li><a href=#11-获取class对象>1.1 获取Class对象</a></li><li><a href=#12-获取field对象>1.2 获取Field对象</a></li><li><a href=#13-获取constructor对象>1.3 获取Constructor对象</a></li><li><a href=#14-获取method对象>1.4 获取Method对象</a></li><li><a href=#15-示例>1.5 示例</a></li></ul></li></ul></nav><h2 id=1-基础>1. 基础</h2><p>Student.java编译生成Student.class，然后通过类加载器将Student.class加载到内存中</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Student</span> {
+  <span style=color:#00f>private</span> <span style=color:#2b91af>int</span> id;
+  <span style=color:#00f>private</span> String name;
+
+  <span style=color:#00f>public</span> Student() {
+  }
+
+  <span style=color:#00f>public</span> Student(<span style=color:#2b91af>int</span> id, String name) {
+    <span style=color:#00f>this</span>.id = id;
+    <span style=color:#00f>this</span>.name = name;
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#2b91af>int</span> getId() {
+    <span style=color:#00f>return</span> id;
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#2b91af>void</span> setId(<span style=color:#2b91af>int</span> id) {
+    <span style=color:#00f>this</span>.id = id;
+  }
+
+  <span style=color:#00f>public</span> String getName() {
+    <span style=color:#00f>return</span> name;
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#2b91af>void</span> setName(String name) {
+    <span style=color:#00f>this</span>.name = name;
+  }
+
+  @Override
+  <span style=color:#00f>public</span> String toString() {
+    <span style=color:#00f>return</span> <span style=color:#a31515>&#34;Student{&#34;</span> +
+        <span style=color:#a31515>&#34;id=&#34;</span> + id +
+        <span style=color:#a31515>&#34;, name=&#39;&#34;</span> + name + <span style=color:#a31515>&#39;\&#39;&#39;</span> +
+        <span style=color:#a31515>&#39;}&#39;</span>;
+  }
+}
+</code></pre></div><h3 id=11-获取class对象>1.1 获取Class对象</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 1 通过类的全路径字符串，可能抛出ClassNotFoundException
+</span><span style=color:green>// 多用于配置文件中
+</span><span style=color:green></span>Class&lt;Student&gt; cls1 = (Class&lt;Student&gt;) Class.forName(<span style=color:#a31515>&#34;com.linjiasen.basic.Student&#34;</span>);
+<span style=color:green>// 2 通过类的class属性
+</span><span style=color:green>// 多用于参数传递
+</span><span style=color:green></span>Class&lt;Student&gt; cls2 = Student.class;
+<span style=color:green>// 3 通过类实例的getClass方法
+</span><span style=color:green>// 多用于对象已在
+</span><span style=color:green></span>Class&lt;? <span style=color:#00f>extends</span> Student&gt; cls3 = <span style=color:#00f>new</span> Student().getClass();
+
+<span style=color:green>// 获取类名
+</span><span style=color:green></span>Class对象.getName()
+</code></pre></div><p>结论：同一个字节符码文件在一次程序运行中，只会被加载一次。即<code>cls1 == cls2</code>与<code>cls1 == cls3</code>均为true。</p><p><strong>Class类的相关操作方法如下</strong></p><h3 id=12-获取field对象>1.2 获取Field对象</h3><p>需要处理可能抛出的异常</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> Field getField(String name)<span>：</span>获取public修符的指定名称的属性
+<span style=color:#00f>public</span> Field[] getFields()<span>：</span>获取public修符的所有属性
+
+<span style=color:#00f>public</span> Field getDeclaredField(String name)<span>：</span>获取指定名称的属性
+<span style=color:#00f>public</span> Field[] getDeclaredFields()<span>：</span>获取所有属性
+</code></pre></div><h4 id=121-代码实现>1.2.1 代码实现</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Student stu = <span style=color:#00f>new</span> Student(1, <span style=color:#a31515>&#34;tom&#34;</span>);
+
+Class&lt;Student&gt; cls = (Class&lt;Student&gt;) Class.forName(<span style=color:#a31515>&#34;com.linjiasen.basic.Student&#34;</span>);
+Field fieldName = cls.getDeclaredField(<span style=color:#a31515>&#34;name&#34;</span>);
+<span style=color:green>// 忽略访问权限修饰符的安全检查（私有属性需要加上，否则会抛出异常：IllegalAccessException）
+</span><span style=color:green></span>fieldName.setAccessible(<span style=color:#00f>true</span>);
+String name = (String) fieldName.get(stu);
+System.out.println(<span style=color:#a31515>&#34;name is&#34;</span> + name);
+fieldName.set(stu, <span style=color:#a31515>&#34;john&#34;</span>);
+System.out.println(<span style=color:#a31515>&#34;name is&#34;</span> + name);
+</code></pre></div><h3 id=13-获取constructor对象>1.3 获取Constructor对象</h3><p>需要处理可能抛出的异常</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> Constructor&lt;T&gt; getConstructor(Class&lt;?&gt;... parameterTypes)<span>：</span>获取public修符的指定参数类型的构造函数
+<span style=color:#00f>public</span> Constructor&lt;?&gt;[] getConstructors()<span>：</span>获取public修符的所有构造函数
+
+<span style=color:#00f>public</span> Constructor&lt;T&gt; getDeclaredConstructor(Class&lt;?&gt;... parameterTypes)<span>：</span>获取指定参数类型的构造函数
+<span style=color:#00f>public</span> Constructor&lt;?&gt;[] getDeclaredConstructors()<span>：</span>获取所有构造函数
+</code></pre></div><p>执行则使用其newInstance方法<code>public T newInstance(Object ... initargs)</code>，需要指定初始化所需的参数列表。若所需参数列表为空，则可使用Class对象的newInstance方法t简化。</p><h4 id=131-代码实现>1.3.1 代码实现</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Class&lt;Student&gt; cls = (Class&lt;Student&gt;) Class.forName(<span style=color:#a31515>&#34;com.linjiasen.basic.Student&#34;</span>);
+Constructor&lt;Student&gt; constructor = cls.getConstructor(<span style=color:#2b91af>int</span>.class, String.class);
+<span style=color:green>// 忽略访问权限修饰符的安全检查
+</span><span style=color:green></span>constructor.setAccessible(<span style=color:#00f>true</span>);
+Student stu = constructor.newInstance(1, <span style=color:#a31515>&#34;tom&#34;</span>);
+System.out.println(stu);
+</code></pre></div><h3 id=14-获取method对象>1.4 获取Method对象</h3><p>需要处理可能抛出的异常</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> Method getMethod(String name, Class&lt;?&gt;... parameterTypes)<span>：</span>获取public修符的指定名称与参数类型的方法
+<span style=color:#00f>public</span> Method[] getMethods()<span>：</span>获取public修符的所有方法
+
+<span style=color:#00f>public</span> Method getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)<span>：</span>获取指定名称与参数类型的方法
+<span style=color:#00f>public</span> Method[] getDeclaredMethods()<span>：</span>获取所有方法
+</code></pre></div><p>执行则使用其invoke方法：<code>public Object invoke(Object obj, Object... args)</code>，需要指定方法所属的对象（即上下文）以及参数列表。</p><h4 id=141-代码实现>1.4.1 代码实现</h4><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Student stu = <span style=color:#00f>new</span> Student(1, <span style=color:#a31515>&#34;tom&#34;</span>);
+Class&lt;Student&gt; cls = (Class&lt;Student&gt;) Class.forName(<span style=color:#a31515>&#34;com.linjiasen.basic.Student&#34;</span>);
+Method methodGetName = cls.getMethod(<span style=color:#a31515>&#34;getName&#34;</span>);
+Method methodSetName = cls.getMethod(<span style=color:#a31515>&#34;setName&#34;</span>, String.class);
+<span style=color:green>// 忽略访问权限修饰符的安全检查
+</span><span style=color:green></span>methodGetName.setAccessible(<span style=color:#00f>true</span>);
+String name = (String) methodGetName.invoke(stu);
+System.out.println(<span style=color:#a31515>&#34;name before: &#34;</span> + name);
+methodSetName.invoke(stu, <span style=color:#a31515>&#34;john&#34;</span>);
+name = (String) methodGetName.invoke(stu);
+System.out.println(<span style=color:#a31515>&#34;name after: &#34;</span> + name);
+
+<span style=color:green>// 获取类名
+</span><span style=color:green></span>String className = cls.getName();
+System.out.println(className);
+</code></pre></div><h3 id=15-示例>1.5 示例</h3><p>config.properties</p><pre><code>className=com.linjiasen.basic.Student
+methodName=getName
+</code></pre><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>HelloWorld</span> {
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) <span style=color:#00f>throws</span> IOException, IllegalAccessException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException, InstantiationException {
+    <span style=color:green>// 1. 加载配置文件
+</span><span style=color:green></span>    Properties properties = <span style=color:#00f>new</span> Properties();
+    ClassLoader classLoader = HelloWorld.class.getClassLoader();
+    InputStream configIS = classLoader.getResourceAsStream(<span style=color:#a31515>&#34;config.properties&#34;</span>);
+    properties.load(configIS);
+    <span style=color:#00f>for</span> (String propertyName : properties.stringPropertyNames()) {
+      System.out.println(propertyName + <span style=color:#a31515>&#34;===&#34;</span> + properties.getProperty(propertyName));
+    }
+    <span style=color:green>// 2. 调用方法
+</span><span style=color:green></span>    String className = properties.getProperty(<span style=color:#a31515>&#34;className&#34;</span>);
+    String methodName = properties.getProperty(<span style=color:#a31515>&#34;methodName&#34;</span>);
+    Class&lt;?&gt; cls = Class.forName(className);
+    Constructor&lt;?&gt; constructor = cls.getConstructor();
+    Object o = constructor.newInstance();
+
+    Method method = cls.getMethod(methodName);
+    Object result = method.invoke(o);
+    System.out.println(<span style=color:#a31515>&#34;result:&#34;</span> + result);
+  }
+}
+</code></pre></div></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/java/java-se/unit-test.html>
+服务端学习之java基础系列：单元测试</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html>
+服务端学习之java基础系列：注解编程</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
 <input type=hidden name=sitesearch value=https://linjiasen63.github.io>
-<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/unit-test.html title=服务端学习之java基础系列：单元测试>服务端学习之java基础系列：单元测试</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/network-connect.html title=服务端学习之java基础系列：网络请求>服务端学习之java基础系列：网络请求</a></li><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/coding-fn.html title=前端面试系列：手写常见方法>前端面试系列：手写常见方法</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/intput-output.html title=服务端学习之java基础系列：输入输出>服务端学习之java基础系列：输入输出</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/functional.html title=服务端学习之java基础系列：函数编程>服务端学习之java基础系列：函数编程</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html title=服务端学习之java基础系列：注解编程>服务端学习之java基础系列：注解编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=服务端学习之java基础系列：反射编程>服务端学习之java基础系列：反射编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/unit-test.html title=服务端学习之java基础系列：单元测试>服务端学习之java基础系列：单元测试</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/network-connect.html title=服务端学习之java基础系列：网络请求>服务端学习之java基础系列：网络请求</a></li><li><a href=https://linjiasen63.github.io/posts/programming/front/interview/coding-fn.html title=前端面试系列：手写常见方法>前端面试系列：手写常见方法</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
 <a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>
