@@ -1,0 +1,405 @@
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>java进阶系列：jdbc</title><link rel=canonical href=/><link href=/scss/index.min.951eed81ea4ea555ce66bcef188e0f988b7a0d4ff5b3727648acb94618429116.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/about.html>我的</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>java进阶系列：jdbc</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-基础知识>1. 基础知识</a><ul><li><a href=#11-步骤>1.1 步骤</a></li><li><a href=#12-示例>1.2 示例</a></li><li><a href=#13-jar资源>1.3 jar资源</a></li></ul></li><li><a href=#2基本概念>2.基本概念</a><ul><li><a href=#21-drivermanager>2.1 DriverManager</a></li><li><a href=#22-connection>2.2 Connection</a></li><li><a href=#23-statement>2.3 Statement</a></li><li><a href=#24-resultset>2.4 ResultSet</a></li><li><a href=#25-preparedstatement>2.5 PreparedStatement</a></li><li><a href=#26-事务>2.6 事务</a></li></ul></li><li><a href=#3-数据库连接池>3. 数据库连接池</a><ul><li><a href=#31-c3p0>3.1 c3p0</a></li><li><a href=#32-druid>3.2 druid</a></li></ul></li><li><a href=#4-spring-jdbc>4. Spring JDBC</a></li></ul></nav><p>jdbc：即java数据库连接，java database connectivity。本质上是java官方定义的一种规则（接口）：规定了如何操作数据库，具体的实现（又称为数据库驱动）由数据库厂商提供。</p><h2 id=1-基础知识>1. 基础知识</h2><h3 id=11-步骤>1.1 步骤</h3><ol><li>导入jar包<ol><li>到<a href=https://dev.mysql.com/downloads/>官网</a>下载对应的jar包</li><li>拷贝到项目中，右键，点击“add as library”即可</li></ol></li><li>注册驱动</li><li>获取数据库连接对象 Connection</li><li>定义sql</li><li>获取执行sql语句的statement对象</li><li>执行sql，接受返回结果</li><li>处理结果</li><li>释放资源</li></ol><h3 id=12-示例>1.2 示例</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Main</span> {
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) {
+    <span style=color:green>// 1. 导入jar包
+</span><span style=color:green></span>    <span style=color:green>// 2. 注册驱动
+</span><span style=color:green></span>    <span style=color:#00f>try</span> {
+      Class.forName(<span style=color:#a31515>&#34;com.mysql.cj.jdbc.Driver&#34;</span>);
+    } <span style=color:#00f>catch</span> (ClassNotFoundException e) {
+      e.printStackTrace();
+      <span style=color:#00f>return</span>
+    }
+    Connection conn = <span style=color:#00f>null</span>;
+    Statement stmt = <span style=color:#00f>null</span>;
+    <span style=color:#00f>try</span> {
+      <span style=color:green>// 3. 获取数据库连接对象 Connection
+</span><span style=color:green></span>      conn = DriverManager.getConnection(<span style=color:#a31515>&#34;jdbc:mysql://127.0.0.1/test_db&#34;</span>, <span style=color:#a31515>&#34;root&#34;</span>, <span style=color:#a31515>&#34;********&#34;</span>);
+      <span style=color:green>// 4. 定义sql
+</span><span style=color:green></span>      String sql = <span style=color:#a31515>&#34;update stu set age = 10 where id = 1;&#34;</span>;
+      <span style=color:green>// 5. 获取执行sql语句的statement对象
+</span><span style=color:green></span>      stmt = conn.createStatement();
+      <span style=color:green>// 6. 执行sql，接受返回结果
+</span><span style=color:green></span>      <span style=color:#2b91af>int</span> count = stmt.executeUpdate(sql);
+      <span style=color:green>// 7. 处理结果
+</span><span style=color:green></span>      System.out.println(count);
+
+    } <span style=color:#00f>catch</span> (SQLException e) {
+      e.printStackTrace();
+    } <span style=color:#00f>finally</span> {
+      <span style=color:green>// 8. 释放资源
+</span><span style=color:green></span>      <span style=color:#00f>if</span> (stmt != <span style=color:#00f>null</span>) {
+        <span style=color:#00f>try</span> {
+          stmt.close();
+        } <span style=color:#00f>catch</span> (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+
+      <span style=color:#00f>if</span> (conn != <span style=color:#00f>null</span>) {
+        <span style=color:#00f>try</span> {
+          conn.close();
+        } <span style=color:#00f>catch</span> (SQLException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+  }
+}
+</code></pre></div><h3 id=13-jar资源>1.3 jar资源</h3><p><a href=https://mvnrepository.com/>mvn资源网站</a>：在网站上搜索对应的名称即可找到对应的jar</p><h2 id=2基本概念>2.基本概念</h2><ul><li>DriverManager：驱动管理对象<ul><li>注册驱动</li><li>获取数据库连接</li></ul></li><li>Connection：数据库连接对象</li><li>Statement：执行sql的对象</li><li>ResultSet：结果集对象</li><li>PreparedStatement：执行sql的对象</li></ul><h3 id=21-drivermanager>2.1 DriverManager</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Class.forName(<span style=color:#a31515>&#34;com.mysql.cj.jdbc.Driver&#34;</span>);
+<span style=color:green>// 原理：在com.mysql.cj.jdbc.Driver存在静态代码块
+</span><span style=color:green>// static {
+</span><span style=color:green>//   try {
+</span><span style=color:green>//     DriverManager.registerDriver(new Driver());
+</span><span style=color:green>//   } catch (SQLException var1) {
+</span><span style=color:green>//     throw new RuntimeException(&#34;Can&#39;t register driver!&#34;);
+</span><span style=color:green>//   }
+</span><span style=color:green>// }
+</span></code></pre></div><p>注意：在mysql5之后的驱动jar可以省略注册驱动的步骤</p><h3 id=22-connection>2.2 Connection</h3><p>url：指定连接的路径<code>jdbc:mysql://${ip地址或域名}${:端口号}/数据库名称</code>，如果连接的是本地mysql可以省略“ip地址或域名”，如果端口号为3306同样可以省略</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 获取执行sql的对象
+</span><span style=color:green></span>Statement createStatement()
+PreparedStatement preparedStatement(String sql)
+
+<span style=color:green>// 事务相关的操作
+</span><span style=color:green>// 1.开启事务：调用该方法设置参数为false
+</span><span style=color:green></span><span style=color:#2b91af>void</span> setAutoCommit(<span style=color:#2b91af>boolean</span> autoCommit)
+<span style=color:green>// 2.提交事务
+</span><span style=color:green></span><span style=color:#2b91af>void</span> commit()
+<span style=color:green>// 3.回滚事务
+</span><span style=color:green></span><span style=color:#2b91af>void</span> rollback()
+</code></pre></div><h3 id=23-statement>2.3 Statement</h3><p>静态sql</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 执行任意sql
+</span><span style=color:green></span><span style=color:#2b91af>boolean</span> execute(String sql)
+<span style=color:green>// 执行DML（insert、update、delete）语句、DDL（creeate、alter、drop）语句
+</span><span style=color:green></span><span style=color:#2b91af>int</span> executeUpdate(String sql)
+<span style=color:green>// 执行DQL（query）语句
+</span><span style=color:green></span>ResultSet executeQuery(String sql)
+</code></pre></div><h3 id=24-resultset>2.4 ResultSet</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 游标向下移动一行，返回是否有数据
+</span><span style=color:green>// 若是最后一行（没有数据）返回false
+</span><span style=color:green></span><span style=color:#2b91af>boolean</span> next()
+
+<span style=color:green>// 获取数据，其中Xxx代表数据类型
+</span><span style=color:green>// 根据列的名称获取
+</span><span style=color:green></span>getXxx(String columnName) 
+<span style=color:green>// 根据列的编号获取，切记从1开始计数
+</span><span style=color:green></span>getXxx(<span style=color:#2b91af>int</span> index)
+</code></pre></div><h3 id=25-preparedstatement>2.5 PreparedStatement</h3><p>sql注入：在拼接sql时，有一些sql的特殊关键字参与字符串的拼接，会造成安全性问题。比如，用户将姓名tom，换成<code>tom' or 'a' = 'a</code>，这样将使用sql语句从<code>select * from stu where name = 'tom'</code> 变成 <code>select * from stu where name = 'tom' or 'a' = 'a'</code>将可以查询所有用户。</p><p>解决方法：使用PreparedStatement，预编译sql，参数使用<code>?</code>作为占位符。</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>PreparedStatement Connection.preparedStatement(String sql);
+
+<span style=color:green>// PreparedStatement对象的方法，给占位符赋值，其中Xxx代表数据类型
+</span><span style=color:green></span>setXxx(<span style=color:#2b91af>int</span> position, Object object)
+<span style=color:green>// position：占位符的位置，切记从1开始计数
+</span><span style=color:green>// object：占位符的具体值
+</span></code></pre></div><h4 id=251-代码实例>2.5.1 代码实例</h4><p><strong>配置文件：jdbc.properties</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>driver=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://127.0.0.1/test_db
+user=root
+password=********
+</code></pre></div><p><strong>工具封装：JDBCUtils.java</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>JDBCUtils</span> {
+
+  <span style=color:#00f>private</span> JDBCUtils() {
+  }
+
+  <span style=color:green>// 通过配置文件读取sql配置
+</span><span style=color:green></span>  <span style=color:#00f>public</span> <span style=color:#00f>static</span> Connection getConnection() <span style=color:#00f>throws</span> SQLException {
+    ClassLoader classLoader = JDBCUtils.class.getClassLoader();
+    InputStream is = classLoader.getResourceAsStream(<span style=color:#a31515>&#34;jdbc.properties&#34;</span>);
+    Properties properties = <span style=color:#00f>new</span> Properties();
+    <span style=color:#00f>try</span> {
+      properties.load(<span style=color:#00f>new</span> InputStreamReader(is));
+      String driver = properties.getProperty(<span style=color:#a31515>&#34;driver&#34;</span>);
+      String url = properties.getProperty(<span style=color:#a31515>&#34;url&#34;</span>);
+      String user = properties.getProperty(<span style=color:#a31515>&#34;user&#34;</span>);
+      String password = properties.getProperty(<span style=color:#a31515>&#34;password&#34;</span>);
+      Class.forName(driver);
+      Connection conn = DriverManager.getConnection(url, user, password);
+      <span style=color:#00f>return</span> conn;
+    } <span style=color:#00f>catch</span> (IOException e) {
+      e.printStackTrace();
+    } <span style=color:#00f>catch</span> (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    <span style=color:#00f>return</span> <span style=color:#00f>null</span>;
+  }
+
+  <span style=color:green>// 封装释放资源
+</span><span style=color:green></span>  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> close(Statement stmt, Connection conn) {
+    closeStatement(stmt);
+    closeConnection(conn);
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> close(ResultSet rs, Statement stmt, Connection conn) {
+    closeResultSet(rs);
+    closeStatement(stmt);
+    closeConnection(conn);
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> closeResultSet(ResultSet rs) {
+    <span style=color:#00f>if</span> (rs != <span style=color:#00f>null</span>) {
+      <span style=color:#00f>try</span> {
+        rs.close();
+      } <span style=color:#00f>catch</span> (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> closeStatement(Statement stmt) {
+    <span style=color:#00f>if</span> (stmt != <span style=color:#00f>null</span>) {
+      <span style=color:#00f>try</span> {
+        stmt.close();
+      } <span style=color:#00f>catch</span> (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> closeConnection(Connection conn) {
+    <span style=color:#00f>if</span> (conn != <span style=color:#00f>null</span>) {
+      <span style=color:#00f>try</span> {
+        conn.close();
+      } <span style=color:#00f>catch</span> (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+}
+</code></pre></div><p><strong>Main.java</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Main</span> {
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) {
+    Connection conn = <span style=color:#00f>null</span>;
+    PreparedStatement stmt = <span style=color:#00f>null</span>;
+    ResultSet rs = <span style=color:#00f>null</span>;
+    <span style=color:#00f>try</span> {
+      conn = JDBCUtils.getConnection();
+
+      String sql = <span style=color:#a31515>&#34;select id, user_name, age, birthday from stu where id &lt; ?;&#34;</span>;
+      stmt = conn.prepareStatement(sql);
+      stmt.setInt(1, 10);
+      rs = stmt.executeQuery();
+
+      ArrayList&lt;Student&gt; stus = <span style=color:#00f>new</span> ArrayList&lt;&gt;();
+      Student stu = <span style=color:#00f>null</span>;
+      <span style=color:#00f>while</span> (rs.next()) {
+        stu = <span style=color:#00f>new</span> Student();
+        stu.setId(rs.getInt(<span style=color:#a31515>&#34;id&#34;</span>));
+        stu.setName(rs.getString(<span style=color:#a31515>&#34;user_name&#34;</span>));
+        stu.setAge(rs.getInt(<span style=color:#a31515>&#34;age&#34;</span>));
+        stu.setBirthday(rs.getDate(<span style=color:#a31515>&#34;birthday&#34;</span>));
+        stus.add(stu);
+      }
+      <span style=color:#00f>for</span> (Student student : stus) {
+        System.out.println(student);
+      }
+    } <span style=color:#00f>catch</span> (SQLException e) {
+      e.printStackTrace();
+    } <span style=color:#00f>finally</span> {
+      JDBCUtils.close(rs, stmt, conn);
+    }
+  }
+}
+</code></pre></div><h3 id=26-事务>2.6 事务</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Main</span> {
+  <span style=color:#00f>public</span> <span style=color:#00f>static</span> <span style=color:#2b91af>void</span> main(String[] args) {
+    Connection conn = <span style=color:#00f>null</span>;
+    PreparedStatement stmt1 = <span style=color:#00f>null</span>;
+    PreparedStatement stmt2 = <span style=color:#00f>null</span>;
+    <span style=color:#00f>try</span> {
+      conn = JDBCUtils.getConnection();
+      <span style=color:green>// 设置开启动事务
+</span><span style=color:green></span>      conn.setAutoCommit(<span style=color:#00f>false</span>);
+      <span style=color:green>// 准备sql
+</span><span style=color:green></span>      String sql1 = <span style=color:#a31515>&#34;update stu set age = age + ? where id = ?&#34;</span>;
+      String sql2 = <span style=color:#a31515>&#34;update stu set age = age - ? where id = ?&#34;</span>;
+      stmt1 = conn.prepareStatement(sql1);
+      stmt2 = conn.prepareStatement(sql2);
+      stmt1.setInt(1, 10);
+      stmt1.setInt(2, 1);
+      stmt2.setInt(1, 10);
+      stmt2.setInt(2, 2);
+
+      stmt1.executeUpdate();
+      <span style=color:green>// TestCase: 测试出异常时是否会回滚
+</span><span style=color:green></span>      <span style=color:green>// System.out.println(1 / 0);
+</span><span style=color:green></span>      stmt2.executeUpdate();
+
+      conn.commit();
+
+    } <span style=color:#00f>catch</span> (SQLException e) {
+      <span style=color:#00f>if</span> (conn != <span style=color:#00f>null</span>) {
+        <span style=color:#00f>try</span> {
+          conn.rollback();
+        } <span style=color:#00f>catch</span> (SQLException sqlE) {
+          sqlE.printStackTrace();
+        }
+      }
+      e.printStackTrace();
+    } <span style=color:#00f>finally</span> {
+      JDBCUtils.closeStatement(stmt1);
+      JDBCUtils.closeStatement(stmt2);
+      JDBCUtils.closeConnection(conn);
+    }
+  }
+}
+</code></pre></div><h2 id=3-数据库连接池>3. 数据库连接池</h2><p>标准接口：DataSource，在<code>javax.sql</code>包下。一般由数据库产商实现</p><p>常见</p><ul><li>C3P0：数据库连接池技术</li><li>Druid：数据库连接池技术，由阿里巴巴提供</li></ul><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:green>// 获取连接
+</span><span style=color:green></span>Connection getConnection()
+
+<span style=color:green>// 释放连接（归还）
+</span><span style=color:green>// 若Connection是从连接池中获取的，则调用close
+</span><span style=color:green></span>Connection.close()
+</code></pre></div><h3 id=31-c3p0>3.1 c3p0</h3><p>简单使用流程如下，更多内容请查阅<a href=https://www.mchange.com/projects/c3p0/>官网文档</a></p><ol><li>导入jar包（两个）以及数据库的驱动jar包</li></ol><ul><li>c3p0-x.x.x.jar</li><li>mchange-commons-java-x.x.x.jar</li></ul><ol start=2><li>定义配置文件</li></ol><ul><li>名称：c3p0-config.xml</li><li>路径：直接交文件放在scr目录下</li></ul><ol start=3><li>创建核心对象：数据库连接池对象 ComboPooledDataSource</li><li>获取连接：getConnection</li></ol><p>配置文件：c3p0-config.xml</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>&lt;c3p0-config&gt;
+    &lt;default-config&gt;
+        <span style=color:green>&lt;!-- 驱动名称 --&gt;</span>
+        &lt;property name=<span style=color:#a31515>&#34;driverClass&#34;</span>&gt;com.mysql.cj.jdbc.Driver&lt;/property&gt;
+        <span style=color:green>&lt;!-- url --&gt;</span>
+        &lt;property name=<span style=color:#a31515>&#34;jdbcUrl&#34;</span>&gt;jdbc:mysql:///test_db&lt;/property&gt;
+        <span style=color:green>&lt;!-- 用记 --&gt;</span>
+        &lt;property name=<span style=color:#a31515>&#34;user&#34;</span>&gt;root&lt;/property&gt;
+        <span style=color:green>&lt;!-- 密码 --&gt;</span>
+        &lt;property name=<span style=color:#a31515>&#34;password&#34;</span>&gt;********&lt;/property&gt;
+
+        &lt;property name=<span style=color:#a31515>&#34;automaticTestTable&#34;</span>&gt;con_test&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;checkoutTimeout&#34;</span>&gt;30000&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;idleConnectionTestPeriod&#34;</span>&gt;30&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;initialPoolSize&#34;</span>&gt;10&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;maxIdleTime&#34;</span>&gt;30&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;maxPoolSize&#34;</span>&gt;100&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;minPoolSize&#34;</span>&gt;10&lt;/property&gt;
+        &lt;property name=<span style=color:#a31515>&#34;maxStatements&#34;</span>&gt;200&lt;/property&gt;
+
+        &lt;user-overrides user=<span style=color:#a31515>&#34;test-user&#34;</span>&gt;
+            &lt;property name=<span style=color:#a31515>&#34;maxPoolSize&#34;</span>&gt;10&lt;/property&gt;
+            &lt;property name=<span style=color:#a31515>&#34;minPoolSize&#34;</span>&gt;1&lt;/property&gt;
+            &lt;property name=<span style=color:#a31515>&#34;maxStatements&#34;</span>&gt;0&lt;/property&gt;
+        &lt;/user-overrides&gt;
+
+    &lt;/default-config&gt;
+
+    <span style=color:green>&lt;!-- This app is massive! --&gt;</span>
+    <span style=color:green>&lt;!-- 
+</span><span style=color:green>    &lt;named-config name=&#34;配置名称，通过构造函数传递名称指写使用&#34;&gt;
+</span><span style=color:green>    &lt;/named-config&gt;
+</span><span style=color:green>    --&gt;</span>
+&lt;/c3p0-config&gt;
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>@Test
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> testC3P0() <span style=color:#00f>throws</span> SQLException {
+  ComboPooledDataSource ds = <span style=color:#00f>new</span> ComboPooledDataSource();
+  Connection conn = ds.getConnection();
+  
+  PreparedStatement stmt = conn.prepareStatement(<span style=color:#a31515>&#34;select * from stu where id = ?&#34;</span>);
+  stmt.setInt(1, 1);
+  ResultSet rs = stmt.executeQuery();
+  <span style=color:#00f>while</span> (rs.next()) {
+    <span style=color:#2b91af>int</span> id = rs.getInt(<span style=color:#a31515>&#34;id&#34;</span>);
+    String name = rs.getString(<span style=color:#a31515>&#34;user_name&#34;</span>);
+    System.out.println(<span style=color:#a31515>&#34;id=&#34;</span> + id + <span style=color:#a31515>&#34; name=&#34;</span> + name);
+  }
+  conn.close();
+  ds.close();
+}
+</code></pre></div><h3 id=32-druid>3.2 druid</h3><p>简单使用流程如下，更多内容请查阅<a href=https://druid.apache.org/>官网文档</a></p><ol><li>导入jar包（一个）以及数据库的驱动jar包</li></ol><ul><li>druid-x.x.x.jar</li></ul><ol start=2><li>定义配置文件</li></ol><ul><li>名称：druid.properties</li><li>路径：任意路径，需要主动将其加到到内存，并传递给构造函数</li></ul><ol start=3><li>创建核心对象：数据库连接池对象 ComboPooledDataSource</li><li>获取连接：getConnection</li></ol><p>配置文件： druid.properties</p><pre><code class=language-properties data-lang=properties>#驱动加载
+driverClassName=com.mysql.cj.jdbc.Driver
+#注册驱动
+url=jdbc:mysql://127.0.0.1/test_db
+#连接数据库的用户名
+username=root
+#连接数据库的密码
+password=~0322linQ
+#属性类型的字符串，通过别名的方式配置扩展插件， 监控统计用的stat 日志用log4j 防御sql注入:wall
+filters=stat
+#初始化时池中建立的物理连接个数。
+initialSize=2
+#最大的可活跃的连接池数量
+maxActive=300
+#获取连接时最大等待时间，单位毫秒，超过连接就会失效。配置了maxWait之后，缺省启用公平锁，并发效率会有所下降， 如果需要可以通过配置useUnfairLock属性为true使用非公平锁。
+maxWait=60000
+#连接回收器的运行周期时间，时间到了清理池中空闲的连接，testWhileIdle根据这个判断
+timeBetweenEvictionRunsMillis=60000
+minEvictableIdleTimeMillis=300000
+#用来检测连接是否有效的sql，要求是一个查询语句。
+validationQuery=SELECT 1
+#建议配置为true，不影响性能，并且保证安全性。 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis， 执行validationQuery检测连接是否有效。
+testWhileIdle=true
+#申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。设置为false
+testOnBorrow=false
+#归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能,设置为flase
+testOnReturn=false
+#是否缓存preparedStatement，也就是PSCache。
+poolPreparedStatements=false
+#池中能够缓冲的preparedStatements语句数量
+maxPoolPreparedStatementPerConnectionSize=200
+</code></pre><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>@Test
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> testDruid() <span style=color:#00f>throws</span> Exception {
+  InputStream is = Main.class.getClassLoader().getResourceAsStream(<span style=color:#a31515>&#34;druid.properties&#34;</span>);
+  Properties properties = <span style=color:#00f>new</span> Properties();
+  properties.load(<span style=color:#00f>new</span> InputStreamReader(is));
+  DataSource ds = DruidDataSourceFactory.createDataSource(properties);
+  Connection conn = ds.getConnection();
+  PreparedStatement stmt = conn.prepareStatement(<span style=color:#a31515>&#34;select count(*) as sum from stu;&#34;</span>);
+  ResultSet rs = stmt.executeQuery();
+  rs.next();
+  <span style=color:#2b91af>int</span> sum = rs.getInt(<span style=color:#a31515>&#34;sum&#34;</span>);
+  System.out.println(<span style=color:#a31515>&#34;总数：&#34;</span> +  sum);
+}
+</code></pre></div><h2 id=4-spring-jdbc>4. Spring JDBC</h2><p>Spring框架对jdbc的简单封装，以下是简单使用流程</p><p>导入jar，<a href=https://mvnrepository.com/>mvn资源网站</a>可下载需要导入的jar包，搜索spring jdbc（然后递归查看其所有依赖）</p><ol><li>导入jar包</li><li>创建JdbcTemplate对象，依赖于数据源DataSource<ol><li>JdbcTemplate template = new JdbcTemplate(DataSource ds)</li></ol></li><li>调用JdbcTemplate对象的各种方法来完成CRUD操作<ol><li>update：执行DML语句，增，删，改</li><li>queryForMap：将查询结果集封装为Map&lt;String key, key的数据类型 value><ol><li>注意结果集长集长度只以为1</li></ol></li><li>queryForList：查询结果封装为lis集合<ol><li>注意将每条记录封装为Map&lt;String key, key的数据类型 value>，再将map对象装载到list集合中</li></ol></li><li>query：查询结果，将结果封装为JavaBean对象<ol><li>query的参数：RowMapper<ol><li>一般使用BeanPropertyRowMapper实现类，可以完成数据到JavaBean的自动封装</li><li>new BeanPropertyRowMapper&lt;类型>(类型.class)</li></ol></li></ol></li><li>queryForObject：查询结果，将结果封装为对象<ol><li>一般用于聚合</li></ol></li></ol></li></ol><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#00f>public</span> <span style=color:#00f>class</span> <span style=color:#2b91af>Student</span> {
+  <span style=color:#00f>private</span> Integer id;
+  <span style=color:#00f>private</span> String name;
+  <span style=color:#00f>private</span> Integer age;
+  <span style=color:#00f>private</span> Date birthday;
+  <span style=color:green>// 略
+</span><span style=color:green></span>}
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#00f>CREATE</span> <span style=color:#00f>TABLE</span> `stu` (
+  `id` int <span style=color:#00f>NOT</span> <span style=color:#00f>NULL</span>,
+  `user_name` varchar(128) <span style=color:#00f>COLLATE</span> utf8mb4_general_ci <span style=color:#00f>NOT</span> <span style=color:#00f>NULL</span>,
+  `age` int <span style=color:#00f>DEFAULT</span> <span style=color:#a31515>&#39;0&#39;</span>,
+  `birthday` date <span style=color:#00f>DEFAULT</span> <span style=color:#00f>NULL</span>,
+  <span style=color:#00f>PRIMARY</span> <span style=color:#00f>KEY</span> (`id`)
+) ENGINE=InnoDB <span style=color:#00f>DEFAULT</span> CHARSET=utf8mb4 <span style=color:#00f>COLLATE</span>=utf8mb4_general_ci;
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  @Test
+<span style=color:#00f>public</span> <span style=color:#2b91af>void</span> testJDBC() <span style=color:#00f>throws</span> Exception {
+  InputStream is = DataSourceC3p0.class.getClassLoader().getResourceAsStream(<span style=color:#a31515>&#34;druid.properties&#34;</span>);
+  Properties properties = <span style=color:#00f>new</span> Properties();
+  properties.load(<span style=color:#00f>new</span> InputStreamReader(is));
+  DataSource ds = DruidDataSourceFactory.createDataSource(properties);
+  JdbcTemplate template = <span style=color:#00f>new</span> JdbcTemplate(ds);
+  <span style=color:green>// 改
+</span><span style=color:green></span>  <span style=color:green>// int updateCount = template.update(&#34;update stu set age = 100;&#34;);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;updateCount = &#34; + updateCount);
+</span><span style=color:green></span>  <span style=color:green>// 增
+</span><span style=color:green></span>  <span style=color:green>// int insertCount = template.update(&#34;insert stu(id, user_name, age) values(3, &#39;angle&#39;, 28)&#34;);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;insertCount = &#34; + insertCount);
+</span><span style=color:green></span>  <span style=color:green>// 删
+</span><span style=color:green></span>  <span style=color:green>// int deleteCount = template.update(&#34;delete from stu where id = 3&#34;);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;deleteCount = &#34; + deleteCount);
+</span><span style=color:green></span>
+  <span style=color:green>// Map&lt;String, Object&gt; mapOfQuery = template.queryForMap(&#34;select id, user_name, age, birthday from stu where id = 1&#34;);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(mapOfQuery);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;================================================&#34;);
+</span><span style=color:green></span>  <span style=color:green>//
+</span><span style=color:green></span>  <span style=color:green>// List&lt;Map&lt;String, Object&gt;&gt; listOfQueryMap = template.queryForList(&#34;select * from stu&#34;);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(listOfQueryMap);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;================================================&#34;);
+</span><span style=color:green></span>
+  <span style=color:green>// List&lt;Student&gt; listOfQuery1 = template.query(&#34;select * from stu&#34;, new RowMapper&lt;Student&gt;() {
+</span><span style=color:green></span>  <span style=color:green>//   @Override
+</span><span style=color:green></span>  <span style=color:green>//   public Student mapRow(ResultSet resultSet, int i) throws SQLException {
+</span><span style=color:green></span>  <span style=color:green>//     Student stu = new Student();
+</span><span style=color:green></span>  <span style=color:green>//     stu.setId(resultSet.getInt(&#34;id&#34;));
+</span><span style=color:green></span>  <span style=color:green>//     stu.setName(resultSet.getString(&#34;user_name&#34;));
+</span><span style=color:green></span>  <span style=color:green>//     stu.setAge(resultSet.getInt(&#34;age&#34;));
+</span><span style=color:green></span>  <span style=color:green>//     stu.setBirthday(resultSet.getDate(&#34;birthday&#34;));
+</span><span style=color:green></span>  <span style=color:green>//     return stu;
+</span><span style=color:green></span>  <span style=color:green>//   }
+</span><span style=color:green></span>  <span style=color:green>// });
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(listOfQuery1);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;================================================&#34;);
+</span><span style=color:green></span>
+  <span style=color:green>// List&lt;Student&gt; listOfQuery2 = template.query(&#34;select * from stu&#34;, new BeanPropertyRowMapper&lt;Student&gt;(Student.class));
+</span><span style=color:green></span>  <span style=color:green>// // BeanPropertyRowMapper可自动将一行数据映射到指定类的实例中，它首先将这个类实例化，然后通过名称匹配的方式，映射到属性中去。
+</span><span style=color:green></span>  <span style=color:green>// // 例如：属性名称（createTime）匹配到同名列或带下划线的同名列（CREATE_TIME），具体规则需要在实战中了解。
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(listOfQuery2);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;================================================&#34;);
+</span><span style=color:green></span>
+  <span style=color:green>// Integer age = template.queryForObject(&#34;select age from stu where id = 1 &#34;, Integer.class);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(age);
+</span><span style=color:green></span>  <span style=color:green>// System.out.println(&#34;================================================&#34;);
+</span><span style=color:green></span>}
+</code></pre></div></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html>
+java基础系列：注解编程</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/life/interpersonal-relationship/rules.html>
+人际关系</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/life/interpersonal-relationship/rules.html title=人际关系>人际关系</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-ee/jdbc-basic.html title=java进阶系列：jdbc>java进阶系列：jdbc</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html title=java基础系列：注解编程>java基础系列：注解编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=java基础系列：反射编程>java基础系列：反射编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/unit-test.html title=java基础系列：单元测试>java基础系列：单元测试</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E7%94%9F%E6%B4%BB.html>生活</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB.html>人际关系</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>
