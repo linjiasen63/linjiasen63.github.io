@@ -1,0 +1,77 @@
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>前端系列：gulp概要</title><link rel=canonical href=/><link href=/scss/index.min.853fe66ffc548d532828fe39693915d1e1c262984f5e61dc9832784c5cab901b.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/about.html>我的</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>前端系列：gulp概要</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-基础入门>1. 基础入门</a></li></ul></nav><p><strong>参考资料</strong></p><ul><li><a href=https://gulpjs.com/>gulp英文官网</a></li><li><a href=https://www.gulpjs.com.cn/>gulp中文网站</a></li><li><a href=https://gulpjs.com/plugins/>gulp插件查找</a></li></ul><h2 id=1-基础入门>1. 基础入门</h2><ul><li><p>前置条件：默认已安装好node</p></li><li><p>安装命令行工具</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm install --global gulp-cli
+</code></pre></div></li><li><p>初始化项目内容</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npx mkdirp gulp-demo // 创建文件夹
+cd gulp-demo 
+npm init -y // 初始化 npm，默认使用缺省配置
+npm install --save-dev gulp // 安装 gulp
+</code></pre></div></li><li><p>在项目根目录下新建文件 gulpfile.js，文件内容如下</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>function</span> defaultTask(cb) {
+  <span style=color:green>// place code for your default task here
+</span><span style=color:green></span>  console.log(<span style=color:#a31515>&#39;hello world&#39;</span>);
+  cb();
+}
+exports.<span style=color:#00f>default</span> = defaultTask
+</code></pre></div></li><li><p>在项目根目录下执行gulp命令，会输出以下gulp提示以及内容</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>hello world
+</code></pre></div></li><li><p>任务类型</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>const</span> { series, parallel } = require(<span style=color:#a31515>&#39;gulp&#39;</span>);
+
+<span style=color:green>// 公开任务（通过exports导出的，可以在命令行使用 gulp task01 调用）
+</span><span style=color:green></span><span style=color:#00f>function</span> task01(cb) {
+  <span style=color:green>// body omitted
+</span><span style=color:green></span>  cb();
+}
+
+<span style=color:green>// 私有任务
+</span><span style=color:green></span><span style=color:#00f>function</span> task02(cb) {
+  <span style=color:green>// body omitted
+</span><span style=color:green></span>  cb();
+}
+
+exports.task01 = task01 
+exports.build = series(task01, task02); <span style=color:green>// 串行调用
+</span><span style=color:green></span>exports.build = parallel(task01, task02); <span style=color:green>// 并行调用
+</span></code></pre></div></li><li><p>异步执行</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// 返回 stream
+</span><span style=color:green></span><span style=color:#00f>const</span> { src, dest } = require(<span style=color:#a31515>&#39;gulp&#39;</span>);
+
+<span style=color:#00f>function</span> streamTask() {
+  <span style=color:#00f>return</span> src(<span style=color:#a31515>&#39;*.js&#39;</span>)
+    .pipe(dest(<span style=color:#a31515>&#39;output&#39;</span>));
+}
+
+exports.<span style=color:#00f>default</span> = streamTask;
+
+<span style=color:green>// 其它查看官方文档
+</span></code></pre></div></li><li><p>处理文件</p><pre><code>常见插件
+* bable： gulp-bable
+* js压缩： gulp-uglify
+* 重命名： gulp-rename
+* 删除： delete
+* 条件： gulp-if
+* ...
+</code></pre><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// 内联插件
+</span><span style=color:green></span><span style=color:#00f>const</span> { src, dest } = require(<span style=color:#a31515>&#39;gulp&#39;</span>);
+<span style=color:#00f>const</span> uglify = require(<span style=color:#a31515>&#39;uglify-js&#39;</span>);
+<span style=color:#00f>const</span> through2 = require(<span style=color:#a31515>&#39;through2&#39;</span>);
+
+exports.<span style=color:#00f>default</span> = <span style=color:#00f>function</span>() {
+  <span style=color:#00f>return</span> src(<span style=color:#a31515>&#39;src/*.js&#39;</span>)
+    <span style=color:green>// 创建一个内联插件，从而避免使用 gulp-uglify 插件
+</span><span style=color:green></span>    .pipe(through2.obj(<span style=color:#00f>function</span>(file, _, cb) {
+      <span style=color:#00f>if</span> (file.isBuffer()) {
+        <span style=color:#00f>const</span> code = uglify.minify(file.contents.toString());
+        file.contents = Buffer.from(code);
+      }
+      cb(<span style=color:#00f>null</span>, file);
+    }))
+    .pipe(dest(<span style=color:#a31515>&#39;dist/&#39;</span>));
+}
+</code></pre></div></li><li><p>文件监控</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>const</span> { watch } = require(<span style=color:#a31515>&#39;gulp&#39;</span>);
+
+<span style=color:green>// 所有事件都将被监控，具体配置查看官方文档
+</span><span style=color:green></span>watch(<span style=color:#a31515>&#39;src/*.js&#39;</span>, { events: <span style=color:#a31515>&#39;all&#39;</span> }, <span style=color:#00f>function</span>(cb) {
+  <span style=color:green>// body omitted
+</span><span style=color:green></span>  cb();
+});
+</code></pre></div></li></ul></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/front/other/performance-mark.html>
+前端系列：js代码性能测量</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/front/model/selector-priority.html>
+前端系列：css 选择器的优先级</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/life/common/resume.html title=优秀简历的书写规范>优秀简历的书写规范</a></li><li><a href=https://linjiasen63.github.io/posts/life/interpersonal-relationship/rules.html title=人际关系>人际关系</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-ee/jdbc-basic.html title=java进阶系列：jdbc>java进阶系列：jdbc</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html title=java基础系列：注解编程>java基础系列：注解编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=java基础系列：反射编程>java基础系列：反射编程</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E5%B7%A5%E4%BD%9C.html>工作</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%94%9F%E6%B4%BB.html>生活</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/git.html>git</a></li><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB.html>人际关系</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li><li><a href=https://linjiasen63.github.io/tags/%E6%8A%80%E8%83%BD.html>技能</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>

@@ -1,0 +1,53 @@
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>快速入门vim的基本操作</title><link rel=canonical href=/><link href=/scss/index.min.853fe66ffc548d532828fe39693915d1e1c262984f5e61dc9832784c5cab901b.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/about.html>我的</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>快速入门vim的基本操作</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-工作模式>1. 工作模式</a><ul><li><a href=#11-插入命令>1.1 插入命令</a></li><li><a href=#12-跳转命令>1.2 跳转命令</a></li><li><a href=#13-删除命令>1.3 删除命令</a></li><li><a href=#14-复制剪切>1.4 复制剪切</a></li><li><a href=#15-替换取消>1.5 替换取消</a></li><li><a href=#16-搜索和搜索替换>1.6 搜索和搜索替换</a></li><li><a href=#17-保存退出>1.7 保存退出</a></li></ul></li><li><a href=#2-使用技巧>2. 使用技巧</a></li></ul></nav><h2 id=1-工作模式>1. 工作模式</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:green># 1. 进入</span>
+<span style=color:green># vim 文件名</span>
+
+<span style=color:green># 2. 退出</span>
+<span style=color:green># 按下esc，然后输入 :wq</span>
+
+<span style=color:green># 3. 插入模式</span>
+<span style=color:green># 输入i、a、o</span>
+
+<span style=color:green># 4. 编辑模板</span>
+<span style=color:green># 命令以回车结束运行</span>
+<span style=color:green># 显示行号：:set number 或 :set nu</span>
+<span style=color:green># 取消行号：:set nonumber 或 :set nonu</span>
+
+<span style=color:green># 删除： x</span>
+<span style=color:green># 复制： yy + p</span>
+<span style=color:green># 剪切： dd + p</span>
+</code></pre></div><h3 id=11-插入命令>1.1 插入命令</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>a</td><td>在光标所在字符后插入</td></tr><tr><td>A</td><td>在光标所在行尾插入</td></tr><tr><td>i</td><td>在光标所在字符前插入</td></tr><tr><td>I</td><td>在光标所在行首插入</td></tr><tr><td>o</td><td>在光标下插入新行</td></tr><tr><td>O</td><td>在光标上插入新行</td></tr></tbody></table><h3 id=12-跳转命令>1.2 跳转命令</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>:0</td><td>跳转到第一行</td></tr><tr><td>:$</td><td>跳转到最后一行</td></tr><tr><td>:${行号}</td><td>跳转到指定行（如:56）</td></tr><tr><td>gg</td><td>跳转到第一行</td></tr><tr><td>G</td><td>跳转到最后一行</td></tr><tr><td>${行号}G</td><td>跳转到指定行（如$56）</td></tr><tr><td>0</td><td>移至行首（在某一行中）</td></tr><tr><td>$</td><td>移至行尾（在某一行中）</td></tr></tbody></table><h3 id=13-删除命令>1.3 删除命令</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>x</td><td>删除光标所在处字符</td></tr><tr><td>nx</td><td>删除光标所在处后n个字符</td></tr><tr><td>dd</td><td>删除光标所在行</td></tr><tr><td>ndd</td><td>删除光标所在n行</td></tr><tr><td>dG</td><td>删除光标所的行到文件末尾内容</td></tr><tr><td>D</td><td>删除光标所有处到行尾内容</td></tr><tr><td>:n1,n2d</td><td>删除指定范围的行</td></tr></tbody></table><h3 id=14-复制剪切>1.4 复制剪切</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>yy</td><td>复制当前行</td></tr><tr><td>nyy</td><td>复制当前行以下n行</td></tr><tr><td>dd</td><td>剪切当前行</td></tr><tr><td>ndd</td><td>剪切当前行以下n行</td></tr><tr><td>p</td><td>粘贴在当前光标所在行下</td></tr><tr><td>P</td><td>粘贴在当前光标所在行上</td></tr></tbody></table><h3 id=15-替换取消>1.5 替换取消</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>r</td><td>取代光标所在处字符</td></tr><tr><td>R</td><td>从光标所在处开始替换字符，按Esc结束</td></tr><tr><td>u</td><td>取消上一步操作</td></tr></tbody></table><h3 id=16-搜索和搜索替换>1.6 搜索和搜索替换</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>/string</td><td>搜索指定字符串；搜索时忽略大小写:set ic；搜索时大小写严格：set noic</td></tr><tr><td>n</td><td>搜索指定字符串的下一个出现位置</td></tr><tr><td>:%s/old/new/g</td><td>全文替换指定字符串</td></tr><tr><td>:n1,n2s/old/new/g</td><td>在一定范围内替换指定字符串</td></tr></tbody></table><h3 id=17-保存退出>1.7 保存退出</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>:w</td><td>保存修改</td></tr><tr><td>:w new_filename</td><td>另存为指定文件</td></tr><tr><td>:wq</td><td>保存修改并退出</td></tr><tr><td>ZZ</td><td>快捷键，保存修改并退出</td></tr><tr><td>:q!</td><td>不保存修改退出</td></tr><tr><td>:wq!</td><td>保存修改并退出（文件所有者及root可使用）</td></tr></tbody></table><h2 id=2-使用技巧>2. 使用技巧</h2><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>
+<span style=color:green># 进入vim编辑</span>
+<span style=color:green># 输入:r 文件名，可将指定文件的内容导入到当前光标位置</span>
+:r /etc/nginx/nginx.conf
+
+<span style=color:green># 导入命令执行结果：r !命令</span>
+<span style=color:green># 在不退出vim下，执行命令并将执行结果导入当前光标位置</span>
+:r !ls
+
+
+<span style=color:green># 定义快捷键</span>
+<span style=color:green># map 快捷键 触发命令</span>
+<span style=color:green># 示例：map ^P I#&lt;ECS&gt;</span>
+<span style=color:green>#          map ^B 0x</span>
+
+
+<span style=color:green># 连续行注释</span>
+<span style=color:green># :n1,n2s/^/#/g #在指定行之间的行首添加#号</span>
+<span style=color:green># :n1,n2s/^#//g # 去除指定行之间行首的#号</span>
+<span style=color:green># :n1,n2s/^/\/\//g # 在指定行之间的行首添加 //</span>
+
+<span style=color:green># 替换</span>
+<span style=color:green># ab 旧的字符串 新的字符串</span>
+ab a b <span style=color:green>#执行后，用户输入a并键入enter后将被自动替换为b</span>
+
+<span style=color:green># 关机、重启后失效</span>
+<span style=color:green># 需要将其写入用户的.vimrc文件中，以root用户为例</span>
+vim /root/.vimrc
+<span style=color:green># 只能保存编辑模式的命令</span>
+
+</code></pre></div></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/base/linux/bash-program-point.html>
+方便bash脚本开发的要点</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/base/network/things-about-from-url-to-html.html>
+前端面试系列：浏览器输入url到网页展示期间发生了什么？</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/life/common/resume.html title=优秀简历的书写规范>优秀简历的书写规范</a></li><li><a href=https://linjiasen63.github.io/posts/life/interpersonal-relationship/rules.html title=人际关系>人际关系</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-ee/jdbc-basic.html title=java进阶系列：jdbc>java进阶系列：jdbc</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html title=java基础系列：注解编程>java基础系列：注解编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=java基础系列：反射编程>java基础系列：反射编程</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E5%B7%A5%E4%BD%9C.html>工作</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%94%9F%E6%B4%BB.html>生活</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/git.html>git</a></li><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB.html>人际关系</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li><li><a href=https://linjiasen63.github.io/tags/%E6%8A%80%E8%83%BD.html>技能</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>

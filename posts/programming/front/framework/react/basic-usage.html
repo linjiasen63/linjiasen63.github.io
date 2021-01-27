@@ -1,0 +1,726 @@
+<!doctype html><html class=theme-light><head lang=zh-cn><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="生活足迹"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=keyword content><link rel="shortcut icon" href=/image/favicon.ico type=image/x-icon></link><title>前端系列：快速开始</title><link rel=canonical href=/><link href=/scss/index.min.853fe66ffc548d532828fe39693915d1e1c262984f5e61dc9832784c5cab901b.css rel=stylesheet><script type=text/javascript src=/js/jquery.min.js></script><link rel=stylesheet href=/gitalk/gitalk.css><script src=/gitalk/gitalk.min.js></script></head><body><header class=site-header><div class=site-wrapper><nav class=site-navbar><a class=site-navbar-brand href=/>林三木</a><div class=site-navbar-menu onclick=toggleNavbarmenu(this)><div class=icon></div></div><div class=site-navbar-collapse id=site-navbarText onclick=toggleNavbarmenu(this)><span class="site-navbar-text none"></span><ul class=site-navbar-nav><li class=nav-item><a class=nav-link href=/archives.html>归档</a></li><li class=nav-item><a class=nav-link href=/about.html>我的</a></li><li class=nav-item><a class=nav-link href=/>首页</a></li></ul></div></nav><script>function toggleNavbarmenu(ele){var $parent=$(ele).parent();var className='site-navbar-open';if($parent.hasClass(className)){$parent.removeClass(className);}else{$parent.addClass(className);}}</script></div></header><div class=site-body><div class="site-wrapper clearfix"><main class=site-main><div class=site-main-wrapper><div class=single-post><div><article id=content class=md-render><h1 id=title class=title>前端系列：快速开始</h1><h2>目录</h2><nav id=TableOfContents><ul><li><a href=#1-基础知识>1. 基础知识</a><ul><li><a href=#11-环境搭建>1.1 环境搭建</a></li><li><a href=#12-你好世界>1.2 你好世界</a></li><li><a href=#13-基本内容>1.3 基本内容</a></li><li><a href=#14-开发辅助工具>1.4 开发辅助工具</a></li><li><a href=#15-数据声明与方法定义>1.5 数据声明与方法定义</a></li><li><a href=#16-常用属性声明>1.6 常用属性声明</a></li><li><a href=#17-父子组件通信>1.7 父子组件通信</a></li><li><a href=#18-propstype与defaultprops>1.8 PropsType与DefaultProps</a></li><li><a href=#19-ref-操作真正的dom不推荐>1.9 ref： 操作真正的DOM（不推荐）</a></li><li><a href=#110-关于react的简单思考以及结论>1.10 关于react的简单思考以及结论</a></li><li><a href=#111-虚拟dom>1.11 虚拟DOM</a></li><li><a href=#112-生命周期函数>1.12 生命周期函数</a></li><li><a href=#113-css动画>1.13 css动画</a></li><li><a href=#114-组件类型>1.14 组件类型</a></li><li><a href=#115-样式作用域>1.15 样式作用域</a></li></ul></li><li><a href=#2-redux>2. Redux</a><ul><li><a href=#21-基本组成>2.1 基本组成</a></li><li><a href=#22-开发辅助工具>2.2 开发辅助工具</a></li><li><a href=#23-基础示例>2.3 基础示例</a></li><li><a href=#24-redux-thunk>2.4 redux-thunk</a></li><li><a href=#25-redux-saga>2.5 redux-saga</a></li><li><a href=#26-react-redux>2.6 react-redux</a></li><li><a href=#27-combinereducers组装reducer>2.7 combineReducers（组装reducer）</a></li><li><a href=#28-immutable>2.8 immutable</a></li></ul></li><li><a href=#3-router>3. Router</a><ul><li><a href=#31-简单示例>3.1 简单示例</a></li></ul></li><li><a href=#4-hooks>4. hooks</a></li></ul></nav><h2 id=1-基础知识>1. 基础知识</h2><h3 id=11-环境搭建>1.1 环境搭建</h3><ul><li>node</li><li>包管理（npm、yarn）</li><li>create-react-app</li><li>项目目录基本结构了解</li></ul><hr><h3 id=12-你好世界>1.2 你好世界</h3><p><strong>文件： public/index.html</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;html&gt;
+  &lt;header&gt;
+    <span style=color:green>&lt;!-- 省略 --&gt;</span>
+  &lt;/header&gt;
+  &lt;body&gt;
+    &lt;div id=<span style=color:#a31515>&#34;root&#34;</span>&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p><strong>文件： src/index.js</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React from <span style=color:#a31515>&#39;react&#39;</span>; <span style=color:green>// 用于当前页面识别jsx语法（不可省略）
+</span><span style=color:green></span><span style=color:#00f>import</span> ReactDOM from <span style=color:#a31515>&#39;react-dom&#39;</span>;
+<span style=color:#00f>import</span> App from <span style=color:#a31515>&#39;./App&#39;</span>
+<span style=color:green>// 将相应的节点挂载到页面
+</span><span style=color:green></span>ReactDOM.reander(&lt;App /&gt;, document.getElementById(<span style=color:#a31515>&#39;root&#39;</span>));
+</code></pre></div><p><strong>文件： src/App.js</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React, { Component } from <span style=color:#a31515>&#39;react&#39;</span>;
+<span style=color:green>// 自定义组件的命名规则：首字母大写
+</span><span style=color:green></span><span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Components {
+  render() {
+    <span style=color:#00f>return</span> (
+      &lt;div&gt;你好世界<span>！</span>&lt;<span>/div&gt;</span>
+    )
+  }
+}
+<span style=color:green>// 必须手动声明导出才能被外部使用
+</span><span style=color:green></span><span style=color:#00f>export</span> <span style=color:#00f>default</span> App;
+</code></pre></div><hr><h3 id=13-基本内容>1.3 基本内容</h3><p><strong>jsx限制：</strong> render返回的节点只能有一个根结点</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>{ <span style=color:green>/* 错误做法（编译不通过） */</span> }
+render() {
+  <span style=color:#00f>return</span> (
+    &lt;div&gt;你好世界1<span>！</span>&lt;<span>/div&gt;</span>
+    &lt;div&gt;你好世界2<span>！</span>&lt;<span>/div&gt;</span>
+  )
+}
+{ <span style=color:green>/* 正确做法 */</span> }
+{
+  <span style=color:green>// 使用 React.Fragment标签 或 其它html标签 包含这些内容。
+</span><span style=color:green></span>  <span style=color:green>// React.Fragment标签不会被添加到页面 从而避免了冗余元素。
+</span><span style=color:green></span>}
+render() {
+  <span style=color:#00f>return</span> (
+    &lt;Fragment&gt;
+      &lt;div&gt;你好世界1<span>！</span>&lt;<span>/div&gt;</span>
+      &lt;div&gt;你好世界2<span>！</span>&lt;<span>/div&gt;</span>
+    &lt;<span>/Fragment&gt;</span>
+  )
+}
+</code></pre></div><hr><h3 id=14-开发辅助工具>1.4 开发辅助工具</h3><ul><li>react-developer-tools</li></ul><hr><h3 id=15-数据声明与方法定义>1.5 数据声明与方法定义</h3><p><strong>文件： src/App.js</strong></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...省略
+</span><span style=color:green></span><span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Components {
+  constructor(props) {
+    <span style=color:#00f>super</span>(props);
+    <span style=color:green>// 声明数据内容
+</span><span style=color:green></span>    <span style=color:#00f>this</span>.state = {
+      inputOfTxt: <span style=color:#a31515>&#39;你好&#39;</span>,
+      list: [],
+    };
+    <span style=color:green>// 处理事件的this指向
+</span><span style=color:green></span>    <span style=color:#00f>this</span>.handleInputOfTxt = <span style=color:#00f>this</span>.handleInputOfTxt.bind(<span style=color:#00f>this</span>);
+  }
+
+  render() {
+    <span style=color:#00f>const</span> { inputTxt, list } = <span style=color:#00f>this</span>.state;
+    <span style=color:#00f>return</span> (
+      &lt;div&gt;
+        {
+          <span style=color:green>// jsx中值的绑定需要在该值外面加上大括号（{}）以代替双引号（&#34;&#34;）
+</span><span style=color:green></span>          <span style=color:green>// jsx中html元素的事件与原生的区别为：采用驼峰式命名 （如原生：onchange、jsx：onChange）
+</span><span style=color:green></span>        }
+        &lt;input value={inputTxt} onChange={<span style=color:#00f>this</span>.handleInputOfTxt} /&gt;
+
+        {
+          <span style=color:green>// for循环迭代 （key需要指明且唯一（优化性能））
+</span><span style=color:green></span>        }
+        {
+          list.map((item, index) =&gt; ( &lt;li key={index}&gt;{item}&lt;<span>/li&gt; ));</span>
+        }
+      &lt;<span>/div&gt;</span>
+    )
+  },
+
+  handleInputOfTxt(e) {
+    <span style=color:green>// e.target 原生html元素
+</span><span style=color:green></span>    console.log(e.target)
+  },
+}
+</code></pre></div><hr><h3 id=16-常用属性声明>1.6 常用属性声明</h3><ul><li>元素的类名声明使用<code>className</code>代替<code>class</code>。如<code>&lt;div className="box">&lt;/div></code></li><li></li><li>jsx中的注释使用{}包括，内部为js类的注释</li><li></li><li>lable标签的<code>for</code>使用<code>htmlFor</code>代替。如<code>&lt;label htmlFor="input">&lt;/label>&lt;input id="input"/></code></li><li></li><li>不转义html标签使用dangerouslySetInnerHTML声明内容。如<code>&lt;div dangerouslySetInnerHTML={{__html: htmlStr}}>&lt;/div></code></li><li></li><li>自定义组件区别于原生html标签首字母大写（采用帕斯卡命名规则）</li><li></li><li>更新数据setState（推荐使用异步操作）</li></ul><hr><h3 id=17-父子组件通信>1.7 父子组件通信</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// Sub.js 子组件
+</span><span style=color:green>// ...省略
+</span><span style=color:green></span><span style=color:#00f>class</span> Sub <span style=color:#00f>extends</span> Component {
+  constructor(props) {
+    <span style=color:#00f>this</span>.handleClick = <span style=color:#00f>this</span>.handleClick.bind(<span style=color:#00f>this</span>);
+  }
+
+  render() {
+    <span style=color:#00f>const</span> { msg } = <span style=color:#00f>this</span>.props;
+    <span style=color:#00f>return</span> (
+      &lt;div onClick={<span style=color:#00f>this</span>.handleClick}&gt;{msg}&lt;<span>/div&gt;</span>
+    )
+  }
+
+  handleClick() {
+    <span style=color:#00f>const</span> { handleClick, msg } = <span style=color:#00f>this</span>.props;
+    handleClick(msg)
+  }
+} 
+
+<span style=color:green>// Sup.js 父组件
+</span><span style=color:green>// ...省略
+</span><span style=color:green></span><span style=color:#00f>import</span> Sub from <span style=color:#a31515>&#39;./Sub.js&#39;</span>
+
+<span style=color:#00f>class</span> Sup <span style=color:#00f>extends</span> Component {
+  constructor(props) {
+    supper(props);
+    <span style=color:#00f>this</span>.state = {
+      msg: <span style=color:#a31515>&#39;你好世界&#39;</span>,
+    };
+    <span style=color:#00f>this</span>.handleClick = <span style=color:#00f>this</span>.handleClick.bind(<span style=color:#00f>this</span>);
+  }
+
+  render() {
+    <span style=color:#00f>const</span> { msg } = <span style=color:#00f>this</span>.state;
+    <span style=color:#00f>return</span> (
+      &lt;Sub msg={msg} handleClick={<span style=color:#00f>this</span>.handleClick}&gt;&lt;<span>/Sub&gt;</span>
+    );
+  }
+
+  handleClick(msg) {
+    console.log(<span style=color:#a31515>&#39;当前页面显示内容：&#39;</span>, msg);
+    <span style=color:green>// 同步操作（不推荐）
+</span><span style=color:green></span>    <span style=color:green>// this.setState({
+</span><span style=color:green></span>    <span style=color:green>//   msg: &#39;Hello world!&#39;,
+</span><span style=color:green></span>    <span style=color:green>// });
+</span><span style=color:green></span>
+    <span style=color:green>// 异步操作（推荐）
+</span><span style=color:green></span>    <span style=color:#00f>this</span>.setState((prevState) =&gt; {
+      <span style=color:#00f>return</span> {
+        msg: <span style=color:#a31515>&#39;Hello World!&#39;</span>,
+      };
+    })
+  }
+}
+</code></pre></div><hr><h3 id=18-propstype与defaultprops>1.8 PropsType与DefaultProps</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>import</span> PropTypes from <span style=color:#a31515>&#39;prop-types&#39;</span>; <span style=color:green>// create-react-app已预先安装
+</span><span style=color:green></span>
+<span style=color:#00f>class</span>  MsgBox <span style=color:#00f>extends</span> Components {
+  render () {
+    <span style=color:#00f>return</span> (
+      &lt;div className=<span style=color:#a31515>&#34;container&#34;</span>&gt;{msg}&lt;<span>/div&gt;</span>
+    )
+  }
+}
+
+MsgBox.propTypes = {
+  msg: PropTypes.string,
+}
+
+MsgBox.defaultProps = {
+  msg: <span style=color:#a31515>&#39;你好，世界！&#39;</span>,
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> MsgBox;
+</code></pre></div><hr><h3 id=19-ref-操作真正的dom不推荐>1.9 ref： 操作真正的DOM（不推荐）</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Components {
+  inputELe: <span style=color:#00f>null</span>,
+
+<span style=color:green>// ...
+</span><span style=color:green></span>
+  render() {
+    <span style=color:#00f>return</span> (
+      { <span style=color:green>/* 将相应的节点绑定到相应的变量上 */</span>  }
+      &lt;input  ref={(inputEle) =&gt; { <span style=color:#00f>this</span>.inputEle = inputEle }} onChange={<span style=color:#00f>this</span>.handleInput.bind(<span style=color:#00f>this</span>)}/&gt;
+    )
+  }
+
+  handleInput(e) {
+    <span style=color:green>// e.target 与 this.inputEle 两者相同
+</span><span style=color:green></span>  }
+}
+</code></pre></div><hr><h3 id=110-关于react的简单思考以及结论>1.10 关于react的简单思考以及结论</h3><ul><li>声明式操作dom（通过数据改变dom，不同于jquery的命令式）</li><li>组件化</li><li>可以与其它框架无缝配合（仅修改对应节点下的内容）</li><li>仅仅是一个UI框架（单纯提供页面绘制功能）</li><li>单向数据流</li><li>函数式编程</li></ul><hr><h3 id=111-虚拟dom>1.11 虚拟DOM</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:green>&lt;!-- 演变由来（真实的DOM操作非常耗费性能） --&gt;</span>
+<span style=color:green>&lt;!-- 
+</span><span style=color:green>  一、普通的
+</span><span style=color:green>  1. 数据
+</span><span style=color:green>  2. 模板
+</span><span style=color:green>  3. 数据 + 模板 得到具体DOM字符串。使用innerHTML由浏览器渲染为具体的DOM
+</span><span style=color:green>  4. 数据发生变化时
+</span><span style=color:green>  5. 数据 + 模板 得到新的DOM字符串。再次使用innerHTML将其渲染为具体的DOM
+</span><span style=color:green> --&gt;</span>
+
+ <span style=color:green>&lt;!-- 
+</span><span style=color:green>  二、优化的
+</span><span style=color:green>  1. 数据
+</span><span style=color:green>  2. 模板
+</span><span style=color:green>  3. 数据 + 模板 得到具体DOM字符串。使用innerHTML由浏览器渲染为具体的DOM
+</span><span style=color:green>  4. 数据发生变化时
+</span><span style=color:green>  5. 数据 + 模板 得到新的DOM字符串。
+</span><span style=color:green>  6. 比较两次生成的DOM字符串，找出其中不同的地方。并更新相应DOM
+</span><span style=color:green> --&gt;</span>
+
+ <span style=color:green>&lt;!-- 
+</span><span style=color:green>   三、虚拟DOM
+</span><span style=color:green>   1. 数据
+</span><span style=color:green>   2. 模板
+</span><span style=color:green>   3. 生成相应的虚拟DOM
+</span><span style=color:green>   4. 根据虚拟DOM生成真实的DOM
+</span><span style=color:green>   5. 数据发生变化 
+</span><span style=color:green>   6. 生成新的虚拟DOM，并比较两次虚拟DOM
+</span><span style=color:green>   7. 根据两次虚拟DOM的差异，更新真实的DOM
+</span><span style=color:green>  --&gt;</span>
+</code></pre></div><h4 id=1111-具体优点>1.11.1 具体优点</h4><ol><li>频繁更新页面时提高渲染性能</li><li>为跨平台框架提供了具体依据</li></ol><h4 id=1112-渲染过程>1.11.2 渲染过程</h4><ol><li>JSX</li><li>React.CreateElement</li><li>虚拟DOM</li><li>真实的DOM</li></ol><h4 id=1113-diff算法>1.11.3 diff算法</h4><ol><li>同层比对（虽然有造成一定的损耗，但这是折中方案）</li><li>list中item使用key属性</li></ol><h4 id=1114-异步更新>1.11.4 异步更新</h4><p>react会将一定时间内多个setState方法合并后，再更新数据</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>this</span>.setState(() =&gt; {
+  <span style=color:green>// 返回需要更新的数据
+</span><span style=color:green></span>  <span style=color:#00f>return</span> {};
+}, ()=&gt; {
+  <span style=color:green>// 数据对应的DOM成功更新后的回调
+</span><span style=color:green></span>})
+</code></pre></div><hr><h3 id=112-生命周期函数>1.12 生命周期函数</h3><ul><li>当props或state发生变化时，render函数会重新执行。</li><li>当父组件重新渲染时，子组件的render函数会重新执行。</li></ul><h4 id=1121-初始化>1.12.1 初始化</h4><ul><li>constructor</li></ul><h4 id=1122-挂载时>1.12.2 挂载时</h4><ul><li>componentWillMount</li><li>render</li><li>componentDidMount</li></ul><p>comonentWillMount在组件即将被挂载到页面之前执行，之后执行render生成挂载到页DOM内容，最后componentDidMount将会在组件挂载到页面这后执行。</p><h4 id=1123-更新时>1.12.3 更新时</h4><ul><li><p>props</p><ul><li>compoentWillReceiveProps</li><li>shouldComponentUpdate(nextProps, nextState)</li><li>componentWillUpdate</li><li>render</li><li>componentDidUpdate</li></ul></li><li><p>state</p><ul><li>shouldComponentUpdate(nextProps, nextState)</li><li>componentWillUpdate</li><li>render</li><li>componentDidUpdate</li></ul></li></ul><p>shouldComponentUpdate在组件更新之前被执行，返回boolean决定是否更新组件（主要用于决定是否更新子组件，优化性能）；componentWillUpdate在组件更新之前被执行；之后是render重新生成DOM内容；最后在组件更新之后componentDidUpdate会被执行</p><p>componentWillReceiveProps执行的三个条件</p><ol><li>当一个组件从父组件接收参数</li><li>这个组件之前已挂载到页面上</li><li>父组件的render方法重新执行</li></ol><h4 id=1124-销毁时>1.12.4 销毁时</h4><ul><li>componentWillUnmount</li></ul><hr><h3 id=113-css动画>1.13 css动画</h3><h4 id=1131-css原生属性支持的动画>1.13.1 css原生属性支持的动画</h4><ul><li><p>transition（相关属性如下）</p><ul><li>name</li><li>duration</li><li>timing-function</li><li>delay</li></ul></li><li><p>animation（相关属性如下）</p><ul><li>name</li><li>duration</li><li>timing-function</li><li>delay</li><li>iteration-count</li><li>direction</li><li>fill-mode</li></ul></li></ul><h4 id=1132-react-transition-group>1.13.2 react-transition-group</h4><p>具体内容请在<a href=https://github.com/reactjs/react-transition-group>github</a>上查阅</p><h5 id=csstransition>CSSTransition</h5><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { CSSTransition } from <span style=color:#a31515>&#39;react-transition-group&#39;</span>;
+
+<span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Component {
+  constructor() {
+    <span style=color:#00f>this</span>.state = {
+      visibleOfMsg: <span style=color:#00f>true</span>,
+    }
+    <span style=color:#00f>this</span>.changeVisibleOfMsg = <span style=color:#00f>this</span>.changeVisibleOfMsg.bind(<span style=color:#00f>this</span>);
+  }
+
+  render() {
+    <span style=color:#00f>return</span> (
+      &lt;div&gt;
+        &lt;button onClick={<span style=color:#00f>this</span>.changeVisibleOfMsg}&gt;改变可见性&lt;<span>/button&gt;</span>
+        {
+          <span style=color:green>// classNams 指定节点的类名前缀或各个状态下对应的类名
+</span><span style=color:green></span>          <span style=color:green>// unmountOnExit 当节点隐藏后是否将该节点从页面DOM树上移除
+</span><span style=color:green></span>          <span style=color:green>// appear 第一次挂载节点时是否绑定相应的类名与执行相应的勾子
+</span><span style=color:green></span>        }
+        &lt;CSSTransition
+          <span style=color:#00f>in</span>={visibleOfMsg}
+          timeout={1000}
+          classNams=<span style=color:#a31515>&#34;fade&#34;</span>
+          unmountOnExit
+          appear &gt;
+
+          &lt;div&gt;你好<span>，</span>世界<span>！</span>&lt;<span>/div&gt;</span>
+        &lt;<span>/CSSTransition&gt;</span>
+      &lt;<span>/div&gt;</span>
+    )
+  }
+
+  changeVisibleOfMsg() {
+    <span style=color:#00f>this</span>.setState((prevState) =&gt;({
+      visibleOfMsg: !prevState.visibleOfMsg,
+    }));
+  }
+}
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:green>/* 节点首次挂载到页面上时 */</span>
+.<span style=color:#2b91af>fade-appear</span> {}
+.<span style=color:#2b91af>fade-appear-active</span> {}
+.<span style=color:#2b91af>fade-appear-done</span> {}
+
+<span style=color:green>/* 节点由隐藏转换为显示时 */</span>
+.<span style=color:#2b91af>fade-enter</span> {}
+.<span style=color:#2b91af>fade-enter-active</span> {}
+.<span style=color:#2b91af>fade-enter-done</span> {}
+
+<span style=color:green>/* 节点由显示转换为隐藏时 */</span>
+.<span style=color:#2b91af>fade-exit</span> {}
+.<span style=color:#2b91af>fade-exit-active</span> {}
+.<span style=color:#2b91af>fade-exit-done</span> {}
+</code></pre></div><p>CSSTransition另有相应的勾子函数（如 appear、enter、exit）</p><ul><li>onAppear、onAppearing、onAppeared</li><li>onEnter、onEntering、onEntered</li><li>onExit、onExiting、onExited</li></ul><p>分别与css样式相应的类名对应</p><h5 id=transitiongroup>TransitionGroup</h5><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>render() {
+  <span style=color:#00f>return</span> (
+    &lt;TransitionGroup&gt;
+      { <span style=color:green>/* 被TransitionGroup包含时，CSSTransition可以有多个，不需要指定in属性 */</span>  }
+      &lt;CSSTransition
+        timeout={1000}
+        classNams=<span style=color:#a31515>&#34;fade&#34;</span>
+        unmountOnExit
+        appear&gt;
+        &lt;div&gt;你好<span>，</span>世界<span>！</span>&lt;<span>/div&gt;</span>
+      &lt;<span>/CSSTransition&gt;</span>
+    &lt;<span>/TransitionGroup&gt;</span>
+  )
+}
+</code></pre></div><hr><h3 id=114-组件类型>1.14 组件类型</h3><ul><li><p>按功能划分</p><ul><li>UI 组件（傻瓜组件）</li><li>容器组件（聪明组件）</li></ul></li><li><p>按定义划分</p><ul><li>有状态组件</li><li>无状态组件</li></ul></li></ul><p>无状态组件一定是UI组件，而UI组件不一定是无状态组件</p><hr><h3 id=115-样式作用域>1.15 样式作用域</h3><p>使用第三方插件<a href=https://github.com/styled-components/styled-components>styled-components</a></p><p>// file: style.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// NOTE: 在v4.x之后 injectGlobal被废弃可使用createGlobalStyle代替
+</span><span style=color:green>// 废弃：import { injectGlobal } from &#39;styled-components&#39;;
+</span><span style=color:green></span>
+<span style=color:#00f>import</span> styled, { createGlobalStyle } from <span style=color:#a31515>&#39;styled-components&#39;</span>;
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> GlobalStyle = createGlobalStyle<span style=color:#a31515>`
+</span><span style=color:#a31515>* {
+</span><span style=color:#a31515>  margin: 0;
+</span><span style=color:#a31515>  padding: 0;
+</span><span style=color:#a31515>}
+</span><span style=color:#a31515>`</span>;
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> TextBox = styled.div<span style=color:#a31515>`
+</span><span style=color:#a31515>  height: 400px;
+</span><span style=color:#a31515>  font-size: 14px;
+</span><span style=color:#a31515>  line-height: 1.5;
+</span><span style=color:#a31515>  background: #f0f0f0;
+</span><span style=color:#a31515>`</span>;
+</code></pre></div><p>// file: App.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React, { Component, Fragment } from <span style=color:#a31515>&#39;react&#39;</span>
+<span style=color:#00f>import</span> { GlobalStyle, TextBox } from <span style=color:#a31515>&#39;./style.js&#39;</span>;
+
+<span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Component {
+  render() {
+    <span style=color:#00f>return</span> (
+      &lt;Fragment&gt;
+        &lt;GlobalStyle&gt;&lt;<span>/GlobalStyle&gt;</span>
+        &lt;TextBox&gt;你好<span>，</span>世界<span>！</span>&lt;<span>/TextBox&gt;</span>
+      &lt;<span>/Fragment&gt;</span>
+    )
+  }
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> App;
+</code></pre></div><p>浏览器样式重置<a href=https://meyerweb.com/eric/tools/css/reset/>reset css</a></p><h2 id=2-redux>2. Redux</h2><h3 id=21-基本组成>2.1 基本组成</h3><ul><li>actionCreator</li><li>store</li><li>reducer</li></ul><h3 id=22-开发辅助工具>2.2 开发辅助工具</h3><ul><li>redux-devtools</li></ul><p><a href=https://github.com/zalmoxisus/redux-devtools-extension>github</a></p><h3 id=23-基础示例>2.3 基础示例</h3><p>// file: store/actionTypes.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>export</span> <span style=color:#00f>const</span> ADD_COUNT = <span style=color:#a31515>&#39;add_count&#39;</span>;
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> INIT_COUNT = <span style=color:#a31515>&#39;init_count&#39;</span>;
+</code></pre></div><p>// file: store/actionCreators.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#39;./actionTypes&#39;</span>;
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> getAddCountAction = () =&gt; ({
+  type: actionTypes.ADD_COUNT
+});
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> getInitCountAction = (value) =&gt; ({
+  type: actionTypes.INIT_COUNT,
+  value,
+});
+</code></pre></div><p>// file: store/reducer.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#34;./actionTypes&#34;</span>;
+
+<span style=color:#00f>const</span> deepClone = obj =&gt; {
+  <span style=color:#00f>return</span> JSON.parse(JSON.stringify(obj));
+};
+
+<span style=color:#00f>const</span> defaultState = {
+  count: 0
+};
+
+<span style=color:#00f>function</span> reducer(state = defaultState, action) {
+  <span style=color:#00f>const</span> cloneState = deepClone(state);
+  <span style=color:#00f>switch</span> (action.type) {
+    <span style=color:#00f>case</span> actionTypes.ADD_COUNT:
+      cloneState.count++;
+      <span style=color:#00f>break</span>;
+    <span style=color:#00f>case</span> actionTypes.INIT_COUNT:
+      cloneState.count = action.value;
+      <span style=color:#00f>break</span>;
+    <span style=color:#00f>default</span>:
+      <span style=color:#00f>break</span>;
+  }
+  <span style=color:#00f>return</span> cloneState;
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> reducer;
+</code></pre></div><p>// file: store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { createStore } from <span style=color:#a31515>&#39;redux&#39;</span>;
+<span style=color:#00f>import</span> reducer from <span style=color:#a31515>&#39;./reducer&#39;</span>;
+
+
+<span style=color:#00f>const</span> store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> store;
+</code></pre></div><p>// file: Counter.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React, { Component }  from <span style=color:#a31515>&#39;react&#39;</span>;
+<span style=color:#00f>import</span> store from <span style=color:#a31515>&#39;./store&#39;</span>;
+<span style=color:#00f>import</span> * as actionCreators from <span style=color:#a31515>&#39;./store/actionCreators&#39;</span>;
+
+<span style=color:#00f>class</span> Counter <span style=color:#00f>extends</span> Component {
+  constructor(props) {
+    <span style=color:#00f>super</span>(props);
+    <span style=color:#00f>this</span>.state = store.getState();
+    store.subscribe(() =&gt; {
+      <span style=color:#00f>this</span>.setState(() =&gt; (store.getState()));
+    });
+    <span style=color:#00f>this</span>.addCount = <span style=color:#00f>this</span>.addCount.bind(<span style=color:#00f>this</span>);
+  }
+
+  render() {
+    <span style=color:#00f>const</span> { count } = <span style=color:#00f>this</span>.state;
+    <span style=color:#00f>return</span> (
+      &lt;div&gt;
+        &lt;div&gt;{count}&lt;<span>/div&gt;</span>
+        &lt;button onClick={<span style=color:#00f>this</span>.addCount}&gt;+&lt;<span>/button&gt;</span>
+      &lt;<span>/div&gt;</span>
+    )
+  }
+
+  componentDidMount() {
+    setTimeout(() =&gt; {
+      store.dispatch(actionCreators.getInitCountAction(100));
+    }, 1000);
+  }
+
+  addCount() {
+    store.dispatch(actionCreators.getAddCountAction())
+  }
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> Counter;
+</code></pre></div><ul><li>store唯一（在整个react应用中有且只有一个）</li><li>store中的state只能由store修改</li><li>reducer必须是纯函数，且不会造成其它影响</li></ul><p>默认情况下action只能是一个对象，除非使用插件增强功能</p><h3 id=24-redux-thunk>2.4 redux-thunk</h3><p><a href=https://github.com/reduxjs/redux-thunk>github</a></p><p>其余代码同2.3</p><p>支持action的类型为函数，常用于处理异步请求</p><p>file: ./store/actionCreators.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>export</span> <span style=color:#00f>const</span> getInitCountActionOfThunk = (value) =&gt; {
+  <span style=color:#00f>return</span> (dispatch) =&gt; {
+    setTimeout(() =&gt; {
+      dispatch(getInitCountAction(value));
+    }, 1000);
+  }
+}
+<span style=color:green>// ...
+</span></code></pre></div><p>file: ./store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { createStore, applyMiddleware, compose } from <span style=color:#a31515>&#39;redux&#39;</span>;
+<span style=color:#00f>import</span> reducer from <span style=color:#a31515>&#39;./reducer&#39;</span>;
+<span style=color:#00f>import</span> thunk from <span style=color:#a31515>&#39;redux-thunk&#39;</span>;
+
+<span style=color:#00f>const</span> composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+<span style=color:#00f>const</span> enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+)
+
+<span style=color:#00f>const</span> store = createStore(
+  reducer,
+  enhancer
+);
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> store;
+</code></pre></div><p>file: Counter.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span>  componentDidMount() {
+    store.dispatch(actionCreators.getInitCountActionOfThunk(100));
+  }
+<span style=color:green>// ...
+</span></code></pre></div><h3 id=25-redux-saga>2.5 redux-saga</h3><p><a href=https://github.com/redux-saga/redux-saga>github</a></p><p>其余代码同2.3</p><p>拦截action，常用于处理异步请求</p><p>file: ./store/actionTypes.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>export</span> <span style=color:#00f>const</span> INIT_COUNT_SAGA = <span style=color:#a31515>&#39;init_count_saga&#39;</span>;
+</code></pre></div><p>file: ./store/actionCreators.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>export</span> <span style=color:#00f>const</span> getInitCountActionOfSaga = (value) =&gt; ({
+  type: actionTypes.INIT_COUNT_SAGA,
+});
+<span style=color:green>// ...
+</span></code></pre></div><p>file: ./store/saga.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { takeEvery, put } from <span style=color:#a31515>&#39;redux-saga/effects&#39;</span>;
+
+<span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#39;./actionTypes&#39;</span>;
+<span style=color:#00f>import</span> * as actionCreates from <span style=color:#a31515>&#39;./actionCreators&#39;</span>;
+
+<span style=color:#00f>function</span> * initAction() {
+  <span style=color:#00f>try</span> {
+    <span style=color:#00f>const</span> count = <span style=color:#00f>yield</span> Promise.resolve(100);
+    <span style=color:#00f>yield</span> put(actionCreates.getInitCountAction(count));
+  } <span style=color:#00f>catch</span>(err) {
+    console.error(<span style=color:#a31515>&#39;saga initAction err:&#39;</span>, err);
+  }
+}
+
+<span style=color:#00f>function</span> * saga() {
+  <span style=color:#00f>yield</span> takeEvery(actionTypes.INIT_COUNT_SAGA, initAction);
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> saga;
+</code></pre></div><p>file: ./store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { createStore, applyMiddleware, compose } from <span style=color:#a31515>&#39;redux&#39;</span>;
+<span style=color:#00f>import</span> reducer from <span style=color:#a31515>&#39;./reducer&#39;</span>;
+<span style=color:#00f>import</span> createReduxSagaMiddleware from <span style=color:#a31515>&#39;redux-saga&#39;</span>;
+<span style=color:#00f>import</span> saga from <span style=color:#a31515>&#39;./saga&#39;</span>;
+
+<span style=color:#00f>const</span> reduxSagaMiddleware = createReduxSagaMiddleware();
+
+<span style=color:#00f>const</span> composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+<span style=color:#00f>const</span> enhancer = composeEnhancers(
+  applyMiddleware(reduxSagaMiddleware),
+);
+
+<span style=color:#00f>const</span> store = createStore(
+  reducer,
+  enhancer,
+);
+
+reduxSagaMiddleware.run(saga);
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> store;
+</code></pre></div><p>file: Counter.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span>  componentDidMount() {
+    store.dispatch(actionCreators.getInitCountActionOfSaga());
+  }
+<span style=color:green>// ...
+</span></code></pre></div><h3 id=26-react-redux>2.6 react-redux</h3><p><a href=https://github.com/reduxjs/react-redux>github</a></p><p>其余代码同2.3</p><p>用于简化redux的使用</p><p>file: Counter.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React, { Component }  from <span style=color:#a31515>&#39;react&#39;</span>;
+<span style=color:#00f>import</span> store from <span style=color:#a31515>&#39;./store&#39;</span>;
+<span style=color:#00f>import</span> * as actionCreators from <span style=color:#a31515>&#39;./store/actionCreators&#39;</span>;
+
+<span style=color:#00f>import</span> { connect } from <span style=color:#a31515>&#34;react-redux&#34;</span>;
+
+<span style=color:#00f>class</span> Counter <span style=color:#00f>extends</span> Component {
+  render() {
+    <span style=color:#00f>const</span> { count, addCount } = <span style=color:#00f>this</span>.props;
+    <span style=color:#00f>return</span> (
+      &lt;div&gt;
+        &lt;div&gt;{count}&lt;<span>/div&gt;</span>
+        &lt;button onClick={<span style=color:#00f>this</span>.addCount}&gt;+&lt;<span>/button&gt;</span>
+      &lt;<span>/div&gt;</span>
+    )
+  }
+
+  <span style=color:green>// 若当前组件无需初始化数据，可将此组件简化为无状态组件
+</span><span style=color:green></span>  componentDidMount() {
+    setTimeout(() =&gt; {
+      store.dispatch(actionCreators.getInitCountAction(100));
+    }, 1000);
+  }
+}
+
+<span style=color:#00f>function</span> mapState2Props(state) {
+  <span style=color:#00f>return</span> {
+    count: state.count
+  };
+}
+
+<span style=color:#00f>function</span> mapDispatch2Props(dispatch) {
+  <span style=color:#00f>return</span> {
+    addCount: () =&gt; {
+      dispatch(actionCreators.getAddCountAction());
+    }
+  };
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> connect(mapState2Props, mapDispatch2Props)(App);
+</code></pre></div><p>file: index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React from <span style=color:#a31515>&#39;react&#39;</span>;
+<span style=color:#00f>import</span> ReactDOM from <span style=color:#a31515>&#39;react-dom&#39;</span>;
+<span style=color:#00f>import</span> Counter from <span style=color:#a31515>&#39;./Counter&#39;</span>;
+<span style=color:#00f>import</span> store from <span style=color:#a31515>&#39;./store&#39;</span>;
+<span style=color:#00f>import</span> { Provider } from <span style=color:#a31515>&#39;react-redux&#39;</span>;
+
+<span style=color:#00f>const</span> APP = (
+  &lt;Provider store={store}&gt;
+    &lt;Counter /&gt;
+  &lt;<span>/Provider&gt;</span>
+)
+
+ReactDOM.render(APP, document.getElementById(<span style=color:#a31515>&#39;root&#39;</span>));
+
+</code></pre></div><h3 id=27-combinereducers组装reducer>2.7 combineReducers（组装reducer）</h3><p>// file: ./module01/store/actionTypes.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>export</span> <span style=color:#00f>const</span> INPUT_FOCUS = <span style=color:#a31515>&#39;module01/input_focus&#39;</span>;
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> INPUT_BLUR = <span style=color:#a31515>&#39;module01/input_blur&#39;</span>;
+</code></pre></div><p>// file: ./module01/store/actionCreators.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#34;./actionTypes&#34;</span>;
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> getInputFocusAction = () =&gt; {
+  <span style=color:#00f>return</span> {
+    type: actionTypes.INPUT_FOCUS
+  };
+};
+
+<span style=color:#00f>export</span> <span style=color:#00f>const</span> getInputBlurAction = () =&gt; {
+  <span style=color:#00f>return</span> {
+    type: actionTypes.INPUT_BLUR
+  };
+};
+</code></pre></div><p>// file: ./module01/store/reducer.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#34;./actionTypes&#34;</span>;
+
+<span style=color:#00f>const</span> defaultState = {
+  focused: <span style=color:#00f>false</span>,
+};
+
+<span style=color:#00f>const</span> deepClone = obj =&gt; {
+  <span style=color:#00f>return</span> JSON.parse(JSON.stringify(obj));
+};
+
+<span style=color:#00f>const</span> reducer = (state = defaultState, action) =&gt; {
+  <span style=color:#00f>const</span> cloneState = deepClone(state);
+  <span style=color:#00f>switch</span> (action.type) {
+    <span style=color:#00f>case</span> actionTypes.INPUT_FOCUS:
+      cloneState.focused = <span style=color:#00f>true</span>;
+      <span style=color:#00f>break</span>;
+    <span style=color:#00f>case</span> actionTypes.INPUT_BLUR:
+      cloneState.focused = <span style=color:#00f>false</span>;
+      <span style=color:#00f>break</span>;
+    <span style=color:#00f>default</span>:
+      <span style=color:#00f>break</span>;
+  }
+  <span style=color:#00f>return</span> cloneState;
+};
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> reducer;
+</code></pre></div><p>// file: ./module01/store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#39;./actionTypes&#39;</span>;
+<span style=color:#00f>import</span> * as actionCreators from <span style=color:#a31515>&#39;./actionCreators&#39;</span>;
+<span style=color:#00f>import</span> reducer from <span style=color:#a31515>&#39;./reducer&#39;</span>;
+
+<span style=color:#00f>export</span> {
+  actionTypes,
+  actionCreators,
+  reducer,
+};
+</code></pre></div><p>// file: ./module01/Module01.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React from <span style=color:#a31515>&#34;react&#34;</span>;
+<span style=color:#00f>import</span> { connect } from <span style=color:#a31515>&#34;react-redux&#34;</span>;
+
+<span style=color:#00f>import</span> { actionCreators } from <span style=color:#a31515>&#34;./store&#34;</span>;
+<span style=color:#00f>import</span> <span style=color:#a31515>&#34;./style.css&#34;</span>;
+
+<span style=color:#00f>function</span> Module01(props) {
+  <span style=color:#00f>const</span> { focused, handleFocus, handleBlur } = props;
+  <span style=color:#00f>return</span> (
+    &lt;div className=<span style=color:#a31515>&#34;module01&#34;</span>&gt;
+      &lt;input
+        className={focused ? <span style=color:#a31515>&#34;input-focus&#34;</span> : <span style=color:#a31515>&#34;input-blur&#34;</span>}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      &gt;&lt;<span>/input&gt;</span>
+    &lt;<span>/div&gt;</span>
+  );
+}
+
+<span style=color:#00f>const</span> mapState2Props = <span style=color:#00f>function</span>(state) {
+  <span style=color:#00f>return</span> {
+    focused: state.module01.focused
+  };
+};
+
+<span style=color:#00f>const</span> mapDispath2Props = <span style=color:#00f>function</span>(dispatch) {
+  <span style=color:#00f>return</span> {
+    handleFocus: () =&gt; {
+      dispatch(actionCreators.getInputFocusAction());
+    },
+
+    handleBlur: () =&gt; {
+      dispatch(actionCreators.getInputBlurAction());
+    }
+  };
+};
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> connect(mapState2Props, mapDispath2Props)(Module01);
+</code></pre></div><p>// file: ./module01/style.css</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>.module01 input {
+  width: 100px;
+  outline: none;
+  transition: width 0.2s ease-<span style=color:#00f>in</span>;
+}
+
+.module01 .input-focus {
+  width: 200px;
+}
+</code></pre></div><p>// file: ./store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { createStore, combineReducers } from <span style=color:#a31515>&#39;redux&#39;</span>;
+<span style=color:#00f>import</span> { reducer as Module01Reducer } from <span style=color:#a31515>&#39;../module01/store&#39;</span>;
+
+<span style=color:#00f>const</span> enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__();
+
+<span style=color:#00f>const</span> combineReducer = combineReducers({
+  module01: Module01Reducer,
+})
+
+<span style=color:#00f>const</span> store = createStore(
+  combineReducer,
+  enhancer,
+);
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> store;
+</code></pre></div><p>// file: ./index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> React from <span style=color:#a31515>&#34;react&#34;</span>;
+<span style=color:#00f>import</span> ReactDOM from <span style=color:#a31515>&#34;react-dom&#34;</span>;
+<span style=color:#00f>import</span> store from <span style=color:#a31515>&#34;./store&#34;</span>;
+<span style=color:#00f>import</span> { Provider } from <span style=color:#a31515>&#34;react-redux&#34;</span>;
+
+<span style=color:#00f>import</span> Module01 from <span style=color:#a31515>&#34;./module01/Module01&#34;</span>;
+
+<span style=color:#00f>const</span> APP = (
+  &lt;Provider store={store}&gt;
+    &lt;Module01&gt;&lt;<span>/Module01&gt;</span>
+  &lt;<span>/Provider&gt;</span>
+);
+
+ReactDOM.render(APP, document.getElementById(<span style=color:#a31515>&#34;root&#34;</span>));
+</code></pre></div><h3 id=28-immutable>2.8 immutable</h3><ul><li><a href=https://github.com/immutable-js/immutable-js>immutable-js</a></li><li><a href=https://github.com/gajus/redux-immutable>redux-immutable</a></li></ul><p>其余代码同2.7</p><p>// file: ./module01/store/reducer.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>import</span> { fromJS } from <span style=color:#a31515>&#39;immutable&#39;</span>;
+
+<span style=color:#00f>import</span> * as actionTypes from <span style=color:#a31515>&#34;./actionTypes&#34;</span>;
+
+<span style=color:#00f>const</span> defaultState = fromJS({
+  focused: <span style=color:#00f>false</span>,
+  list: [] <span style=color:green>// NOTE: 赋值时需要提前把数据修改为immutable，如使用immutable-js中的fromJS
+</span><span style=color:green></span>});
+
+<span style=color:#00f>const</span> reducer = (state = defaultState, action) =&gt; {
+  <span style=color:#00f>switch</span> (action.type) {
+    <span style=color:#00f>case</span> actionTypes.INPUT_FOCUS:
+      <span style=color:#00f>return</span> state.set(<span style=color:#a31515>&#39;focused&#39;</span>, <span style=color:#00f>true</span>);
+      <span style=color:green>// state.set(&#39;focused&#39;, true).set(&#39;list&#39;, fromJS([1, 2]));
+</span><span style=color:green></span>      <span style=color:green>// 等价于以下内容
+</span><span style=color:green></span>      <span style=color:green>// state.merge({
+</span><span style=color:green></span>      <span style=color:green>//   focused: true,
+</span><span style=color:green></span>      <span style=color:green>//   list: fromJS([1, 2])
+</span><span style=color:green></span>      <span style=color:green>// });
+</span><span style=color:green></span>    <span style=color:#00f>case</span> actionTypes.INPUT_BLUR:
+      <span style=color:#00f>return</span> state.set(<span style=color:#a31515>&#39;focused&#39;</span>, <span style=color:#00f>false</span>);
+    <span style=color:#00f>default</span>:
+      <span style=color:#00f>return</span> state;
+  }
+};
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> reducer;
+</code></pre></div><p>// file: ./module01/Module01.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>const</span> mapState2Props = <span style=color:#00f>function</span>(state) {
+  <span style=color:#00f>return</span> {
+    <span style=color:green>// focused: state.get(&#39;module01&#39;).get(&#34;focused&#34;)
+</span><span style=color:green></span>    <span style=color:green>// 等价于以下内容
+</span><span style=color:green></span>    focused: state.getIn([<span style=color:#a31515>&#34;module01&#34;</span>, <span style=color:#a31515>&#34;focused&#34;</span>])
+  };
+};
+<span style=color:green>// ...
+</span></code></pre></div><p>// file: ./store/index.js</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>import</span> { combineReducers } from <span style=color:#a31515>&#39;redux-immutable&#39;</span>;
+<span style=color:green>// ...
+</span><span style=color:green></span><span style=color:#00f>const</span> combineReducer = combineReducers({
+  module01: Module01Reducer,
+})
+<span style=color:green>// ...
+</span></code></pre></div><h2 id=3-router>3. Router</h2><h3 id=31-简单示例>3.1 简单示例</h3><p><a href=https://reacttraining.com/react-router/web/guides/quick-start>react-router-dom快速开始</a></p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:green>// ....
+</span><span style=color:green></span><span style=color:#00f>import</span> {
+  BrowserRouter as Router,
+  Route,
+} from <span style=color:#a31515>&#34;react-router-dom&#34;</span>;
+
+<span style=color:#00f>import</span> Module01 from <span style=color:#a31515>&#39;./Module01&#39;</span>;
+<span style=color:#00f>import</span> Module02 from <span style=color:#a31515>&#39;./Module02&#39;</span>;
+
+<span style=color:#00f>class</span> App <span style=color:#00f>extends</span> Component {
+  render() {
+    <span style=color:#00f>return</span> (
+      &lt;Router&gt;
+        &lt;div&gt;
+          &lt;Route path=<span style=color:#a31515>&#34;/module01&#34;</span> exact component={Module01}&gt;&lt;<span>/Route&gt;</span>
+          &lt;Route path=<span style=color:#a31515>&#34;/module02&#34;</span> exact component={Module02}&gt;&lt;<span>/Route&gt;</span>
+        &lt;<span>/div&gt;</span>
+      &lt;<span>/Router&gt;</span>
+    );
+  }
+}
+
+<span style=color:#00f>export</span> <span style=color:#00f>default</span> App;
+</code></pre></div><h2 id=4-hooks>4. hooks</h2></article></div><div class=pagination-single><div class=btn>上一篇：<a class=previous href=https://linjiasen63.github.io/posts/programming/front/model/flex-point.html>
+前端系列：样式相关</a></div><div class=btn>下一篇：<a class=next href=https://linjiasen63.github.io/posts/programming/front/model/layout-point.html>
+前端系列：布局知识（盒子模型）</a></div></div></div><div id=pageScrollTop class=page-scroll-top><span class=arr></span><span class=txt>顶部</span></div><script>var $pageScrollTop=$("#pageScrollTop");$pageScrollTop.hide();$pageScrollTop.on('click',function(){$('html,body').animate({scrollTop:'0px'},300);;});$(document).scroll(function(){var scroTop=$(document).scrollTop();var contentHeight=$(document).height();if(scroTop>contentHeight*0.2){$pageScrollTop.show();}else{$pageScrollTop.hide();}});</script></div></main><aside class=site-aside><section class=widget><form id=search action=https://linjiasen63.github.io/search.html method=get accept-charset=utf-8 target=_blank _lpchecked=1><input type=text name=wd maxlength=20 placeholder=Search>
+<input type=hidden name=sitesearch value=https://linjiasen63.github.io>
+<button type=submit class="submit icon-search">搜索</button></form></section><section class=widget><h3 class=widget-title><a href=/>最新内容</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/posts/life/common/resume.html title=优秀简历的书写规范>优秀简历的书写规范</a></li><li><a href=https://linjiasen63.github.io/posts/life/interpersonal-relationship/rules.html title=人际关系>人际关系</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-ee/jdbc-basic.html title=java进阶系列：jdbc>java进阶系列：jdbc</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/annotation.html title=java基础系列：注解编程>java基础系列：注解编程</a></li><li><a href=https://linjiasen63.github.io/posts/programming/java/java-se/reflect.html title=java基础系列：反射编程>java基础系列：反射编程</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/categories.html>内容分类</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/categories/%E5%B7%A5%E4%BD%9C.html>工作</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%94%9F%E6%B4%BB.html>生活</a></li><li><a href=https://linjiasen63.github.io/categories/%E7%BC%96%E7%A0%81%E4%BA%BA%E7%94%9F.html>编码人生</a></li></ul></section><section class=widget><h3 class=widget-title><a href=/tags.html>内容标签</a></h3><ul class=widget-list><li><a href=https://linjiasen63.github.io/tags/git.html>git</a></li><li><a href=https://linjiasen63.github.io/tags/java%E5%AD%A6%E4%B9%A0.html>java学习</a></li><li><a href=https://linjiasen63.github.io/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB.html>人际关系</a></li><li><a href=https://linjiasen63.github.io/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95.html>前端面试</a></li><li><a href=https://linjiasen63.github.io/tags/%E6%8A%80%E8%83%BD.html>技能</a></li></ul></section></aside></div></div><footer class=site-footer><div>&copy; 2021
+<a href=https://linjiasen63.github.io>林三木的博客 By linjiasen63</a></div><script type=text/javascript src=/js/mermaid.min.js></script><script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(function(el){el.parentElement.outerHTML=`<div class="mermaid">${el.innerText}</div>`;});mermaid.initialize({startOnLoad:true});setTimeout(function(){Array.from(document.getElementsByTagName("polygon")).forEach(function(el){var nodeValue=el.attributes.transform.nodeValue;nodeValue=nodeValue.replace(/\d\d*\.?\d*/ig,function(num){console.log(num);return num+'px';});console.log(nodeValue,$(el));$(el).css('transform','scaleY(0.68) '+nodeValue);});},100)</script></footer></body></html>
