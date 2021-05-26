@@ -146,14 +146,14 @@ console.log(<span style=color:#a31515>&#34;排序前：&#34;</span>, arr);
 sort(arr, 0, arr.length - 1);
 console.log(<span style=color:#a31515>&#34;排序后：&#34;</span>, arr);
 </code></pre></div><h2 id=7-堆排序>7. 堆排序</h2><p>heapSort</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#00f>function</span> headAdjust(arr, i, len) {
-  <span style=color:#00f>let</span> l = 2*i;
-  <span style=color:#00f>let</span> r = 2*i+1;
+  <span style=color:#00f>let</span> l_child = 2 * i + 1;
+  <span style=color:#00f>let</span> r_child = 2 * i + 2;
   <span style=color:#00f>let</span> max = i;
-  <span style=color:#00f>if</span> (l &lt; len &amp;&amp; arr[l] &gt; arr[max]) {
-    max = l;
+  <span style=color:#00f>if</span> (l_child &lt; len &amp;&amp; arr[l_child] &gt; arr[max]) {
+    max = l_child;
   }
-  <span style=color:#00f>if</span> (r &lt; len &amp;&amp; arr[r] &gt; arr[max]) {
-    max = r;
+  <span style=color:#00f>if</span> (r_child &lt; len &amp;&amp; arr[r_child] &gt; arr[max]) {
+    max = r_child;
   }
   <span style=color:#00f>if</span> (i != max) {
     <span style=color:#00f>const</span> tmp = arr[i];
@@ -164,17 +164,16 @@ console.log(<span style=color:#a31515>&#34;排序后：&#34;</span>, arr);
 }
 
 <span style=color:#00f>function</span> sort(arr) {
-  <span style=color:#00f>for</span>(<span style=color:#00f>let</span> i = Math.floor(arr.length / 2); i&gt;=0; i--) {
+  <span style=color:#00f>for</span> (<span style=color:#00f>let</span> i = Math.floor(arr.length / 2); i &gt;= 0; i--) {
     headAdjust(arr, i, arr.length);
   }
 
-  <span style=color:#00f>for</span>(<span style=color:#00f>let</span> j=arr.length-1; j&gt;=0; j--) {
+  <span style=color:#00f>for</span> (<span style=color:#00f>let</span> j = arr.length - 1; j &gt;= 0; j--) {
     <span style=color:#00f>const</span> tmp = arr[0];
     arr[0] = arr[j];
     arr[j] = tmp;
-    headAdjust(arr, 0, j)
+    headAdjust(arr, 0, j);
   }
-
 }
 
 <span style=color:#00f>const</span> arr = [10, 9, 22, -2, -4, 9];
